@@ -1,7 +1,7 @@
 # statistics @cuhk
 
 ## education 
-- phd statistics @[**cuhk**](https://www.cuhk.edu.hk/english/index.html) (2024.8-Present)
+- phd statistics @[**cuhk**](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
 - ms financial engineering @[**columbia**](https://www.columbia.edu) (2022.8-2023.12)
 - bs applied math + statistics @[**hopkins**](https://www.jhu.edu) (2017.8-2021.5)
 
