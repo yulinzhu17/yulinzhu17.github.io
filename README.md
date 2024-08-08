@@ -1,5 +1,3 @@
-# statistics @cuhk
-
 ## education 
 - phd statistics @[**cuhk**](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
 - ms financial engineering @[**columbia**](https://www.columbia.edu) (2022.8-2023.12)
