@@ -6,7 +6,7 @@
 - BS Applied Math @Johns Hopkins (Aug 2017 - May 2021)
 
 ## Interests and Experience
-During my free time, I am interested in finance. 
+Before pursuing my PhD, I worked full-time as a junior trader (high-frequency market making) at Pulsar Trading in HK. Prior to that, I was a 2023 summer intern (equity volatility) at Millennium Management in NYC. Via Prof. Ali Hirsa (Columbia IEOR), I have done in-semester deep learning research work for Wellington Management as well as European Investment Bank and European Central Bank during the Columbia MFE. 
 
 
 
