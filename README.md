@@ -1,10 +1,9 @@
-# Statistics PhD Student @CUHK
+# statistics @CUHK
 
 ## Education 
-- CUHK Statistics PhD (2024-present)
----
-- Columbia MS Financial Engineering (Graduating Class of 2023 December)
-- Johns Hopkins BS Applied Mathematics (Graduating Class of 2021 May) 
+- Ph.D., Statistics | Chinese Universtiy of Hong Kong (Aug 2024 - Present)
+- M.Sc., Financial Engineering | Columbia University (Aug 2022 - Dec 2023)
+- B.Sc., Applied Mathematics | Johns Hopkins University (Aug 2017 - May 2021)
 
 
 
