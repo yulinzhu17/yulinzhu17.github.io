@@ -16,5 +16,5 @@ This section will be updated as the PhD progresses.
 To be edited.
 
 ## Contact
-- yulin[dot]zhu[at]link[dot]cuhk[dot]edu[dot]hk
+- yulin.zhu[at]link.cuhk.edu.hk
 
