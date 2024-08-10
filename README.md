@@ -1,4 +1,4 @@
-I am a Statistics PhD student at CUHK, where I am jointly-supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
+I am a Statistics PhD student at CUHK, where I am supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
 
 ## Education 
 - PhD, Statistics @[**CUHK**](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
@@ -16,5 +16,5 @@ This section will be updated as the PhD progresses.
 To be edited.
 
 ## Contact
-- yulin.zhu[at]link.cuhk.edu.hk
+- yulin[dot]zhu[at]link[dot]cuhk[dot]edu[dot]hk
 
