@@ -1,4 +1,5 @@
 I am a Statistics PhD student at CUHK, where I am supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
+![hkiss_bsb](https://github.com/user-attachments/assets/260b3119-e448-42fa-9baf-4e7fac654dd5)
 
 ## Education 
 - PhD, Statistics @[**CUHK**](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
