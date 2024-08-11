@@ -14,7 +14,7 @@ This section will be updated as the PhD progresses.
 
 ## Teaching
 To be edited.
-[Course No. 1](test_test_test.md)
+- [Course No. 1](test_test_test.md)
 
 ## Contact
 - yulin.zhu[at]link.cuhk.edu.hk
