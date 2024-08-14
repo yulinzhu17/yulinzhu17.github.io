@@ -18,4 +18,5 @@ To be edited.
 
 ## Contact
 - yulin.zhu[at]link.cuhk.edu.hk
+- Lady Shaw Building, Room G24
 
