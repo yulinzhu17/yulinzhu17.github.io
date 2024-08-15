@@ -1,4 +1,4 @@
-Statistics PhD student at CUHK; Supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
+Statistics PhD student at 'CUHK'; Supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
 
 ## Education 
 - PhD, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
