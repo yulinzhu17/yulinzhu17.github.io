@@ -7,7 +7,7 @@ Statistics PhD student at CUHK; Supervised by Prof. Tony Sit and Prof. Hoi-Ying 
 - High School & Varsity Baseball @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
 
 ## Interests
-Before pursuing my PhD, I worked full-time as a junior trader (high-frequency market making) at [Pulsar Trading](https://www.pulsar.com) in HK. Prior to that, I was a 2023 summer analyst intern (equity derivatives risk) at [Millennium Management](https://www.mlp.com) in NYC. Via Prof. Ali Hirsa (Columbia IEOR), I have done in-semester deep learning research work for Wellington Management as well as ECB & EIB during the Columbia MFE. 
+Before pursuing my PhD, I worked full-time as a junior trader in high-frequency market making at [Pulsar Trading](https://www.pulsar.com) (HK office), focusing on applying deep learning to reduce adverse selection. Prior to that, I interned as a summer analyst in equity derivatives risk at [Millennium Management](https://www.mlp.com) (NYC office) in 2023. Through Prof. Ali Hirsa at Columbia IEOR, I conducted deep learning research for Wellington Management, as well as the ECB and EIB, during my Columbia MFE.
 
 ## Research 
 This section will be updated as the PhD progresses. 
