@@ -1,7 +1,7 @@
 Statistics PhD student at CUHK; Supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
 
 ## Education 
-- PhD, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
+- PhD, Statistics @[Chinese University of Hong Kong](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
 - MSc, Financial Engineering @[Columbia](https://www.columbia.edu) (2022.8-2023.12)
 - BSc, Applied Math & Statistics @[Johns Hopkins](https://www.jhu.edu) (2017.8-2021.5)
 - High School & Varsity Baseball @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
