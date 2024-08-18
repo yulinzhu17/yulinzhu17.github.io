@@ -1,4 +1,4 @@
-![Uploading CU60_RGB_withCUHKHorizontalLogo.png…]()
+![CU60_RGB_withCUHKHorizontalLogo](https://github.com/user-attachments/assets/4fd885bc-c4e5-4bb4-b75b-241315d081d1)
 
 Statistics PhD student at [CUHK](https://www.sta.cuhk.edu.hk/peoples/zhu-yulin/); Supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
 
