@@ -13,7 +13,7 @@ Before pursuing my PhD, I worked full-time as a junior trader in high-frequency 
 This section will be updated as the PhD progresses. 
 
 ## Teaching
-To be edited.
+To be edited, hopefully before I start TA'ing. 
 - [Course No. 1](course_1/dummy_page.md)
 
 ## Contact
