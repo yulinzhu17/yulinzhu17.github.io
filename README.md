@@ -1,4 +1,4 @@
-Statistics PhD student at [CUHK](https://www.sta.cuhk.edu.hk/peoples/zhu-yulin/); Supervised by Prof. Tony Sit and Prof. Hoi-Ying Wong. 
+Statistics PhD student at [CUHK](https://www.sta.cuhk.edu.hk/peoples/zhu-yulin/); Supervised by [Prof. Tony Sit](https://www.sta.cuhk.edu.hk/peoples/tonysit/) and [Prof. Hoi-Ying Wong](https://www.sta.cuhk.edu.hk/peoples/hywong/). 
 
 ## Education 
 - PhD, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
