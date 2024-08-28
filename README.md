@@ -14,7 +14,7 @@ This section will be updated as the PhD progresses.
 
 ## Teaching
 To be edited, hopefully before I start TA'ing. 
-- [Fall 2024 - Intro to Risk Management (RMSC2001)](course_1/dummy_page.md)
+- [Fall 2024 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 
 ## Contact
 - yulin.zhu[at]link.cuhk.edu.hk
