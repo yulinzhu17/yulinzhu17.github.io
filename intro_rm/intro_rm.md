@@ -1,3 +1,3 @@
 ## Intro Risk Management
 
-To be edited, if needed. 
+Notes will be uploaded to blackboard.
