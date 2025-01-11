@@ -1,9 +1,9 @@
 VC scheme `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/peoples/zhu-yulin/); Supervised by [Prof. Tony Sit](https://www.sta.cuhk.edu.hk/peoples/tonysit/) and [Prof. Hoi-Ying Wong](https://www.sta.cuhk.edu.hk/peoples/hywong/). 
 
 ## Education 
-- `PhD`, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
-- `MSc`, Financial Engineering @[Columbia](https://www.columbia.edu) (2022.8-2023.12)
-- `BSc`, Applied Math & Statistics @[Johns Hopkins](https://www.jhu.edu) (2017.8-2021.5)
+- `PhD`, Statistics @[CUHK STAT](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
+- `MSc`, Financial Engineering @[Columbia IEOR](https://www.columbia.edu) (2022.8-2023.12)
+- `BSc`, Applied Math & Statistics @[Johns Hopkins AMS](https://www.jhu.edu) (2017.8-2021.5)
 - `High School` & Varsity Baseball @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
 
 ## Interests
