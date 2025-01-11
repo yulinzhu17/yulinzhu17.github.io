@@ -13,6 +13,7 @@ Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequenc
 Currently, I am working on continuous-time reinforcement learning theory and applications in finance. 
 
 ## Teaching (TA)
+- [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 - [Fall 2024 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 
 ## Contact
