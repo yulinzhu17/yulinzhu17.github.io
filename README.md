@@ -1,4 +1,4 @@
-VC scheme `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/peoples/zhu-yulin/) in Sha Tin, NT; Supervised by [Prof. Tony Sit](https://www.sta.cuhk.edu.hk/peoples/tonysit/) and [Prof. Hoi-Ying Wong](https://www.sta.cuhk.edu.hk/peoples/hywong/). 
+VC scheme `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT; Supervised by [Prof. Tony Sit](https://www.sta.cuhk.edu.hk/peoples/tonysit/) and [Prof. Hoi-Ying Wong](https://www.sta.cuhk.edu.hk/peoples/hywong/). 
 
 ## Education 
 - `PhD`, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
