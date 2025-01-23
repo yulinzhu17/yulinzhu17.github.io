@@ -1,4 +1,4 @@
-I am a `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT; Supervised by [Prof. Tony Sit](https://www.sta.cuhk.edu.hk/peoples/tonysit/) and [Prof. Hoi-Ying Wong](https://www.sta.cuhk.edu.hk/peoples/hywong/). 
+I am a `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT. 
 
 ## Education 
 - `PhD`, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
