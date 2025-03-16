@@ -12,7 +12,7 @@ Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequenc
 Currently, I am working on an `HK Cyberport` and `CUHK PI Centre` funded DeFi project with several statistics PhD colleagues at CUHK. 
 
 ## Research 
-I am working on continuous-time reinforcement learning theory and applications in trading. 
+I am working on reinforcement learning theory and applications in trading. 
 
 ## Teaching (TA)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
