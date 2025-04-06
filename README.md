@@ -12,7 +12,7 @@ Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequenc
 Currently, I am working on a DeFi project, which is funded by `Hong Kong Cyberport CCMF` and `CUHK PI Centre`,  with several elegant PhD lads at CUHK Dept of Statistics. 
 
 ## Research 
-I am interested in statistical reinforcement learning theory and applications in execution trading, market making, and DeFi. 
+I am interested in reinforcement learning. 
 
 ## Teaching (TA)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
