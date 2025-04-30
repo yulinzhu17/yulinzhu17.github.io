@@ -7,7 +7,11 @@ I am a `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sh
 - `High School` & Varsity Baseball @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
 
 ## Interests
-Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequency cryptocurrency market making at [Pulsar Trading](https://www.pulsar.com) (HK office), focusing on applying deep learning to reduce adverse selection. Prior to that, I interned as a `summer analyst` in equity derivatives and volatilty risk at [Millennium Management](https://www.mlp.com) (NYC office) in 2023. Through Prof. Ali Hirsa at Columbia IEOR, I conducted `deep learning research` for [Wellington Management](https://www.wellington.com/en), as well as the [ECB](https://www.ecb.europa.eu/home/html/index.en.html) and [EIB](https://www.eib.org/en/index), during my Columbia MFE.
+Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequency cryptocurrency market making at [Pulsar Trading](https://www.pulsar.com) (HK office), focusing on applying deep learning to reduce adverse selection. 
+
+In addition to my full time experience, I have interned as a `summer analyst` in equity derivatives and volatilty risk at [Millennium Management](https://www.mlp.com) (NYC office). I have also interned as a quantitative researcher at [Kronos Research](https://www.kronosresearch.com).
+
+Through Prof. Ali Hirsa at Columbia IEOR, I conducted `deep learning research` for [Wellington Management](https://www.wellington.com/en), as well as the [ECB](https://www.ecb.europa.eu/home/html/index.en.html) and [EIB](https://www.eib.org/en/index), during my Columbia MFE.
 
 Currently, I am working on a DeFi project, which is funded by `Hong Kong Cyberport CCMF` and `CUHK PI Centre`,  with several elegant PhD lads at CUHK Dept of Statistics. 
 
