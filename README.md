@@ -1,4 +1,4 @@
-I am a `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT. I am supervised by Dr. Tony Sit and Dr. Hoi-Ying Wong. 
+I am a 2024-entry `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT. I am supervised by Dr. Tony Sit and Dr. Hoi-Ying Wong. 
 
 ## Education 
 - `PhD`, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
@@ -13,10 +13,8 @@ I am a `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sh
 
 - Through Prof. Ali Hirsa at Columbia IEOR, I conducted `deep learning research` for [Wellington Management](https://www.wellington.com/en), as well as the [ECB](https://www.ecb.europa.eu/home/html/index.en.html) and [EIB](https://www.eib.org/en/index), during my Columbia MFE.
 
-- Currently, I am working on a DeFi project, which is funded by `Hong Kong Cyberport CCMF` and `CUHK PI Centre`,  with several elegant PhD lads at CUHK Dept of Statistics. 
-
 ## Research 
-To be updated. 
+I am interested in stochastic control and finance.
 
 ## Teaching (TA)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
