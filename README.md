@@ -14,7 +14,7 @@ I am a 2024-entry `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu
 - Through Prof. Ali Hirsa at Columbia IEOR, I conducted `deep learning research` for [Wellington Management](https://www.wellington.com/en), as well as the [ECB](https://www.ecb.europa.eu/home/html/index.en.html) and [EIB](https://www.eib.org/en/index), during my Columbia MFE.
 
 ## Research 
-I am interested in stochastic control and finance.
+I am interested in stochastic control and financial engineering.
 
 ## Teaching (TA)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
