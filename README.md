@@ -18,8 +18,7 @@ I am interested in stochastic control and financial engineering.
 
 ## Teaching (TA)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
-- [Fall 2024 - Intro to Risk Managem![Uploading pitching.jpg…]()
-ent (RMSC2001)](intro_rm/intro_rm.md)
+- [Fall 2024 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 
 ## Contact
 - yulin.zhu[at]link.cuhk.edu.hk
