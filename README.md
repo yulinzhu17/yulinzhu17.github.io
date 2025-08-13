@@ -1,5 +1,3 @@
-![hkiss_bsbl2](https://github.com/user-attachments/assets/b0b10bf5-3e65-450a-9129-61d484967e1b)
-
 I am a 2024-entry `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu.hk/) in Sha Tin, NT. I am supervised by **Dr. Tony Sit** and **Dr. Hoi-Ying Wong**. I am from Toronto, Ontario, Canada. 
 
 ## Education 
