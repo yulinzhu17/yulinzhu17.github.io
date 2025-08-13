@@ -6,7 +6,7 @@ I am a 2024-entry `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu
 - `PhD`, Statistics @[CUHK](https://www.cuhk.edu.hk/english/index.html) (2024.8-present)
 - `MSc`, Financial Engineering @[Columbia](https://www.columbia.edu) (2022.8-2023.12)
 - `BSc`, Applied Math & Statistics @[Johns Hopkins](https://www.jhu.edu) (2017.8-2021.5)
-- `High School` & Varsity Baseball @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
+- `High School` & `Varsity Baseball` @[Hotchkiss](https://www.hotchkiss.org/) (2017 Class)
 
 ## Interests
 - Before pursuing my PhD, I worked full-time as a `junior trader` in high-frequency cryptocurrency market making at [Pulsar Trading](https://www.pulsar.com) (HK office), focusing on applying deep learning to reduce adverse selection. 
