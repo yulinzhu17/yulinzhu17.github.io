@@ -17,6 +17,7 @@ I am a 2024-entry `PhD` student in statistics at [CUHK](https://www.sta.cuhk.edu
 I am interested in stochastic control and financial engineering.
 
 ## Teaching (TA)
+- [Fall 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 - [Spring 2025 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 - [Fall 2024 - Intro to Risk Management (RMSC2001)](intro_rm/intro_rm.md)
 
