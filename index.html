@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="%23FFB000"/><rect x="0" y="18" width="20" height="2" fill="%23FFB000"/><rect x="18" y="0" width="2" height="20" fill="%23FFB000"/></svg>'), auto;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="%23FFB000"/><rect x="0" y="18" width="20" height="2" fill="%23FFB000"/><rect x="0" y="0" width="2" height="20" fill="%23FFB000"/><rect x="18" y="0" width="2" height="20" fill="%23FFB000"/></svg>'), auto;
         }
 
         :root {
@@ -21,6 +21,8 @@
             --crt-green: #41FF00;
             --old-white: #E8DCC0;
             --scan-line: rgba(255, 176, 0, 0.03);
+            --red: #FF3333;
+            --green: #00FF88;
         }
 
         @keyframes flicker {
@@ -60,7 +62,7 @@
             body {
                 animation: none;
             }
-
+            
             * {
                 cursor: default !important;
             }
@@ -99,6 +101,64 @@
             );
             pointer-events: none;
             z-index: 9997;
+        }
+
+        /* BTC Ticker */
+        .btc-ticker {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(12, 12, 12, 0.95);
+            border-bottom: 1px solid var(--amber);
+            padding: 10px 20px;
+            z-index: 900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-size: 18px;
+            box-shadow: 0 0 20px var(--amber-glow);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ticker-label {
+            color: var(--phosphor);
+            font-size: 16px;
+        }
+
+        .ticker-value {
+            color: var(--amber);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .ticker-change {
+            font-size: 18px;
+        }
+
+        .ticker-change.positive {
+            color: var(--green);
+        }
+
+        .ticker-change.negative {
+            color: var(--red);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .ticker-loading {
+            animation: pulse 1s infinite;
         }
 
         /* Text Glow Effect */
@@ -263,7 +323,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 40px;
+            padding: 150px 40px 100px;
             position: relative;
         }
 
@@ -637,13 +697,29 @@
             body::before {
                 display: none;
             }
-
+            
             body::after {
                 background: radial-gradient(
                     ellipse at center,
                     transparent 0%,
                     rgba(0, 0, 0, 0.2) 100%
                 );
+            }
+
+            /* BTC Ticker Mobile */
+            .btc-ticker {
+                font-size: 14px;
+                padding: 8px 10px;
+                gap: 15px;
+                top: 60px;
+            }
+
+            .ticker-value {
+                font-size: 16px;
+            }
+
+            .ticker-label {
+                font-size: 12px;
             }
 
             /* Boot screen adjustments */
@@ -669,9 +745,13 @@
                 display: block;
             }
 
+            .mobile-menu {
+                top: 120px;
+            }
+
             /* Hero mobile */
             #hero {
-                padding: 80px 20px 40px;
+                padding: 140px 20px 40px;
                 min-height: auto;
             }
 
@@ -868,6 +948,15 @@
                 font-size: 16px;
                 padding: 10px 15px;
             }
+
+            .btc-ticker {
+                font-size: 12px;
+                gap: 10px;
+            }
+
+            .ticker-value {
+                font-size: 14px;
+            }
         }
 
         /* Touch device optimizations */
@@ -906,7 +995,7 @@
         <div class="boot-text" style="animation-delay: 0.5s">PhD Student Mode: ACTIVE</div>
         <div class="boot-text" style="animation-delay: 0.6s">Research Focus: Stochastic Control</div>
         <div class="boot-text" style="animation-delay: 0.7s">Location: CUHK, Hong Kong</div>
-        <div class="boot-text" style="animation-delay: 0.8s">&nbsp;</div>
+        <div class="boot-text" style="animation-delay: 0.8s">Connecting to Deribit...</div>
         <div class="boot-text" style="animation-delay: 0.9s">System ready.</div>
         <div class="boot-text" style="animation-delay: 1.0s">Initializing interface...<span class="cursor"></span></div>
     </div>
@@ -915,9 +1004,9 @@
     <nav>
         <div class="nav-container">
             <a href="#hero" class="logo glow">YULIN.ZHU</a>
-
+            
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-
+            
             <ul class="nav-links">
                 <li><a href="#education" class="nav-link">EDUCATION</a></li>
                 <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
@@ -927,6 +1016,30 @@
             </ul>
         </div>
     </nav>
+
+    <!-- BTC Ticker -->
+    <div class="btc-ticker" id="btcTicker">
+        <div class="ticker-item">
+            <span class="ticker-label">BTC-PERPETUAL:</span>
+            <span class="ticker-value" id="btcPrice">Loading...</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-label">24H:</span>
+            <span class="ticker-change" id="btcChange">...</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-label">HIGH:</span>
+            <span class="ticker-value" id="btcHigh">...</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-label">LOW:</span>
+            <span class="ticker-value" id="btcLow">...</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-label">VOLUME:</span>
+            <span class="ticker-value" id="btcVolume">...</span>
+        </div>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
@@ -1145,10 +1258,122 @@
     </footer>
 
     <script>
+        // BTC Ticker WebSocket Connection
+        let ws = null;
+        let btcData = {
+            price: 0,
+            high: 0,
+            low: 0,
+            volume: 0,
+            change: 0
+        };
+
+        function connectDeribit() {
+            ws = new WebSocket('wss://test.deribit.com/ws/api/v2');
+            
+            ws.onopen = function() {
+                console.log('Connected to Deribit');
+                // Subscribe to BTC-PERPETUAL ticker
+                const msg = {
+                    "jsonrpc": "2.0",
+                    "method": "public/subscribe",
+                    "id": 42,
+                    "params": {
+                        "channels": ["ticker.BTC-PERPETUAL.100ms"]
+                    }
+                };
+                ws.send(JSON.stringify(msg));
+                
+                // Also get initial book summary
+                const summaryMsg = {
+                    "jsonrpc": "2.0",
+                    "method": "public/get_book_summary_by_instrument",
+                    "id": 3659,
+                    "params": {
+                        "instrument_name": "BTC-PERPETUAL"
+                    }
+                };
+                ws.send(JSON.stringify(summaryMsg));
+            };
+            
+            ws.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                
+                if (data.method === 'subscription') {
+                    // Handle ticker updates
+                    const tickerData = data.params.data;
+                    updateBTCData(tickerData);
+                } else if (data.id === 3659 && data.result) {
+                    // Handle initial book summary
+                    const summary = Array.isArray(data.result) ? data.result[0] : data.result;
+                    updateBTCData(summary);
+                }
+            };
+            
+            ws.onerror = function(error) {
+                console.error('WebSocket error:', error);
+            };
+            
+            ws.onclose = function() {
+                console.log('Disconnected from Deribit, reconnecting...');
+                setTimeout(connectDeribit, 5000);
+            };
+        }
+
+        function updateBTCData(data) {
+            if (data.last_price !== undefined) {
+                btcData.price = data.last_price;
+            } else if (data.last !== undefined) {
+                btcData.price = data.last;
+            }
+            
+            if (data.stats) {
+                btcData.high = data.stats.high;
+                btcData.low = data.stats.low;
+                btcData.volume = data.stats.volume;
+                btcData.change = data.stats.price_change;
+            } else {
+                if (data.high !== undefined) btcData.high = data.high;
+                if (data.low !== undefined) btcData.low = data.low;
+                if (data.volume !== undefined) btcData.volume = data.volume;
+                if (data.price_change !== undefined) btcData.change = data.price_change;
+            }
+            
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const priceEl = document.getElementById('btcPrice');
+            const changeEl = document.getElementById('btcChange');
+            const highEl = document.getElementById('btcHigh');
+            const lowEl = document.getElementById('btcLow');
+            const volumeEl = document.getElementById('btcVolume');
+            
+            if (priceEl) priceEl.textContent = `$${btcData.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            if (changeEl) {
+                const changeValue = btcData.change;
+                changeEl.textContent = `${changeValue >= 0 ? '+' : ''}${changeValue.toFixed(2)}%`;
+                changeEl.className = changeValue >= 0 ? 'ticker-change positive' : 'ticker-change negative';
+            }
+            
+            if (highEl) highEl.textContent = `$${btcData.high.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            if (lowEl) lowEl.textContent = `$${btcData.low.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            if (volumeEl) volumeEl.textContent = `$${(btcData.volume / 1000000).toFixed(2)}M`;
+        }
+
+        // Update every 2 seconds even if no new data
+        setInterval(updateDisplay, 2000);
+
+        // Connect to Deribit after page load
+        setTimeout(() => {
+            connectDeribit();
+        }, 2500);
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-
+        
         mobileMenuBtn?.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
@@ -1216,7 +1441,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - (isMobile ? 60 : 80);
+                    const offsetTop = target.offsetTop - (isMobile ? 120 : 140);
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
