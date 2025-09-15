@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yulin Zhu | PhD Student - Statistics & Quantitative Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="%23FFB000"/><rect x="0" y="18" width="20" height="2" fill="%23FFB000"/><rect x="0" y="0" width="2" height="20" fill="%23FFB000"/><rect x="18" y="0" width="2" height="20" fill="%23FFB000"/></svg>'), auto;
+        }
+
+        :root {
+            --amber: #FFB000;
+            --amber-glow: #FF6B00;
+            --phosphor: #FFCC00;
+            --terminal-bg: #0C0C0C;
+            --crt-green: #41FF00;
+            --old-white: #E8DCC0;
+            --scan-line: rgba(255, 176, 0, 0.03);
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.98; }
+            15% { opacity: 0.96; }
+            25% { opacity: 1; }
+            30% { opacity: 0.98; }
+            35% { opacity: 0.97; }
+            40% { opacity: 0.99; }
+            45% { opacity: 0.96; }
+            60% { opacity: 1; }
+            70% { opacity: 0.98; }
+            80% { opacity: 0.97; }
+            90% { opacity: 0.99; }
+            100% { opacity: 0.97; }
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'VT323', monospace;
+            background: var(--terminal-bg);
+            color: var(--amber);
+            line-height: 1.4;
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
+            animation: flicker 4s infinite;
+        }
+
+        /* CRT Monitor Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                var(--scan-line) 2px,
+                var(--scan-line) 4px
+            );
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            pointer-events: none;
+            z-index: 9997;
+        }
+
+        /* Text Glow Effect */
+        .glow {
+            text-shadow:
+                0 0 5px var(--amber-glow),
+                0 0 10px var(--amber-glow),
+                0 0 15px var(--amber-glow);
+        }
+
+        /* Preloader */
+        .boot-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--terminal-bg);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        .boot-screen.hide {
+            display: none;
+        }
+
+        .boot-text {
+            color: var(--amber);
+            margin: 4px 0;
+            opacity: 0;
+            animation: bootSequence 0.1s forwards;
+        }
+
+        @keyframes bootSequence {
+            to { opacity: 1; }
+        }
+
+        /* Blinking Cursor */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--amber);
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(12, 12, 12, 0.95);
+            border-bottom: 2px solid var(--amber);
+            z-index: 1000;
+            box-shadow: 0 0 20px var(--amber-glow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: var(--amber);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo::before {
+            content: "[";
+            color: var(--phosphor);
+        }
+
+        .logo::after {
+            content: "]";
+            color: var(--phosphor);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--amber);
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: "> ";
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .nav-link:hover {
+            color: var(--phosphor);
+            text-shadow: 0 0 10px var(--amber-glow);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .terminal-window {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(12, 12, 12, 0.9);
+            border: 2px solid var(--amber);
+            box-shadow:
+                0 0 40px var(--amber-glow),
+                inset 0 0 40px rgba(255, 176, 0, 0.05);
+            padding: 20px;
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--amber);
+            margin-bottom: 20px;
+        }
+
+        .terminal-title {
+            color: var(--phosphor);
+            font-size: 20px;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control {
+            color: var(--amber);
+        }
+
+        .hero-content {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .ascii-art {
+            color: var(--phosphor);
+            font-size: 14px;
+            line-height: 1;
+            white-space: pre;
+            margin: 30px auto;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            margin-bottom: 10px;
+            color: var(--phosphor);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--amber);
+            margin-bottom: 30px;
+        }
+
+        .hero-location {
+            font-size: 20px;
+            color: var(--amber);
+            opacity: 0.8;
+        }
+
+        .typed-text {
+            font-size: 22px;
+            color: var(--amber);
+            margin: 30px 0;
+            min-height: 30px;
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .retro-btn {
+            padding: 12px 25px;
+            background: transparent;
+            color: var(--amber);
+            border: 2px solid var(--amber);
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            font-family: 'VT323', monospace;
+        }
+
+        .retro-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--amber);
+            transition: width 0.3s;
+            z-index: -1;
+        }
+
+        .retro-btn:hover {
+            color: var(--terminal-bg);
+            box-shadow: 0 0 20px var(--amber-glow);
+        }
+
+        .retro-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--phosphor);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: "==";
+            color: var(--amber);
+            margin: 0 15px;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--amber);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: "▶";
+            position: absolute;
+            left: -42px;
+            top: 0;
+            color: var(--phosphor);
+            font-size: 20px;
+        }
+
+        .timeline-date {
+            color: var(--phosphor);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 24px;
+            color: var(--amber);
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            font-size: 20px;
+            color: var(--amber);
+            opacity: 0.8;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 30px;
+        }
+
+        .exp-card {
+            background: rgba(12, 12, 12, 0.8);
+            border: 1px solid var(--amber);
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .exp-card::before {
+            content: ">";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--phosphor);
+            font-size: 24px;
+        }
+
+        .exp-card:hover {
+            box-shadow: 0 0 30px var(--amber-glow);
+            transform: translateX(10px);
+        }
+
+        .exp-title {
+            font-size: 28px;
+            color: var(--phosphor);
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+
+        .exp-company {
+            font-size: 22px;
+            color: var(--amber);
+            margin-bottom: 5px;
+            padding-left: 30px;
+        }
+
+        .exp-location {
+            font-size: 18px;
+            color: var(--amber);
+            opacity: 0.7;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        .exp-description {
+            font-size: 20px;
+            line-height: 1.6;
+            padding-left: 30px;
+        }
+
+        /* Research Section */
+        .research-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 22px;
+            line-height: 1.8;
+            background: rgba(12, 12, 12, 0.8);
+            border: 1px solid var(--amber);
+            padding: 40px;
+        }
+
+        .research-focus {
+            color: var(--phosphor);
+            font-size: 28px;
+            margin-top: 20px;
+        }
+
+        /* Teaching Section */
+        .teaching-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .teaching-item {
+            background: rgba(12, 12, 12, 0.8);
+            border: 1px dashed var(--amber);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .teaching-item:hover {
+            border-style: solid;
+            background: rgba(255, 176, 0, 0.05);
+        }
+
+        .teaching-course {
+            font-size: 22px;
+            color: var(--phosphor);
+        }
+
+        .teaching-term {
+            font-size: 20px;
+            color: var(--amber);
+        }
+
+        /* Contact Section */
+        .contact-terminal {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(12, 12, 12, 0.9);
+            border: 2px solid var(--amber);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 25px 0;
+            font-size: 22px;
+        }
+
+        .contact-label {
+            color: var(--phosphor);
+            margin-bottom: 10px;
+        }
+
+        .contact-value {
+            color: var(--amber);
+            word-break: break-all;
+        }
+
+        .contact-value a {
+            color: var(--amber);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: var(--phosphor);
+            text-shadow: 0 0 10px var(--amber-glow);
+        }
+
+        /* ASCII Dividers */
+        .ascii-divider {
+            text-align: center;
+            margin: 60px 0;
+            color: var(--amber);
+            font-size: 16px;
+            line-height: 1;
+            white-space: pre;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid var(--amber);
+            background: rgba(12, 12, 12, 0.95);
+        }
+
+        .footer-text {
+            color: var(--amber);
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .ascii-art {
+                font-size: 10px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div class="boot-screen" id="bootScreen">
+        <div class="boot-text" style="animation-delay: 0.1s">ZHUSYS v1.0 - Personal Terminal</div>
+        <div class="boot-text" style="animation-delay: 0.2s">Copyright (c) 2024 Yulin Zhu</div>
+        <div class="boot-text" style="animation-delay: 0.3s">=====================================</div>
+        <div class="boot-text" style="animation-delay: 0.4s">Loading profile...</div>
+        <div class="boot-text" style="animation-delay: 0.5s">PhD Student Mode: ACTIVE</div>
+        <div class="boot-text" style="animation-delay: 0.6s">Research Focus: Stochastic Control</div>
+        <div class="boot-text" style="animation-delay: 0.7s">Location: CUHK, Hong Kong</div>
+        <div class="boot-text" style="animation-delay: 0.8s">&nbsp;</div>
+        <div class="boot-text" style="animation-delay: 0.9s">System ready.</div>
+        <div class="boot-text" style="animation-delay: 1.0s">Initializing interface...<span class="cursor"></span></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="logo glow">YULIN.ZHU</a>
+            <ul class="nav-links">
+                <li><a href="#education" class="nav-link">EDUCATION</a></li>
+                <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+                <li><a href="#research" class="nav-link">RESEARCH</a></li>
+                <li><a href="#teaching" class="nav-link">TEACHING</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-title">TERMINAL #001 - USER PROFILE</div>
+                <div class="terminal-controls">
+                    <span class="control">[-]</span>
+                    <span class="control">[□]</span>
+                    <span class="control">[X]</span>
+                </div>
+            </div>
+
+            <div class="ascii-art">
+      /\_/\
+     ( o.o )
+      > ^ <
+     /|   |\
+    (_|   |_)
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title glow">YULIN ZHU</h1>
+                <p class="hero-subtitle">PhD Student | Statistics & Data Science</p>
+                <p class="hero-subtitle">Chinese University of Hong Kong</p>
+                <p class="hero-location">[ From: Toronto, Ontario, Canada ]</p>
+
+                <div class="typed-text">
+                    <span id="typed-output"></span><span class="cursor"></span>
+                </div>
+            </div>
+
+            <div class="quick-links">
+                <a href="https://github.com/yulinzhu17" target="_blank" class="retro-btn">GITHUB.COM</a>
+                <a href="#contact" class="retro-btn">CONTACT.ME</a>
+                <a href="#research" class="retro-btn">RESEARCH</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASCII Divider -->
+    <div class="ascii-divider">
+═══════════════════════════════════════════════════════════════════════════════
+                            EDUCATIONAL BACKGROUND
+═══════════════════════════════════════════════════════════════════════════════
+    </div>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <h2 class="section-title">EDUCATION.LOG</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">[2024.08 - PRESENT]</div>
+                <div class="timeline-title">Doctor of Philosophy (PhD)</div>
+                <div class="timeline-subtitle">CUHK | Statistics</div>
+                <div class="timeline-subtitle">Supervisors: Dr. Tony Sit & Dr. Hoi-Ying Wong</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">[2022.08 - 2023.12]</div>
+                <div class="timeline-title">Master of Science (MSc)</div>
+                <div class="timeline-subtitle">Columbia University | Financial Engineering</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">[2017.08 - 2021.05]</div>
+                <div class="timeline-title">Bachelor of Science (BSc)</div>
+                <div class="timeline-subtitle">Johns Hopkins University | Applied Math & Statistics</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">[Class of 2017]</div>
+                <div class="timeline-title">High School Diploma</div>
+                <div class="timeline-subtitle">The Hotchkiss School | Varsity Baseball</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASCII Divider -->
+    <div class="ascii-divider">
+<<<---===--->>>  PROFESSIONAL EXPERIENCE  <<<---===--->>>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">WORK.HISTORY</h2>
+        </div>
+
+        <div class="experience-grid">
+            <div class="exp-card">
+                <h3 class="exp-title">JUNIOR TRADER</h3>
+                <p class="exp-company">Pulsar Trading</p>
+                <p class="exp-location">[Hong Kong]</p>
+                <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection. Full-time position before PhD.</p>
+            </div>
+
+            <div class="exp-card">
+                <h3 class="exp-title">SUMMER ANALYST</h3>
+                <p class="exp-company">Millennium Management</p>
+                <p class="exp-location">[NYC]</p>
+                <p class="exp-description">Equity derivatives and volatility risk analysis. Developed risk models for options trading strategies.</p>
+            </div>
+
+            <div class="exp-card">
+                <h3 class="exp-title">QUANTITATIVE RESEARCHER INTERN</h3>
+                <p class="exp-company">Kronos Research</p>
+                <p class="exp-location">[Hong Kong]</p>
+                <p class="exp-description">High-frequency cryptocurrency trading research. Statistical arbitrage and market microstructure analysis.</p>
+            </div>
+
+            <div class="exp-card">
+                <h3 class="exp-title">DEEP LEARNING RESEARCHER</h3>
+                <p class="exp-company">Wellington Management / ECB / EIB</p>
+                <p class="exp-location">[Through Prof. Ali Hirsa, Columbia IEOR]</p>
+                <p class="exp-description">Conducted deep learning research for financial applications during Columbia MFE program.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="section-header">
+            <h2 class="section-title">RESEARCH.FOCUS</h2>
+        </div>
+
+        <div class="research-content">
+            <p>My research interests lie at the intersection of mathematics and finance, focusing on:</p>
+            <p class="research-focus glow">▸ STOCHASTIC CONTROL</p>
+            <p class="research-focus glow">▸ FINANCIAL ENGINEERING</p>
+            <p style="margin-top: 30px;">Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching">
+        <div class="section-header">
+            <h2 class="section-title">TEACHING.ASSISTANT</h2>
+        </div>
+
+        <div class="teaching-list">
+            <div class="teaching-item">
+                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
+                <span class="teaching-term">Fall 2025</span>
+            </div>
+            <div class="teaching-item">
+                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
+                <span class="teaching-term">Spring 2025</span>
+            </div>
+            <div class="teaching-item">
+                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
+                <span class="teaching-term">Fall 2024</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASCII Divider -->
+    <div class="ascii-divider">
+╔════════════════════════════════════════════════════════════════════════════╗
+║                              CONTACT PROTOCOL                              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">CONTACT.INFO</h2>
+        </div>
+
+        <div class="contact-terminal">
+            <div class="contact-item">
+                <div class="contact-label">> EMAIL:</div>
+                <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">> LOCATION:</div>
+                <div class="contact-value">CUHK, Lady Shaw Building, Room G24</div>
+                <div class="contact-value">Sha Tin, New Territories, Hong Kong</div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">> GITHUB:</div>
+                <div class="contact-value">
+                    <a href="https://github.com/yulinzhu17" target="_blank">github.com/yulinzhu17</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">> STATUS:</div>
+                <div class="contact-value glow">PhD STUDENT - STATISTICS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-text">
+            (C) 2024 YULIN ZHU | PhD STUDENT | CUHK STATISTICS
+        </div>
+        <div class="footer-text" style="margin-top: 10px; font-size: 16px;">
+            SYSTEM UPTIME: <span id="uptime">000:00:00</span> | VISITOR COUNT: <span id="visitor-count">000001</span>
+        </div>
+    </footer>
+
+    <script>
+        // Boot screen
+        setTimeout(() => {
+            document.getElementById('bootScreen').classList.add('hide');
+        }, 2000);
+
+        // Typing effect
+        const messages = [
+            "Specializing in stochastic control...",
+            "Researching financial engineering...",
+            "PhD Student at CUHK Statistics...",
+            "Former quant trader in crypto HFT...",
+            "Teaching Assistant for RMSC2001..."
+        ];
+
+        let messageIndex = 0;
+        let charIndex = 0;
+        let currentMessage = '';
+        let isDeleting = false;
+
+        function type() {
+            const typedOutput = document.getElementById('typed-output');
+            if (!typedOutput) return;
+
+            if (!isDeleting && charIndex < messages[messageIndex].length) {
+                currentMessage += messages[messageIndex].charAt(charIndex);
+                charIndex++;
+            } else if (isDeleting && charIndex > 0) {
+                currentMessage = currentMessage.substring(0, charIndex - 1);
+                charIndex--;
+            } else if (!isDeleting && charIndex === messages[messageIndex].length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+                return;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+            }
+
+            typedOutput.textContent = currentMessage;
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+
+        setTimeout(type, 2500);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Uptime counter
+        let seconds = 0;
+        setInterval(() => {
+            seconds++;
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            document.getElementById('uptime').textContent =
+                `${String(hours).padStart(3, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }, 1000);
+
+        // Visitor counter (simulated)
+        let visitorCount = 1;
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                visitorCount++;
+                document.getElementById('visitor-count').textContent = String(visitorCount).padStart(6, '0');
+            }
+        }, 5000);
+
+        // Random flicker on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                document.body.style.animation = 'flicker 0.1s';
+                setTimeout(() => {
+                    document.body.style.animation = 'flicker 4s infinite';
+                }, 100);
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
