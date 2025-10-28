@@ -1,3 +1,6 @@
+The provided website's HTML code has been modified to incorporate a crypto-inspired theme, emphasizing neon green and purple hues reminiscent of blockchain and digital currency aesthetics, while maintaining the terminal-style structure for a modern, cyberpunk-inspired appearance. The ASCII art in the hero section has been removed as requested. Below is the complete updated HTML code, which can be copied and used directly.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +13,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="%23FFB000"/><rect x="0" y="18" width="20" height="2" fill="%23FFB000"/><rect x="0" y="0" width="2" height="20" fill="%23FFB000"/><rect x="18" y="0" width="2" height="20" fill="%23FFB000"/></svg>'), auto;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="#00FF88"/><rect x="0" y="18" width="20" height="2" fill="#00FF88"/><rect x="0" y="0" width="2" height="20" fill="#00FF88"/><rect x="18" y="0" width="2" height="20" fill="#00FF88"/></svg>'), auto;
         }
-
         :root {
-            --amber: #FFB000;
-            --amber-glow: #FF6B00;
-            --phosphor: #FFCC00;
+            --neon-green: #00FF88;
+            --neon-purple: #7D00FF;
+            --neon-blue: #00BFFF;
             --terminal-bg: #0C0C0C;
-            --crt-green: #41FF00;
+            --crypto-glow: #00FF88;
             --old-white: #E8DCC0;
-            --scan-line: rgba(255, 176, 0, 0.03);
+            --scan-line: rgba(0, 255, 136, 0.03);
             --red: #FF3333;
             --green: #00FF88;
         }
-
         @keyframes flicker {
             0% { opacity: 0.97; }
             5% { opacity: 0.95; }
@@ -41,33 +42,29 @@
             90% { opacity: 0.99; }
             100% { opacity: 0.97; }
         }
-
         html {
             font-size: 16px;
             scroll-behavior: smooth;
         }
-
         body {
             font-family: 'VT323', monospace;
             background: var(--terminal-bg);
-            color: var(--amber);
+            color: var(--neon-green);
             line-height: 1.4;
             letter-spacing: 0.05em;
             overflow-x: hidden;
             animation: flicker 4s infinite;
         }
-
         /* Detect mobile and reduce heavy effects */
         @media (hover: none) and (pointer: coarse) {
             body {
                 animation: none;
             }
-            
+           
             * {
                 cursor: default !important;
             }
         }
-
         /* CRT Monitor Effect */
         body::before {
             content: "";
@@ -86,7 +83,6 @@
             pointer-events: none;
             z-index: 9998;
         }
-
         body::after {
             content: "";
             position: fixed;
@@ -102,7 +98,6 @@
             pointer-events: none;
             z-index: 9997;
         }
-
         /* BTC Ticker */
         .btc-ticker {
             position: fixed;
@@ -110,7 +105,7 @@
             left: 0;
             right: 0;
             background: rgba(12, 12, 12, 0.95);
-            border-bottom: 1px solid var(--amber);
+            border-bottom: 1px solid var(--neon-green);
             padding: 10px 20px;
             z-index: 900;
             display: flex;
@@ -118,57 +113,47 @@
             align-items: center;
             gap: 30px;
             font-size: 18px;
-            box-shadow: 0 0 20px var(--amber-glow);
+            box-shadow: 0 0 20px var(--crypto-glow);
             overflow-x: auto;
             white-space: nowrap;
         }
-
         .ticker-item {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .ticker-label {
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 16px;
         }
-
         .ticker-value {
-            color: var(--amber);
+            color: var(--neon-green);
             font-weight: bold;
             font-size: 20px;
         }
-
         .ticker-change {
             font-size: 18px;
         }
-
         .ticker-change.positive {
             color: var(--green);
         }
-
         .ticker-change.negative {
             color: var(--red);
         }
-
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-
         .ticker-loading {
             animation: pulse 1s infinite;
         }
-
         /* Text Glow Effect */
         .glow {
             text-shadow:
-                0 0 5px var(--amber-glow),
-                0 0 10px var(--amber-glow),
-                0 0 15px var(--amber-glow);
+                0 0 5px var(--crypto-glow),
+                0 0 10px var(--crypto-glow),
+                0 0 15px var(--crypto-glow);
         }
-
         /* Preloader */
         .boot-screen {
             position: fixed;
@@ -184,37 +169,31 @@
             font-size: 18px;
             overflow: hidden;
         }
-
         .boot-screen.hide {
             display: none;
         }
-
         .boot-text {
-            color: var(--amber);
+            color: var(--neon-green);
             margin: 4px 0;
             opacity: 0;
             animation: bootSequence 0.1s forwards;
         }
-
         @keyframes bootSequence {
             to { opacity: 1; }
         }
-
         /* Blinking Cursor */
         .cursor {
             display: inline-block;
             width: 10px;
             height: 20px;
-            background: var(--amber);
+            background: var(--neon-green);
             animation: blink 1s infinite;
             vertical-align: text-bottom;
         }
-
         @keyframes blink {
             0%, 49% { opacity: 1; }
             50%, 100% { opacity: 0; }
         }
-
         /* Navigation */
         nav {
             position: fixed;
@@ -222,11 +201,10 @@
             width: 100%;
             padding: 20px 40px;
             background: rgba(12, 12, 12, 0.95);
-            border-bottom: 2px solid var(--amber);
+            border-bottom: 2px solid var(--neon-green);
             z-index: 1000;
-            box-shadow: 0 0 20px var(--amber-glow);
+            box-shadow: 0 0 20px var(--crypto-glow);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -234,66 +212,56 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 28px;
-            color: var(--amber);
+            color: var(--neon-green);
             text-decoration: none;
             font-weight: bold;
             letter-spacing: 2px;
         }
-
         .logo::before {
             content: "[";
-            color: var(--phosphor);
+            color: var(--neon-purple);
         }
-
         .logo::after {
             content: "]";
-            color: var(--phosphor);
+            color: var(--neon-purple);
         }
-
         .nav-links {
             display: flex;
             list-style: none;
             gap: 30px;
         }
-
         .nav-link {
-            color: var(--amber);
+            color: var(--neon-green);
             text-decoration: none;
             font-size: 20px;
             transition: all 0.3s;
             position: relative;
         }
-
         .nav-link::before {
             content: "> ";
             opacity: 0;
             transition: opacity 0.3s;
         }
-
         .nav-link:hover::before {
             opacity: 1;
         }
-
         .nav-link:hover {
-            color: var(--phosphor);
-            text-shadow: 0 0 10px var(--amber-glow);
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--crypto-glow);
         }
-
         /* Mobile Menu Button */
         .mobile-menu-btn {
             display: none;
             background: transparent;
-            border: 2px solid var(--amber);
-            color: var(--amber);
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
             font-size: 24px;
             padding: 5px 10px;
             cursor: pointer;
             font-family: 'VT323', monospace;
         }
-
         .mobile-menu {
             display: none;
             position: fixed;
@@ -301,22 +269,19 @@
             left: 0;
             right: 0;
             background: rgba(12, 12, 12, 0.98);
-            border-bottom: 2px solid var(--amber);
+            border-bottom: 2px solid var(--neon-green);
             padding: 20px;
             z-index: 999;
         }
-
         .mobile-menu.active {
             display: block;
         }
-
         .mobile-menu .nav-link {
             display: block;
             padding: 15px 0;
             font-size: 24px;
-            border-bottom: 1px dashed var(--amber);
+            border-bottom: 1px dashed var(--neon-green);
         }
-
         /* Hero Section */
         #hero {
             min-height: 100vh;
@@ -326,83 +291,62 @@
             padding: 150px 40px 100px;
             position: relative;
         }
-
         .terminal-window {
             max-width: 1000px;
             width: 100%;
             background: rgba(12, 12, 12, 0.9);
-            border: 2px solid var(--amber);
+            border: 2px solid var(--neon-green);
             box-shadow:
-                0 0 40px var(--amber-glow),
-                inset 0 0 40px rgba(255, 176, 0, 0.05);
+                0 0 40px var(--crypto-glow),
+                inset 0 0 40px rgba(0, 255, 136, 0.05);
             padding: 20px;
         }
-
         .terminal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--amber);
+            border-bottom: 1px solid var(--neon-green);
             margin-bottom: 20px;
         }
-
         .terminal-title {
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 20px;
         }
-
         .terminal-controls {
             display: flex;
             gap: 10px;
         }
-
         .control {
-            color: var(--amber);
+            color: var(--neon-green);
         }
-
         .hero-content {
             text-align: center;
             margin: 40px 0;
         }
-
-        .ascii-art {
-            color: var(--phosphor);
-            font-size: 14px;
-            line-height: 1;
-            white-space: pre;
-            margin: 30px auto;
-            text-align: center;
-            font-family: monospace;
-        }
-
         .hero-title {
             font-size: 64px;
             margin-bottom: 10px;
-            color: var(--phosphor);
+            color: var(--neon-purple);
             text-transform: uppercase;
             letter-spacing: 5px;
         }
-
         .hero-subtitle {
             font-size: 24px;
-            color: var(--amber);
+            color: var(--neon-green);
             margin-bottom: 30px;
         }
-
         .hero-location {
             font-size: 20px;
-            color: var(--amber);
+            color: var(--neon-green);
             opacity: 0.8;
         }
-
         .typed-text {
             font-size: 22px;
-            color: var(--amber);
+            color: var(--neon-green);
             margin: 30px 0;
             min-height: 30px;
         }
-
         .quick-links {
             display: flex;
             gap: 30px;
@@ -410,12 +354,11 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
-
         .retro-btn {
             padding: 12px 25px;
             background: transparent;
-            color: var(--amber);
-            border: 2px solid var(--amber);
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
             text-decoration: none;
             font-size: 20px;
             text-transform: uppercase;
@@ -423,8 +366,7 @@
             position: relative;
             font-family: 'VT323', monospace;
         }
-
-        
+       
         .retro-btn::before {
             content: "";
             position: absolute;
@@ -432,46 +374,39 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: var(--amber);
+            background: var(--neon-green);
             transition: width 0.3s;
             z-index: -1;
         }
-
         .retro-btn:hover {
             color: var(--terminal-bg);
-            box-shadow: 0 0 20px var(--amber-glow);
+            box-shadow: 0 0 20px var(--crypto-glow);
         }
-
         .retro-btn:hover::before {
             width: 100%;
         }
-
         /* Section Styles */
         section {
             padding: 80px 40px;
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 50px;
         }
-
         .section-title {
             font-size: 36px;
-            color: var(--phosphor);
+            color: var(--neon-purple);
             text-transform: uppercase;
             margin-bottom: 10px;
             position: relative;
             display: inline-block;
         }
-
         .section-title::before,
         .section-title::after {
             content: "==";
-            color: var(--amber);
+            color: var(--neon-green);
             margin: 0 15px;
         }
-
         /* Education Timeline */
         .timeline {
             max-width: 900px;
@@ -479,7 +414,6 @@
             position: relative;
             padding-left: 50px;
         }
-
         .timeline::before {
             content: "";
             position: absolute;
@@ -487,42 +421,36 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: var(--amber);
+            background: var(--neon-green);
         }
-
         .timeline-item {
             position: relative;
             margin-bottom: 40px;
             padding-left: 40px;
         }
-
         .timeline-item::before {
             content: "▶";
             position: absolute;
             left: -42px;
             top: 0;
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 20px;
         }
-
         .timeline-date {
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 18px;
             margin-bottom: 5px;
         }
-
         .timeline-title {
             font-size: 24px;
-            color: var(--amber);
+            color: var(--neon-green);
             margin-bottom: 5px;
         }
-
         .timeline-subtitle {
             font-size: 20px;
-            color: var(--amber);
+            color: var(--neon-green);
             opacity: 0.8;
         }
-
         /* Experience Cards */
         .experience-grid {
             max-width: 1200px;
@@ -530,57 +458,49 @@
             display: grid;
             gap: 30px;
         }
-
         .exp-card {
             background: rgba(12, 12, 12, 0.8);
-            border: 1px solid var(--amber);
+            border: 1px solid var(--neon-green);
             padding: 30px;
             position: relative;
             transition: all 0.3s;
         }
-
         .exp-card::before {
             content: ">";
             position: absolute;
             top: 15px;
             left: 15px;
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 24px;
         }
-
         .exp-card:hover {
-            box-shadow: 0 0 30px var(--amber-glow);
+            box-shadow: 0 0 30px var(--crypto-glow);
             transform: translateX(10px);
         }
-
         .exp-title {
             font-size: 28px;
-            color: var(--phosphor);
+            color: var(--neon-purple);
             margin-bottom: 10px;
             padding-left: 30px;
         }
-
         .exp-company {
             font-size: 22px;
-            color: var(--amber);
+            color: var(--neon-green);
             margin-bottom: 5px;
             padding-left: 30px;
         }
-
         .exp-location {
             font-size: 18px;
-            color: var(--amber);
+            color: var(--neon-green);
             opacity: 0.7;
             margin-bottom: 15px;
             padding-left: 30px;
         }
-
         .exp-description {
             font-size: 20px;
             line-height: 1.6;
             padding-left: 30px;
         }
-
         /* Research Section */
         .research-content {
             max-width: 900px;
@@ -589,25 +509,22 @@
             font-size: 22px;
             line-height: 1.8;
             background: rgba(12, 12, 12, 0.8);
-            border: 1px solid var(--amber);
+            border: 1px solid var(--neon-green);
             padding: 40px;
         }
-
         .research-focus {
-            color: var(--phosphor);
+            color: var(--neon-purple);
             font-size: 28px;
             margin-top: 20px;
         }
-
         /* Teaching Section */
         .teaching-list {
             max-width: 800px;
             margin: 0 auto;
         }
-
         .teaching-item {
             background: rgba(12, 12, 12, 0.8);
-            border: 1px dashed var(--amber);
+            border: 1px dashed var(--neon-green);
             padding: 20px;
             margin-bottom: 20px;
             transition: all 0.3s;
@@ -616,89 +533,76 @@
             align-items: center;
             flex-wrap: wrap;
         }
-
         .teaching-item:hover {
             border-style: solid;
-            background: rgba(255, 176, 0, 0.05);
+            background: rgba(0, 255, 136, 0.05);
         }
-
         .teaching-course {
             font-size: 22px;
-            color: var(--phosphor);
+            color: var(--neon-purple);
         }
-
         .teaching-term {
             font-size: 20px;
-            color: var(--amber);
+            color: var(--neon-green);
         }
-
         /* Contact Section */
         .contact-terminal {
             max-width: 700px;
             margin: 0 auto;
             background: rgba(12, 12, 12, 0.9);
-            border: 2px solid var(--amber);
+            border: 2px solid var(--neon-green);
             padding: 40px;
             text-align: center;
         }
-
         .contact-item {
             margin: 25px 0;
             font-size: 22px;
         }
-
         .contact-label {
-            color: var(--phosphor);
+            color: var(--neon-purple);
             margin-bottom: 10px;
         }
-
         .contact-value {
-            color: var(--amber);
+            color: var(--neon-green);
             word-break: break-all;
         }
-
         .contact-value a {
-            color: var(--amber);
+            color: var(--neon-green);
             text-decoration: none;
             transition: all 0.3s;
         }
-
         .contact-value a:hover {
-            color: var(--phosphor);
-            text-shadow: 0 0 10px var(--amber-glow);
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--crypto-glow);
         }
-
         /* ASCII Dividers */
         .ascii-divider {
             text-align: center;
             margin: 60px 0;
-            color: var(--amber);
+            color: var(--neon-green);
             font-size: 16px;
             line-height: 1;
             white-space: pre;
             overflow-x: auto;
         }
-
         /* Footer */
         footer {
             padding: 40px;
             text-align: center;
-            border-top: 2px solid var(--amber);
+            border-top: 2px solid var(--neon-green);
             background: rgba(12, 12, 12, 0.95);
         }
-
         .footer-text {
-            color: var(--amber);
+            color: var(--neon-green);
             font-size: 18px;
         }
-
         /* MOBILE OPTIMIZATIONS */
         @media (max-width: 768px) {
             /* Remove heavy effects on mobile */
             body::before {
                 display: none;
             }
-            
+           
             body::after {
                 background: radial-gradient(
                     ellipse at center,
@@ -706,7 +610,6 @@
                     rgba(0, 0, 0, 0.2) 100%
                 );
             }
-
             /* BTC Ticker Mobile */
             .btc-ticker {
                 font-size: 14px;
@@ -714,272 +617,213 @@
                 gap: 15px;
                 top: 60px;
             }
-
             .ticker-value {
                 font-size: 16px;
             }
-
             .ticker-label {
                 font-size: 12px;
             }
-
             /* Boot screen adjustments */
             .boot-screen {
                 padding: 20px;
                 font-size: 14px;
             }
-
             /* Navigation mobile */
             nav {
                 padding: 15px 20px;
             }
-
             .logo {
                 font-size: 22px;
             }
-
             .nav-links {
                 display: none;
             }
-
             .mobile-menu-btn {
                 display: block;
             }
-
             .mobile-menu {
                 top: 120px;
             }
-
             /* Hero mobile */
             #hero {
                 padding: 140px 20px 40px;
                 min-height: auto;
             }
-
             .terminal-window {
                 padding: 15px;
             }
-
             .terminal-header {
                 flex-wrap: wrap;
             }
-
             .terminal-title {
                 font-size: 16px;
             }
-
             .hero-title {
                 font-size: 36px;
                 letter-spacing: 2px;
             }
-
             .hero-subtitle {
                 font-size: 18px;
                 margin-bottom: 15px;
             }
-
             .hero-location {
                 font-size: 16px;
             }
-
             .typed-text {
                 font-size: 18px;
                 margin: 20px 0;
             }
-
-            .ascii-art {
-                font-size: 10px;
-            }
-
             .quick-links {
                 gap: 15px;
             }
-
             .retro-btn {
                 font-size: 18px;
                 padding: 12px 20px;
                 width: 100%;
                 max-width: 200px;
             }
-
             /* Sections mobile */
             section {
                 padding: 60px 20px;
             }
-
             .section-title {
                 font-size: 28px;
             }
-
             .section-title::before,
             .section-title::after {
                 content: "=";
                 margin: 0 10px;
             }
-
             /* Timeline mobile */
             .timeline {
                 padding-left: 30px;
             }
-
             .timeline::before {
                 left: 10px;
             }
-
             .timeline-item {
                 padding-left: 30px;
             }
-
             .timeline-item::before {
                 left: -32px;
                 font-size: 16px;
             }
-
             .timeline-date {
                 font-size: 14px;
             }
-
             .timeline-title {
                 font-size: 20px;
             }
-
             .timeline-subtitle {
                 font-size: 16px;
             }
-
             /* Experience mobile */
             .exp-card {
                 padding: 20px;
                 transform: none !important;
             }
-
             .exp-card:hover {
                 transform: none !important;
             }
-
             .exp-title {
                 font-size: 22px;
                 padding-left: 25px;
             }
-
             .exp-company {
                 font-size: 18px;
                 padding-left: 25px;
             }
-
             .exp-location {
                 font-size: 14px;
                 padding-left: 25px;
             }
-
             .exp-description {
                 font-size: 16px;
                 padding-left: 25px;
             }
-
             /* Research mobile */
             .research-content {
                 padding: 25px;
                 font-size: 18px;
             }
-
             .research-focus {
                 font-size: 22px;
             }
-
             /* Teaching mobile */
             .teaching-item {
                 padding: 15px;
                 flex-direction: column;
                 gap: 10px;
             }
-
             .teaching-course {
                 font-size: 18px;
                 text-align: center;
             }
-
             .teaching-term {
                 font-size: 16px;
             }
-
             /* Contact mobile */
             .contact-terminal {
                 padding: 25px;
             }
-
             .contact-item {
                 font-size: 18px;
                 margin: 20px 0;
             }
-
             .contact-value {
                 font-size: 16px;
                 word-break: break-word;
             }
-
             /* ASCII dividers mobile */
             .ascii-divider {
                 font-size: 10px;
                 margin: 40px 0;
                 padding: 0 10px;
             }
-
             /* Footer mobile */
             footer {
                 padding: 30px 20px;
             }
-
             .footer-text {
                 font-size: 14px;
             }
         }
-
         /* Smaller phones */
         @media (max-width: 380px) {
             .hero-title {
                 font-size: 28px;
             }
-
             .section-title {
                 font-size: 24px;
             }
-
             .retro-btn {
                 font-size: 16px;
                 padding: 10px 15px;
             }
-
             .btc-ticker {
                 font-size: 12px;
                 gap: 10px;
             }
-
             .ticker-value {
                 font-size: 14px;
             }
         }
-
         /* Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
             .retro-btn {
                 -webkit-tap-highlight-color: transparent;
             }
-
             .retro-btn:active {
-                background: var(--amber);
+                background: var(--neon-green);
                 color: var(--terminal-bg);
             }
-
             .nav-link:active,
             .mobile-menu .nav-link:active {
-                color: var(--phosphor);
+                color: var(--neon-purple);
             }
-
             .exp-card {
                 -webkit-tap-highlight-color: transparent;
             }
-
             .teaching-item {
                 -webkit-tap-highlight-color: transparent;
             }
@@ -1000,14 +844,13 @@
         <div class="boot-text" style="animation-delay: 0.9s">System ready.</div>
         <div class="boot-text" style="animation-delay: 1.0s">Initializing interface...<span class="cursor"></span></div>
     </div>
-
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#hero" class="logo glow">YULIN.ZHU</a>
-            
+           
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            
+           
             <ul class="nav-links">
                 <li><a href="#education" class="nav-link">EDUCATION</a></li>
                 <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
@@ -1017,7 +860,6 @@
             </ul>
         </div>
     </nav>
-
     <!-- BTC Ticker -->
     <div class="btc-ticker" id="btcTicker">
         <div class="ticker-item">
@@ -1036,12 +878,11 @@
             <span class="ticker-label">LOW:</span>
             <span class="ticker-value" id="btcLow">...</span>
         </div>
-<!--         <div class="ticker-item">
+<!-- <div class="ticker-item">
             <span class="ticker-label">VOLUME:</span>
             <span class="ticker-value" id="btcVolume">...</span>
         </div> -->
     </div>
-
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#education" class="nav-link">EDUCATION</a>
@@ -1050,7 +891,6 @@
         <a href="#teaching" class="nav-link">TEACHING</a>
         <a href="#contact" class="nav-link">CONTACT</a>
     </div>
-
     <!-- Hero Section -->
     <section id="hero">
         <div class="terminal-window">
@@ -1062,26 +902,15 @@
                     <span class="control">[X]</span>
                 </div>
             </div>
-
-            <div class="ascii-art">
-      /\_/\
-     ( o.o )
-      > ^ <
-     /|   |\
-    (_|   |_)
-            </div>
-
             <div class="hero-content">
                 <h1 class="hero-title glow">YULIN ZHU</h1>
                 <p class="hero-subtitle">PhD Student | Statistics & Data Science</p>
                 <p class="hero-subtitle">Chinese University of Hong Kong</p>
                 <p class="hero-location">[ From: Toronto, Ontario, Canada ]</p>
-
                 <div class="typed-text">
                     <span id="typed-output"></span><span class="cursor"></span>
                 </div>
             </div>
-
             <div class="quick-links">
                 <a href="https://github.com/yulinzhu17" target="_blank" class="retro-btn">GITHUB.COM</a>
                 <a href="#contact" class="retro-btn">CONTACT.ME</a>
@@ -1089,13 +918,11 @@
             </div>
         </div>
     </section>
-
     <!-- Education Section -->
     <section id="education">
         <div class="section-header">
             <h2 class="section-title">EDUCATION.LOG</h2>
         </div>
-
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">[2024.08 - PRESENT]</div>
@@ -1103,34 +930,28 @@
                 <div class="timeline-subtitle">CUHK | Statistics & Data Science</div>
                 <div class="timeline-subtitle">Supervisors: Dr. Tony Sit & Dr. Hoi-Ying Wong</div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-date">[2022.08 - 2023.12]</div>
                 <div class="timeline-title">Master of Science (MSc)</div>
                 <div class="timeline-subtitle">Columbia University | Financial Engineering</div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-date">[2017.08 - 2021.05]</div>
                 <div class="timeline-title">Bachelor of Science (BSc)</div>
                 <div class="timeline-subtitle">Johns Hopkins University | Applied Math & Statistics</div>
             </div>
-
             <div class="timeline-item">
                 <div class="timeline-date">[Class of 2017]</div>
                 <div class="timeline-title">High School Diploma</div>
-                <div class="timeline-subtitle">The Hotchkiss School (<a href="https://www.niche.com/k12/search/best-high-schools/" class="ranking-link" target="_blank">Ranked #1 High School in the USA</a>)  | Varsity Baseball</div>
+                <div class="timeline-subtitle">The Hotchkiss School (<a href="https://www.niche.com/k12/search/best-high-schools/" class="ranking-link" target="_blank">Ranked #1 High School in the USA</a>) | Varsity Baseball</div>
             </div>
         </div>
     </section>
-
-
     <!-- Experience Section -->
     <section id="experience">
         <div class="section-header">
             <h2 class="section-title">WORK.HISTORY</h2>
         </div>
-
         <div class="experience-grid">
             <div class="exp-card">
                 <h3 class="exp-title">STEALTH MODE</h3>
@@ -1138,28 +959,25 @@
                 <p class="exp-location">[Planet Earth (?)]</p>
                 <p class="exp-description">Working on interesting things in stealth mode...</p>
             </div>
-            
+           
             <div class="exp-card">
                 <h3 class="exp-title">JUNIOR TRADER</h3>
                 <p class="exp-company">Pulsar Trading</p>
                 <p class="exp-location">[Hong Kong]</p>
                 <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection. Full-time position before PhD.</p>
             </div>
-
             <div class="exp-card">
                 <h3 class="exp-title">SUMMER ANALYST</h3>
                 <p class="exp-company">Millennium Management</p>
                 <p class="exp-location">[NYC]</p>
                 <p class="exp-description">Equity derivatives and volatility risk analysis. Developed risk models for options trading strategies.</p>
             </div>
-
             <div class="exp-card">
                 <h3 class="exp-title">QUANTITATIVE RESEARCHER INTERN</h3>
                 <p class="exp-company">Kronos Research</p>
                 <p class="exp-location">[Hong Kong]</p>
                 <p class="exp-description">High-frequency cryptocurrency trading research. Statistical arbitrage and market microstructure analysis.</p>
             </div>
-
             <div class="exp-card">
                 <h3 class="exp-title">DEEP LEARNING RESEARCHER</h3>
                 <p class="exp-company">Wellington Management / ECB / EIB</p>
@@ -1168,13 +986,11 @@
             </div>
         </div>
     </section>
-
     <!-- Research Section -->
     <section id="research">
         <div class="section-header">
             <h2 class="section-title">RESEARCH.FOCUS</h2>
         </div>
-
         <div class="research-content">
             <p>My research interests lie at the intersection of mathematics and finance, focusing on:</p>
             <p class="research-focus glow">▸ STOCHASTIC CONTROL</p>
@@ -1182,13 +998,11 @@
             <p style="margin-top: 30px;">Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
         </div>
     </section>
-
     <!-- Teaching Section -->
     <section id="teaching">
         <div class="section-header">
             <h2 class="section-title">TEACHING.ASSISTANT</h2>
         </div>
-
         <div class="teaching-list">
             <div class="teaching-item">
                 <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
@@ -1204,39 +1018,33 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact">
         <div class="section-header">
             <h2 class="section-title">CONTACT.INFO</h2>
         </div>
-
         <div class="contact-terminal">
             <div class="contact-item">
                 <div class="contact-label">> EMAIL:</div>
                 <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
             </div>
-
             <div class="contact-item">
                 <div class="contact-label">> LOCATION:</div>
                 <div class="contact-value">CUHK, Lady Shaw Building, Room G24</div>
                 <div class="contact-value">Sha Tin, New Territories, Hong Kong</div>
             </div>
-
             <div class="contact-item">
                 <div class="contact-label">> GITHUB:</div>
                 <div class="contact-value">
                     <a href="https://github.com/yulinzhu17" target="_blank">github.com/yulinzhu17</a>
                 </div>
             </div>
-
             <div class="contact-item">
                 <div class="contact-label">> STATUS:</div>
                 <div class="contact-value glow">PhD STUDENT - STATISTICS</div>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-text">
@@ -1246,7 +1054,6 @@
             SYSTEM UPTIME: <span id="uptime">000:00:00</span> | VISITOR COUNT: <span id="visitor-count">000001</span>
         </div>
     </footer>
-
     <script>
         // BTC Ticker WebSocket Connection
         let ws = null;
@@ -1257,10 +1064,9 @@
             volume: 0,
             change: 0
         };
-
         function connectDeribit() {
             ws = new WebSocket('wss://test.deribit.com/ws/api/v2');
-            
+           
             ws.onopen = function() {
                 console.log('Connected to Deribit');
                 // Subscribe to BTC-PERPETUAL ticker
@@ -1273,7 +1079,7 @@
                     }
                 };
                 ws.send(JSON.stringify(msg));
-                
+               
                 // Also get initial book summary
                 const summaryMsg = {
                     "jsonrpc": "2.0",
@@ -1285,10 +1091,10 @@
                 };
                 ws.send(JSON.stringify(summaryMsg));
             };
-            
+           
             ws.onmessage = function(e) {
                 const data = JSON.parse(e.data);
-                
+               
                 if (data.method === 'subscription') {
                     // Handle ticker updates
                     const tickerData = data.params.data;
@@ -1299,24 +1105,23 @@
                     updateBTCData(summary);
                 }
             };
-            
+           
             ws.onerror = function(error) {
                 console.error('WebSocket error:', error);
             };
-            
+           
             ws.onclose = function() {
                 console.log('Disconnected from Deribit, reconnecting...');
                 setTimeout(connectDeribit, 5000);
             };
         }
-
         function updateBTCData(data) {
             if (data.last_price !== undefined) {
                 btcData.price = data.last_price;
             } else if (data.last !== undefined) {
                 btcData.price = data.last;
             }
-            
+           
             if (data.stats) {
                 btcData.high = data.stats.high;
                 btcData.low = data.stats.low;
@@ -1328,47 +1133,42 @@
                 if (data.volume !== undefined) btcData.volume = data.volume;
                 if (data.price_change !== undefined) btcData.change = data.price_change;
             }
-            
+           
             updateDisplay();
         }
-
         function updateDisplay() {
             const priceEl = document.getElementById('btcPrice');
             const changeEl = document.getElementById('btcChange');
             const highEl = document.getElementById('btcHigh');
             const lowEl = document.getElementById('btcLow');
             const volumeEl = document.getElementById('btcVolume');
-            
+           
             if (priceEl) priceEl.textContent = `$${btcData.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            
+           
             if (changeEl) {
                 const changeValue = btcData.change;
                 changeEl.textContent = `${changeValue >= 0 ? '+' : ''}${changeValue.toFixed(2)}%`;
                 changeEl.className = changeValue >= 0 ? 'ticker-change positive' : 'ticker-change negative';
             }
-            
+           
             if (highEl) highEl.textContent = `$${btcData.high.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
             if (lowEl) lowEl.textContent = `$${btcData.low.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
             if (volumeEl) volumeEl.textContent = `$${(btcData.volume / 1000000).toFixed(2)}M`;
         }
-
         // Update every 2 seconds even if no new data
         setInterval(updateDisplay, 200);
-
         // Connect to Deribit after page load
         setTimeout(() => {
             connectDeribit();
         }, 2500);
-
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+       
         mobileMenuBtn?.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
         });
-
         // Close mobile menu when clicking a link
         document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -1376,16 +1176,13 @@
                 mobileMenuBtn.textContent = '☰';
             });
         });
-
         // Detect if mobile and adjust boot screen timing
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
         const bootScreenDelay = isMobile ? 1500 : 2000;
-
         // Boot screen
         setTimeout(() => {
             document.getElementById('bootScreen').classList.add('hide');
         }, bootScreenDelay);
-
         // Typing effect
         const messages = [
             "Specializing in stochastic control...",
@@ -1394,16 +1191,13 @@
             "Former quant trader in crypto HFT...",
             "Teaching Assistant for RMSC2001..."
         ];
-
         let messageIndex = 0;
         let charIndex = 0;
         let currentMessage = '';
         let isDeleting = false;
-
         function type() {
             const typedOutput = document.getElementById('typed-output');
             if (!typedOutput) return;
-
             if (!isDeleting && charIndex < messages[messageIndex].length) {
                 currentMessage += messages[messageIndex].charAt(charIndex);
                 charIndex++;
@@ -1418,13 +1212,10 @@
                 isDeleting = false;
                 messageIndex = (messageIndex + 1) % messages.length;
             }
-
             typedOutput.textContent = currentMessage;
             setTimeout(type, isDeleting ? 50 : 100);
         }
-
         setTimeout(type, bootScreenDelay + 500);
-
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1439,7 +1230,6 @@
                 }
             });
         });
-
         // Uptime counter
         let seconds = 0;
         setInterval(() => {
@@ -1450,7 +1240,6 @@
             document.getElementById('uptime').textContent =
                 `${String(hours).padStart(3, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
         }, 1000);
-
         // Visitor counter (simulated)
         let visitorCount = 1;
         setInterval(() => {
@@ -1459,7 +1248,6 @@
                 document.getElementById('visitor-count').textContent = String(visitorCount).padStart(6, '0');
             }
         }, 5000);
-
         // Disable flicker on scroll for mobile
         if (!isMobile) {
             let lastScrollTop = 0;
@@ -1477,3 +1265,4 @@
     </script>
 </body>
 </html>
+```
