@@ -423,6 +423,64 @@
             color: var(--neon-green);
             margin: 0 15px;
         }
+        
+        /* Featured Image Section */
+        .featured-image-section {
+            padding: 40px 40px 0;
+            text-align: center;
+        }
+        
+        .featured-image-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 30px var(--crypto-glow);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .featured-image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 255, 136, 0.1) 0%,
+                transparent 20%,
+                transparent 80%,
+                rgba(0, 255, 136, 0.1) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .featured-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: saturate(0.9) contrast(1.05);
+            transition: all 0.3s ease;
+        }
+        
+        .featured-image:hover {
+            filter: saturate(1) contrast(1.1);
+        }
+        
+        .image-caption {
+            background: rgba(12, 12, 12, 0.95);
+            border-top: 1px solid var(--neon-green);
+            padding: 15px 20px;
+            font-size: 18px;
+            color: var(--neon-green);
+        }
+        
+        .image-caption .caption-label {
+            color: var(--neon-purple);
+        }
+        
         /* Education Timeline */
         .timeline {
             max-width: 900px;
@@ -467,6 +525,18 @@
             color: var(--neon-green);
             opacity: 0.8;
         }
+        
+        .timeline-subtitle a {
+            color: var(--neon-green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .timeline-subtitle a:hover {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--crypto-glow);
+        }
+        
         /* Experience Cards */
         .experience-grid {
             max-width: 1200px;
@@ -710,6 +780,17 @@
                 content: "=";
                 margin: 0 10px;
             }
+            
+            /* Featured Image Mobile */
+            .featured-image-section {
+                padding: 30px 20px 0;
+            }
+            
+            .image-caption {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+            
             /* Timeline mobile */
             .timeline {
                 padding-left: 30px;
@@ -894,10 +975,6 @@
             <span class="ticker-label">LOW:</span>
             <span class="ticker-value" id="btcLow">...</span>
         </div>
-<!-- <div class="ticker-item">
-            <span class="ticker-label">VOLUME:</span>
-            <span class="ticker-value" id="btcVolume">...</span>
-        </div> -->
     </div>
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
@@ -936,8 +1013,6 @@
                 <p class="hero-subtitle">The Chinese University of Hong Kong</p>
                 <p class="hero-location">[ From: Toronto, Ontario, Canada ]</p>
                 
-
-
                 <div class="typed-text">
                     <span id="typed-output"></span><span class="cursor"></span>
                 </div>
@@ -949,6 +1024,17 @@
             </div>
         </div>
     </section>
+    
+    <!-- Featured Image Section - Above Education -->
+    <div class="featured-image-section">
+        <div class="featured-image-container">
+            <img src="hkiss_bsbl2.jpg" alt="Hotchkiss Baseball" class="featured-image">
+            <div class="image-caption">
+                <span class="caption-label">> FILE:</span> Varsity Baseball @ The Hotchkiss School
+            </div>
+        </div>
+    </div>
+    
     <!-- Education Section -->
     <section id="education">
         <div class="section-header">
@@ -1024,8 +1110,6 @@
         </div>
         <div class="research-content">
             <p>My research interests lie at the intersection of mathematics and finance.</p>
-            <!-- <p class="research-focus glow">▸ STOCHASTIC CONTROL</p>
-            <p class="research-focus glow">▸ FINANCIAL ENGINEERING</p> -->
             <p style="margin-top: 30px;">Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
         </div>
     </section>
@@ -1174,7 +1258,7 @@
             const lowEl = document.getElementById('btcLow');
             const volumeEl = document.getElementById('btcVolume');
             
-            if (priceEl) priceEl.textContent = `$${btcData.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            if (priceEl) priceEl.textContent = `${btcData.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             
             if (changeEl) {
                 const changeValue = btcData.change;
@@ -1182,9 +1266,9 @@
                 changeEl.className = changeValue >= 0 ? 'ticker-change positive' : 'ticker-change negative';
             }
             
-            if (highEl) highEl.textContent = `$${btcData.high.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
-            if (lowEl) lowEl.textContent = `$${btcData.low.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
-            if (volumeEl) volumeEl.textContent = `$${(btcData.volume / 1000000).toFixed(2)}M`;
+            if (highEl) highEl.textContent = `${btcData.high.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            if (lowEl) lowEl.textContent = `${btcData.low.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            if (volumeEl) volumeEl.textContent = `${(btcData.volume / 1000000).toFixed(2)}M`;
         }
         // Update every 2 seconds even if no new data
         setInterval(updateDisplay, 200);
