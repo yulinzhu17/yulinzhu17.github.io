@@ -2,1001 +2,926 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yulin Zhu | PhD Student - Statistics & Quantitative Finance</title>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="20" height="2" fill="#00FF88"/><rect x="0" y="18" width="20" height="2" fill="#00FF88"/><rect x="0" y="0" width="2" height="20" fill="#00FF88"/><rect x="18" y="0" width="2" height="20" fill="#00FF88"/></svg>'), auto;
         }
+
         :root {
-            --neon-green: #00FF88;
-            --neon-purple: #7D00FF;
-            --neon-blue: #00BFFF;
-            --terminal-bg: #0C0C0C;
-            --crypto-glow: #00FF88;
-            --old-white: #E8DCC0;
-            --scan-line: rgba(0, 255, 136, 0.03);
-            --red: #FF3333;
-            --green: #00FF88;
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --bg-card-hover: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #5865F2;
+            --accent-secondary: #00D4AA;
+            --gradient-1: linear-gradient(135deg, #5865F2 0%, #00D4AA 100%);
+            --gradient-2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --glow: 0 0 60px rgba(88, 101, 242, 0.15);
         }
-        @keyframes flicker {
-            0% { opacity: 0.97; }
-            5% { opacity: 0.95; }
-            10% { opacity: 0.98; }
-            15% { opacity: 0.96; }
-            25% { opacity: 1; }
-            30% { opacity: 0.98; }
-            35% { opacity: 0.97; }
-            40% { opacity: 0.99; }
-            45% { opacity: 0.96; }
-            60% { opacity: 1; }
-            70% { opacity: 0.98; }
-            80% { opacity: 0.97; }
-            90% { opacity: 0.99; }
-            100% { opacity: 0.97; }
-        }
+
         html {
-            font-size: 16px;
             scroll-behavior: smooth;
         }
+
         body {
-            font-family: 'VT323', monospace;
-            background: var(--terminal-bg);
-            color: var(--neon-green);
-            line-height: 1.4;
-            letter-spacing: 0.05em;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            animation: flicker 4s infinite;
         }
-        /* Detect mobile and reduce heavy effects */
-        @media (hover: none) and (pointer: coarse) {
-            body {
-                animation: none;
-            }
-            
-            * {
-                cursor: default !important;
-            }
-        }
-        /* CRT Monitor Effect */
-        body::before {
-            content: "";
+
+        /* Gradient Orbs Background */
+        .gradient-orb {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                var(--scan-line) 2px,
-                var(--scan-line) 4px
-            );
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
             pointer-events: none;
-            z-index: 9998;
+            z-index: -1;
         }
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                ellipse at center,
-                transparent 0%,
-                rgba(0, 0, 0, 0.4) 100%
-            );
-            pointer-events: none;
-            z-index: 9997;
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(88, 101, 242, 0.3) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
         }
-        /* BTC Ticker */
-        .btc-ticker {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(12, 12, 12, 0.95);
-            border-bottom: 1px solid var(--neon-green);
-            padding: 10px 20px;
-            z-index: 900;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            font-size: 18px;
-            box-shadow: 0 0 20px var(--crypto-glow);
-            overflow-x: auto;
-            white-space: nowrap;
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.2) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
         }
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.25) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-        .ticker-label {
-            color: var(--neon-purple);
-            font-size: 16px;
-        }
-        .ticker-value {
-            color: var(--neon-green);
-            font-weight: bold;
-            font-size: 20px;
-        }
-        .ticker-change {
-            font-size: 18px;
-        }
-        .ticker-change.positive {
-            color: var(--green);
-        }
-        .ticker-change.negative {
-            color: var(--red);
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .ticker-loading {
-            animation: pulse 1s infinite;
-        }
-        /* Text Glow Effect */
-        .glow {
-            text-shadow:
-                0 0 5px var(--crypto-glow),
-                0 0 10px var(--crypto-glow),
-                0 0 15px var(--crypto-glow);
-        }
-        /* Preloader */
-        .boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--terminal-bg);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            font-size: 18px;
-            overflow: hidden;
-        }
-        .boot-screen.hide {
-            display: none;
-        }
-        .boot-text {
-            color: var(--neon-green);
-            margin: 4px 0;
-            opacity: 0;
-            animation: bootSequence 0.1s forwards;
-        }
-        @keyframes bootSequence {
-            to { opacity: 1; }
-        }
-        /* Blinking Cursor */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: var(--neon-green);
-            animation: blink 1s infinite;
-            vertical-align: text-bottom;
-        }
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
-        }
+
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 40px;
-            background: rgba(12, 12, 12, 0.95);
-            border-bottom: 2px solid var(--neon-green);
+            padding: 20px 50px;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            box-shadow: 0 0 20px var(--crypto-glow);
         }
+
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-size: 28px;
-            color: var(--neon-green);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .logo::before {
-            content: "[";
-            color: var(--neon-purple);
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gradient-1);
+            border-radius: 50%;
         }
-        .logo::after {
-            content: "]";
-            color: var(--neon-purple);
-        }
+
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
         }
+
         .nav-link {
-            color: var(--neon-green);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
             position: relative;
         }
-        .nav-link::before {
-            content: "> ";
-            opacity: 0;
-            transition: opacity 0.3s;
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
         }
-        .nav-link:hover::before {
-            opacity: 1;
-        }
+
         .nav-link:hover {
-            color: var(--neon-purple);
-            text-shadow: 0 0 10px var(--crypto-glow);
+            color: var(--text-primary);
         }
-        /* Mobile Menu Button */
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: transparent;
-            border: 2px solid var(--neon-green);
-            color: var(--neon-green);
-            font-size: 24px;
-            padding: 5px 10px;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            padding: 8px 12px;
+            border-radius: 8px;
             cursor: pointer;
-            font-family: 'VT323', monospace;
+            transition: all 0.3s ease;
         }
+
+        .mobile-menu-btn:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card);
+        }
+
         .mobile-menu {
             display: none;
             position: fixed;
             top: 70px;
             left: 0;
             right: 0;
-            background: rgba(12, 12, 12, 0.98);
-            border-bottom: 2px solid var(--neon-green);
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             padding: 20px;
             z-index: 999;
         }
+
         .mobile-menu.active {
             display: block;
         }
+
         .mobile-menu .nav-link {
             display: block;
-            padding: 15px 0;
-            font-size: 24px;
-            border-bottom: 1px dashed var(--neon-green);
+            padding: 18px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border);
         }
+
         /* Hero Section */
         #hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 150px 40px 100px;
+            padding: 140px 50px 100px;
             position: relative;
         }
-        .terminal-window {
+
+        .hero-container {
             max-width: 1000px;
             width: 100%;
-            background: rgba(12, 12, 12, 0.9);
-            border: 2px solid var(--neon-green);
-            box-shadow:
-                0 0 40px var(--crypto-glow),
-                inset 0 0 40px rgba(0, 255, 136, 0.05);
-            padding: 20px;
         }
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--neon-green);
-            margin-bottom: 20px;
+
+        /* Video Container */
+        .video-wrapper {
+            position: relative;
+            margin-bottom: 60px;
         }
-        .terminal-title {
-            color: var(--neon-purple);
-            font-size: 20px;
-        }
-        .terminal-controls {
-            display: flex;
-            gap: 10px;
-        }
-        .control {
-            color: var(--neon-green);
-        }
-        .hero-content {
-            text-align: center;
-            margin: 40px 0;
-        }
-        .hero-title {
-            font-size: 64px;
-            margin-bottom: 10px;
-            color: var(--neon-purple);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
-        .hero-subtitle {
-            font-size: 24px;
-            color: var(--neon-green);
-            margin-bottom: 30px;
-        }
-        .hero-location {
-            font-size: 20px;
-            color: var(--neon-green);
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        /* Video Container Style */
+
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            border: 1px solid var(--neon-green);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--glow);
         }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: var(--gradient-1);
+            border-radius: 21px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
         .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border-radius: 20px;
         }
-        .typed-text {
-            font-size: 22px;
-            color: var(--neon-green);
-            margin: 30px 0;
-            min-height: 30px;
+
+        .hero-content {
+            text-align: center;
         }
-        .quick-links {
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .hero-location {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-links {
             display: flex;
-            gap: 30px;
+            gap: 15px;
             justify-content: center;
-            margin-top: 40px;
             flex-wrap: wrap;
         }
-        .retro-btn {
-            padding: 12px 25px;
-            background: transparent;
-            color: var(--neon-green);
-            border: 2px solid var(--neon-green);
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
             text-decoration: none;
-            font-size: 20px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            position: relative;
-            font-family: 'VT323', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .retro-btn::before {
-            content: "";
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Featured Image */
+        .featured-image-section {
+            padding: 0 50px 100px;
+        }
+
+        .featured-image-container {
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .featured-image-container::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--neon-green);
-            transition: width 0.3s;
+            inset: -1px;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.3) 0%, rgba(88, 101, 242, 0.3) 100%);
+            border-radius: 21px;
             z-index: -1;
         }
-        .retro-btn:hover {
-            color: var(--terminal-bg);
-            box-shadow: 0 0 20px var(--crypto-glow);
-        }
-        .retro-btn:hover::before {
-            width: 100%;
-        }
-        /* Section Styles */
-        section {
-            padding: 80px 40px;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title {
-            font-size: 36px;
-            color: var(--neon-purple);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title::before,
-        .section-title::after {
-            content: "==";
-            color: var(--neon-green);
-            margin: 0 15px;
-        }
-        
-        /* Featured Image Section */
-        .featured-image-section {
-            padding: 40px 40px 0;
-            text-align: center;
-        }
-        
-        .featured-image-container {
-            max-width: 800px;
-            margin: 0 auto;
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 30px var(--crypto-glow);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .featured-image-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(0, 255, 136, 0.1) 0%,
-                transparent 20%,
-                transparent 80%,
-                rgba(0, 255, 136, 0.1) 100%
-            );
-            pointer-events: none;
-            z-index: 1;
-        }
-        
+
         .featured-image {
             width: 100%;
             height: auto;
             display: block;
-            filter: saturate(0.9) contrast(1.05);
-            transition: all 0.3s ease;
         }
-        
-        .featured-image:hover {
-            filter: saturate(1) contrast(1.1);
-        }
-        
+
         .image-caption {
-            background: rgba(12, 12, 12, 0.95);
-            border-top: 1px solid var(--neon-green);
-            padding: 15px 20px;
-            font-size: 18px;
-            color: var(--neon-green);
+            background: var(--bg-card);
+            padding: 18px 24px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .image-caption .caption-label {
-            color: var(--neon-purple);
+
+        .caption-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
         }
-        
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
         /* Education Timeline */
         .timeline {
-            max-width: 900px;
-            margin: 0 auto;
             position: relative;
-            padding-left: 50px;
         }
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--neon-green);
-        }
+
         .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            padding-left: 40px;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
-        .timeline-item::before {
-            content: "▶";
-            position: absolute;
-            left: -42px;
-            top: 0;
-            color: var(--neon-purple);
-            font-size: 20px;
+
+        .timeline-item:last-child {
+            border-bottom: none;
         }
+
+        .timeline-item:hover {
+            background: linear-gradient(90deg, transparent 0%, var(--bg-card) 50%, transparent 100%);
+        }
+
         .timeline-date {
-            color: var(--neon-purple);
-            font-size: 18px;
-            margin-bottom: 5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
+
+        .timeline-content {
+            
+        }
+
         .timeline-title {
-            font-size: 24px;
-            color: var(--neon-green);
-            margin-bottom: 5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
+
         .timeline-subtitle {
-            font-size: 20px;
-            color: var(--neon-green);
-            opacity: 0.8;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
-        
+
         .timeline-subtitle a {
-            color: var(--neon-green);
+            color: var(--accent);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
-        
+
         .timeline-subtitle a:hover {
-            color: var(--neon-purple);
-            text-shadow: 0 0 10px var(--crypto-glow);
+            color: var(--accent-secondary);
         }
-        
+
         /* Experience Cards */
         .experience-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            gap: 30px;
+            gap: 20px;
         }
+
         .exp-card {
-            background: rgba(12, 12, 12, 0.8);
-            border: 1px solid var(--neon-green);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
             padding: 30px;
+            transition: all 0.4s ease;
             position: relative;
-            transition: all 0.3s;
+            overflow: hidden;
         }
+
         .exp-card::before {
-            content: ">";
+            content: '';
             position: absolute;
-            top: 15px;
-            left: 15px;
-            color: var(--neon-purple);
-            font-size: 24px;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+
         .exp-card:hover {
-            box-shadow: 0 0 30px var(--crypto-glow);
-            transform: translateX(10px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateX(5px);
         }
-        .exp-title {
-            font-size: 28px;
-            color: var(--neon-purple);
-            margin-bottom: 10px;
-            padding-left: 30px;
+
+        .exp-card:hover::before {
+            opacity: 1;
         }
-        .exp-company {
-            font-size: 22px;
-            color: var(--neon-green);
-            margin-bottom: 5px;
-            padding-left: 30px;
-        }
-        .exp-location {
-            font-size: 18px;
-            color: var(--neon-green);
-            opacity: 0.7;
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 15px;
-            padding-left: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
+
+        .exp-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .exp-company {
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .exp-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-primary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+
         .exp-description {
-            font-size: 20px;
-            line-height: 1.6;
-            padding-left: 30px;
-        }
-        /* Research Section */
-        .research-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 22px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
             line-height: 1.8;
-            background: rgba(12, 12, 12, 0.8);
-            border: 1px solid var(--neon-green);
-            padding: 40px;
         }
-        .research-focus {
-            color: var(--neon-purple);
-            font-size: 28px;
+
+        /* Research Section */
+        .research-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .research-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 1.5rem;
+        }
+
+        .research-card p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .research-card p + p {
             margin-top: 20px;
         }
+
         /* Teaching Section */
-        .teaching-list {
-            max-width: 800px;
-            margin: 0 auto;
+        .teaching-grid {
+            display: grid;
+            gap: 15px;
         }
+
         .teaching-item {
-            background: rgba(12, 12, 12, 0.8);
-            border: 1px dashed var(--neon-green);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            transition: all 0.3s ease;
         }
+
         .teaching-item:hover {
-            border-style: solid;
-            background: rgba(0, 255, 136, 0.05);
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateX(5px);
         }
+
         .teaching-course {
-            font-size: 22px;
-            color: var(--neon-purple);
+            font-size: 1rem;
+            font-weight: 500;
         }
+
         .teaching-term {
-            font-size: 20px;
-            color: var(--neon-green);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-primary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
         }
+
         /* Contact Section */
-        .contact-terminal {
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(12, 12, 12, 0.9);
-            border: 2px solid var(--neon-green);
-            padding: 40px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .contact-item {
-            margin: 25px 0;
-            font-size: 22px;
+
+        .contact-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-5px);
         }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.25rem;
+        }
+
         .contact-label {
-            color: var(--neon-purple);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
             margin-bottom: 10px;
         }
+
         .contact-value {
-            color: var(--neon-green);
-            word-break: break-all;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.6;
         }
+
         .contact-value a {
-            color: var(--neon-green);
+            color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
+
         .contact-value a:hover {
-            color: var(--neon-purple);
-            text-shadow: 0 0 10px var(--crypto-glow);
+            color: var(--accent);
         }
-        /* ASCII Dividers */
-        .ascii-divider {
-            text-align: center;
-            margin: 60px 0;
-            color: var(--neon-green);
-            font-size: 16px;
-            line-height: 1;
-            white-space: pre;
-            overflow-x: auto;
-        }
+
         /* Footer */
         footer {
-            padding: 40px;
+            padding: 50px;
             text-align: center;
-            border-top: 2px solid var(--neon-green);
-            background: rgba(12, 12, 12, 0.95);
+            border-top: 1px solid var(--border);
         }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .footer-text {
-            color: var(--neon-green);
-            font-size: 18px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
-        /* MOBILE OPTIMIZATIONS */
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            /* Remove heavy effects on mobile */
-            body::before {
-                display: none;
-            }
-            
-            body::after {
-                background: radial-gradient(
-                    ellipse at center,
-                    transparent 0%,
-                    rgba(0, 0, 0, 0.2) 100%
-                );
-            }
-            /* BTC Ticker Mobile */
-            .btc-ticker {
-                font-size: 14px;
-                padding: 8px 10px;
-                gap: 15px;
-                top: 60px;
-            }
-            .ticker-value {
-                font-size: 16px;
-            }
-            .ticker-label {
-                font-size: 12px;
-            }
-            /* Boot screen adjustments */
-            .boot-screen {
-                padding: 20px;
-                font-size: 14px;
-            }
-            /* Navigation mobile */
             nav {
-                padding: 15px 20px;
+                padding: 15px 25px;
             }
-            .logo {
-                font-size: 22px;
-            }
+
             .nav-links {
                 display: none;
             }
+
             .mobile-menu-btn {
                 display: block;
             }
-            .mobile-menu {
-                top: 120px;
-            }
-            /* Hero mobile */
+
             #hero {
-                padding: 140px 20px 40px;
-                min-height: auto;
+                padding: 120px 25px 60px;
             }
-            .terminal-window {
-                padding: 15px;
-            }
-            .terminal-header {
-                flex-wrap: wrap;
-            }
-            .terminal-title {
-                font-size: 16px;
-            }
+
             .hero-title {
-                font-size: 36px;
-                letter-spacing: 2px;
+                font-size: 2.75rem;
+                letter-spacing: -1px;
             }
+
             .hero-subtitle {
-                font-size: 18px;
-                margin-bottom: 15px;
+                font-size: 1.1rem;
             }
-            .hero-location {
-                font-size: 16px;
+
+            .video-wrapper {
+                margin-bottom: 40px;
             }
-            .typed-text {
-                font-size: 18px;
-                margin: 20px 0;
-            }
-            .quick-links {
-                gap: 15px;
-            }
-            .retro-btn {
-                font-size: 18px;
-                padding: 12px 20px;
-                width: 100%;
-                max-width: 200px;
-            }
-            /* Sections mobile */
+
             section {
-                padding: 60px 20px;
+                padding: 70px 25px;
             }
+
             .section-title {
-                font-size: 28px;
+                font-size: 2rem;
             }
-            .section-title::before,
-            .section-title::after {
-                content: "=";
-                margin: 0 10px;
-            }
-            
-            /* Featured Image Mobile */
+
             .featured-image-section {
-                padding: 30px 20px 0;
+                padding: 0 25px 70px;
             }
-            
-            .image-caption {
-                font-size: 14px;
-                padding: 12px 15px;
-            }
-            
-            /* Timeline mobile */
-            .timeline {
-                padding-left: 30px;
-            }
-            .timeline::before {
-                left: 10px;
-            }
+
             .timeline-item {
-                padding-left: 30px;
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
-            .timeline-item::before {
-                left: -32px;
-                font-size: 16px;
-            }
+
             .timeline-date {
-                font-size: 14px;
+                font-size: 0.85rem;
             }
+
             .timeline-title {
-                font-size: 20px;
+                font-size: 1.2rem;
             }
-            .timeline-subtitle {
-                font-size: 16px;
-            }
-            /* Experience mobile */
+
             .exp-card {
-                padding: 20px;
-                transform: none !important;
-            }
-            .exp-card:hover {
-                transform: none !important;
-            }
-            .exp-title {
-                font-size: 22px;
-                padding-left: 25px;
-            }
-            .exp-company {
-                font-size: 18px;
-                padding-left: 25px;
-            }
-            .exp-location {
-                font-size: 14px;
-                padding-left: 25px;
-            }
-            .exp-description {
-                font-size: 16px;
-                padding-left: 25px;
-            }
-            /* Research mobile */
-            .research-content {
                 padding: 25px;
-                font-size: 18px;
             }
-            .research-focus {
-                font-size: 22px;
-            }
-            /* Teaching mobile */
-            .teaching-item {
-                padding: 15px;
+
+            .exp-header {
                 flex-direction: column;
                 gap: 10px;
             }
-            .teaching-course {
-                font-size: 18px;
+
+            .exp-location {
+                align-self: flex-start;
+            }
+
+            .research-card {
+                padding: 35px 25px;
+            }
+
+            .research-card p {
+                font-size: 1rem;
+            }
+
+            .teaching-item {
+                flex-direction: column;
+                gap: 12px;
                 text-align: center;
             }
-            .teaching-term {
-                font-size: 16px;
-            }
-            /* Contact mobile */
-            .contact-terminal {
+
+            .contact-card {
                 padding: 25px;
             }
-            .contact-item {
-                font-size: 18px;
-                margin: 20px 0;
-            }
-            .contact-value {
-                font-size: 16px;
-                word-break: break-word;
-            }
-            /* ASCII dividers mobile */
-            .ascii-divider {
-                font-size: 10px;
-                margin: 40px 0;
-                padding: 0 10px;
-            }
-            /* Footer mobile */
+
             footer {
-                padding: 30px 20px;
+                padding: 40px 25px;
             }
-            .footer-text {
-                font-size: 14px;
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .gradient-orb {
+                opacity: 0.3;
+            }
+
+            .orb-1 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .orb-2 {
+                width: 250px;
+                height: 250px;
+            }
+
+            .orb-3 {
+                display: none;
             }
         }
-        /* Smaller phones */
-        @media (max-width: 380px) {
+
+        @media (max-width: 480px) {
             .hero-title {
-                font-size: 28px;
+                font-size: 2.25rem;
             }
-            .section-title {
-                font-size: 24px;
+
+            .hero-links {
+                flex-direction: column;
+                width: 100%;
             }
-            .retro-btn {
-                font-size: 16px;
-                padding: 10px 15px;
-            }
-            .btc-ticker {
-                font-size: 12px;
-                gap: 10px;
-            }
-            .ticker-value {
-                font-size: 14px;
-            }
-        }
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .retro-btn {
-                -webkit-tap-highlight-color: transparent;
-            }
-            .retro-btn:active {
-                background: var(--neon-green);
-                color: var(--terminal-bg);
-            }
-            .nav-link:active,
-            .mobile-menu .nav-link:active {
-                color: var(--neon-purple);
-            }
-            .exp-card {
-                -webkit-tap-highlight-color: transparent;
-            }
-            .teaching-item {
-                -webkit-tap-highlight-color: transparent;
+
+            .btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Boot Screen -->
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-text" style="animation-delay: 0.1s">ZHUSYS v1.0 - Personal Terminal</div>
-        <div class="boot-text" style="animation-delay: 0.2s">Copyright (c) 2024 Yulin Zhu</div>
-        <div class="boot-text" style="animation-delay: 0.3s">=====================================</div>
-        <div class="boot-text" style="animation-delay: 0.4s">Loading profile...</div>
-        <div class="boot-text" style="animation-delay: 0.5s">PhD Student Mode: ACTIVE</div>
-        <div class="boot-text" style="animation-delay: 0.6s">Research Focus: Statistics, Finance</div>
-        <div class="boot-text" style="animation-delay: 0.7s">Location: CUHK, Hong Kong</div>
-        <div class="boot-text" style="animation-delay: 0.8s">Connecting to Deribit...</div>
-        <div class="boot-text" style="animation-delay: 0.9s">System ready.</div>
-        <div class="boot-text" style="animation-delay: 1.0s">Initializing interface...<span class="cursor"></span></div>
-    </div>
+    <!-- Background Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#hero" class="logo glow">YULIN.ZHU</a>
+            <a href="#hero" class="logo">
+                <span class="logo-dot"></span>
+                Yulin Zhu
+            </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
             
             <ul class="nav-links">
-                <li><a href="#education" class="nav-link">EDUCATION</a></li>
-                <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
-                <li><a href="#research" class="nav-link">RESEARCH</a></li>
-                <li><a href="#teaching" class="nav-link">TEACHING</a></li>
-                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#teaching" class="nav-link">Teaching</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <!-- BTC Ticker -->
-    <div class="btc-ticker" id="btcTicker">
-        <div class="ticker-item">
-            <span class="ticker-label">BTC-PERPETUAL:</span>
-            <span class="ticker-value" id="btcPrice">Loading...</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-label">24H:</span>
-            <span class="ticker-change" id="btcChange">...</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-label">HIGH:</span>
-            <span class="ticker-value" id="btcHigh">...</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-label">LOW:</span>
-            <span class="ticker-value" id="btcLow">...</span>
-        </div>
-    </div>
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#education" class="nav-link">EDUCATION</a>
-        <a href="#experience" class="nav-link">EXPERIENCE</a>
-        <a href="#research" class="nav-link">RESEARCH</a>
-        <a href="#teaching" class="nav-link">TEACHING</a>
-        <a href="#contact" class="nav-link">CONTACT</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#teaching" class="nav-link">Teaching</a>
+        <a href="#contact" class="nav-link">Contact</a>
     </div>
+
     <!-- Hero Section -->
     <section id="hero">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-title">TERMINAL #001 - USER PROFILE</div>
-                <div class="terminal-controls">
-                    <span class="control">[-]</span>
-                    <span class="control">[□]</span>
-                    <span class="control">[X]</span>
-                </div>
-            </div>
-            <div class="hero-content">
-                <!-- EMBEDDED VIDEO SECTION -->
+        <div class="hero-container">
+            <!-- Video -->
+            <div class="video-wrapper fade-in">
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/qGCX8RJk_iQ?autoplay=1&mute=1" 
@@ -1006,284 +931,257 @@
                         allowfullscreen>
                     </iframe>
                 </div>
-                <!-- END VIDEO SECTION -->
-                
-                <h1 class="hero-title glow">YULIN ZHU</h1>
-                <p class="hero-subtitle">PhD Student | Statistics & Data Science</p>
-                <p class="hero-subtitle">The Chinese University of Hong Kong</p>
-                <p class="hero-location">[ From: Toronto, Ontario, Canada ]</p>
-                
-                <div class="typed-text">
-                    <span id="typed-output"></span><span class="cursor"></span>
-                </div>
             </div>
-            <div class="quick-links">
-                <a href="https://github.com/yulinzhu17" target="_blank" class="retro-btn">GITHUB.COM</a>
-                <a href="#contact" class="retro-btn">CONTACT.ME</a>
-                <a href="#research" class="retro-btn">RESEARCH</a>
+
+            <div class="hero-content fade-in">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Available for Research Collaboration
+                </div>
+                
+                <h1 class="hero-title">Yulin Zhu</h1>
+                <p class="hero-subtitle">PhD Student in Statistics & Data Science</p>
+                <p class="hero-subtitle">The Chinese University of Hong Kong</p>
+                <p class="hero-location">Originally from Toronto, Ontario, Canada</p>
+
+                <div class="hero-links">
+                    <a href="https://github.com/yulinzhu17" target="_blank" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#research" class="btn btn-secondary">Research</a>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Featured Image Section - Above Education -->
-    <div class="featured-image-section">
+
+    <!-- Featured Image -->
+    <div class="featured-image-section fade-in">
         <div class="featured-image-container">
             <img src="hkiss_bsbl2.jpg" alt="Hotchkiss Baseball" class="featured-image">
             <div class="image-caption">
-                <span class="caption-label">> FILE:</span> Varsity Baseball @ The Hotchkiss School
+                <span class="caption-icon">⚾</span>
+                Varsity Baseball @ The Hotchkiss School
             </div>
         </div>
     </div>
-    
+
     <!-- Education Section -->
     <section id="education">
-        <div class="section-header">
-            <h2 class="section-title">EDUCATION.LOG</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">[2024.08 - PRESENT]</div>
-                <div class="timeline-title">Doctor of Philosophy (PhD)</div>
-                <div class="timeline-subtitle">CUHK | Statistics & Data Science</div>
-                <div class="timeline-subtitle">Supervisors: Dr. Tony Sit & Dr. Hoi-Ying Wong</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">[2022.08 - 2023.12]</div>
-                <div class="timeline-title">Master of Science (MSc)</div>
-                <div class="timeline-subtitle">Columbia University | Financial Engineering</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">[2017.08 - 2021.05]</div>
-                <div class="timeline-title">Bachelor of Science (BSc)</div>
-                <div class="timeline-subtitle">Johns Hopkins University | Applied Math & Statistics</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">[Class of 2017]</div>
-                <div class="timeline-title">High School Diploma</div>
-                <div class="timeline-subtitle">The Hotchkiss School (<a href="https://www.niche.com/k12/search/best-high-schools/" class="ranking-link" target="_blank">Ranked #1 High School in the USA</a>) | Varsity Baseball</div>
-            </div>
-        </div>
-    </section>
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-header">
-            <h2 class="section-title">WORK.HISTORY</h2>
-        </div>
-        <div class="experience-grid">
-            <div class="exp-card">
-                <h3 class="exp-title">STEALTH MODE</h3>
-                <p class="exp-company">Stealth Mode</p>
-                <p class="exp-location">[Planet Earth (?)]</p>
-                <p class="exp-description">Working on interesting things in stealth mode...</p>
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Background</span>
+                <h2 class="section-title">Education</h2>
             </div>
             
-            <div class="exp-card">
-                <h3 class="exp-title">JUNIOR TRADER</h3>
-                <p class="exp-company">Pulsar Trading</p>
-                <p class="exp-location">[Hong Kong]</p>
-                <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection. Full-time position before PhD.</p>
-            </div>
-            <div class="exp-card">
-                <h3 class="exp-title">SUMMER ANALYST</h3>
-                <p class="exp-company">Millennium Management</p>
-                <p class="exp-location">[NYC]</p>
-                <p class="exp-description">Equity derivatives and volatility risk analysis. Developed risk models for options trading strategies.</p>
-            </div>
-            <div class="exp-card">
-                <h3 class="exp-title">QUANTITATIVE RESEARCHER INTERN</h3>
-                <p class="exp-company">Kronos Research</p>
-                <p class="exp-location">[Hong Kong]</p>
-                <p class="exp-description">High-frequency cryptocurrency trading research. Statistical arbitrage and market microstructure analysis.</p>
-            </div>
-            <div class="exp-card">
-                <h3 class="exp-title">DEEP LEARNING RESEARCHER</h3>
-                <p class="exp-company">Wellington Management / ECB / EIB</p>
-                <p class="exp-location">[Through Prof. Ali Hirsa, Columbia IEOR]</p>
-                <p class="exp-description">Conducted deep learning research for financial applications during Columbia MFE program.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Research Section -->
-    <section id="research">
-        <div class="section-header">
-            <h2 class="section-title">RESEARCH.FOCUS</h2>
-        </div>
-        <div class="research-content">
-            <p>My research interests lie at the intersection of mathematics and finance.</p>
-            <p style="margin-top: 30px;">Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
-        </div>
-    </section>
-    <!-- Teaching Section -->
-    <section id="teaching">
-        <div class="section-header">
-            <h2 class="section-title">TEACHING.ASSISTANT</h2>
-        </div>
-        <div class="teaching-list">
-            <div class="teaching-item">
-                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
-                <span class="teaching-term">Fall 2025</span>
-            </div>
-            <div class="teaching-item">
-                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
-                <span class="teaching-term">Spring 2025</span>
-            </div>
-            <div class="teaching-item">
-                <span class="teaching-course">RMSC2001 - Intro to Risk Management</span>
-                <span class="teaching-term">Fall 2024</span>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-header">
-            <h2 class="section-title">CONTACT.INFO</h2>
-        </div>
-        <div class="contact-terminal">
-            <div class="contact-item">
-                <div class="contact-label">> EMAIL:</div>
-                <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">> LOCATION:</div>
-                <div class="contact-value">CUHK, Lady Shaw Building, Room G24</div>
-                <div class="contact-value">Sha Tin, New Territories, Hong Kong</div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">> GITHUB:</div>
-                <div class="contact-value">
-                    <a href="https://github.com/yulinzhu17" target="_blank">github.com/yulinzhu17</a>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 — Present</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Doctor of Philosophy (PhD)</h3>
+                        <p class="timeline-subtitle">
+                            CUHK — Statistics & Data Science<br>
+                            Supervisors: Dr. Tony Sit & Dr. Hoi-Ying Wong
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 — 2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Master of Science (MSc)</h3>
+                        <p class="timeline-subtitle">Columbia University — Financial Engineering</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 — 2021</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Bachelor of Science (BSc)</h3>
+                        <p class="timeline-subtitle">Johns Hopkins University — Applied Math & Statistics</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Class of 2017</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">High School Diploma</h3>
+                        <p class="timeline-subtitle">
+                            The Hotchkiss School — <a href="https://www.niche.com/k12/search/best-high-schools/" target="_blank">#1 Ranked High School in USA</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="contact-item">
-                <div class="contact-label">> STATUS:</div>
-                <div class="contact-value glow">PhD STUDENT - STATISTICS</div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Career</span>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            
+            <div class="experience-grid fade-in">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Stealth Mode</h3>
+                            <p class="exp-company">Stealth Mode</p>
+                        </div>
+                        <span class="exp-location">Planet Earth</span>
+                    </div>
+                    <p class="exp-description">Working on interesting things in stealth mode...</p>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Junior Trader</h3>
+                            <p class="exp-company">Pulsar Trading</p>
+                        </div>
+                        <span class="exp-location">Hong Kong</span>
+                    </div>
+                    <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection. Full-time position before PhD.</p>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Summer Analyst</h3>
+                            <p class="exp-company">Millennium Management</p>
+                        </div>
+                        <span class="exp-location">New York City</span>
+                    </div>
+                    <p class="exp-description">Equity derivatives and volatility risk analysis. Developed risk models for options trading strategies.</p>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Quantitative Researcher Intern</h3>
+                            <p class="exp-company">Kronos Research</p>
+                        </div>
+                        <span class="exp-location">Hong Kong</span>
+                    </div>
+                    <p class="exp-description">High-frequency cryptocurrency trading research. Statistical arbitrage and market microstructure analysis.</p>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Deep Learning Researcher</h3>
+                            <p class="exp-company">Wellington Management / ECB / EIB</p>
+                        </div>
+                        <span class="exp-location">Columbia University</span>
+                    </div>
+                    <p class="exp-description">Conducted deep learning research for financial applications during Columbia MFE program under Prof. Ali Hirsa.</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Focus</span>
+                <h2 class="section-title">Research</h2>
+            </div>
+            
+            <div class="research-card fade-in">
+                <div class="research-icon">🔬</div>
+                <p>My research interests lie at the intersection of mathematics and finance.</p>
+                <p>Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Academia</span>
+                <h2 class="section-title">Teaching</h2>
+            </div>
+            
+            <div class="teaching-grid fade-in">
+                <div class="teaching-item">
+                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
+                    <span class="teaching-term">Fall 2025</span>
+                </div>
+                <div class="teaching-item">
+                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
+                    <span class="teaching-term">Spring 2025</span>
+                </div>
+                <div class="teaching-item">
+                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
+                    <span class="teaching-term">Fall 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            
+            <div class="contact-grid fade-in">
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-label">Office</div>
+                    <div class="contact-value">Lady Shaw Building, Room G24<br>CUHK, Hong Kong</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">
+                        <a href="https://github.com/yulinzhu17" target="_blank">github.com/yulinzhu17</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <div class="footer-text">
-            (C) 2024 YULIN ZHU | PhD STUDENT | CUHK STATISTICS
-        </div>
-        <div class="footer-text" style="margin-top: 10px; font-size: 16px;">
-            SYSTEM UPTIME: <span id="uptime">000:00:00</span> | VISITOR COUNT: <span id="visitor-count">000001</span>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 Yulin Zhu — PhD Student, CUHK Statistics</p>
+            <div class="footer-links">
+                <a href="#hero" class="footer-link">Home</a>
+                <a href="#education" class="footer-link">Education</a>
+                <a href="#experience" class="footer-link">Experience</a>
+                <a href="#research" class="footer-link">Research</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
         </div>
     </footer>
+
     <script>
-        // BTC Ticker WebSocket Connection
-        let ws = null;
-        let btcData = {
-            price: 0,
-            high: 0,
-            low: 0,
-            volume: 0,
-            change: 0
-        };
-        function connectDeribit() {
-            ws = new WebSocket('wss://test.deribit.com/ws/api/v2');
-            
-            ws.onopen = function() {
-                console.log('Connected to Deribit');
-                // Subscribe to BTC-PERPETUAL ticker
-                const msg = {
-                    "jsonrpc": "2.0",
-                    "method": "public/subscribe",
-                    "id": 42,
-                    "params": {
-                        "channels": ["ticker.BTC-PERPETUAL.100ms"]
-                    }
-                };
-                ws.send(JSON.stringify(msg));
-                
-                // Also get initial book summary
-                const summaryMsg = {
-                    "jsonrpc": "2.0",
-                    "method": "public/get_book_summary_by_instrument",
-                    "id": 3659,
-                    "params": {
-                        "instrument_name": "BTC-PERPETUAL"
-                    }
-                };
-                ws.send(JSON.stringify(summaryMsg));
-            };
-            
-            ws.onmessage = function(e) {
-                const data = JSON.parse(e.data);
-                
-                if (data.method === 'subscription') {
-                    // Handle ticker updates
-                    const tickerData = data.params.data;
-                    updateBTCData(tickerData);
-                } else if (data.id === 3659 && data.result) {
-                    // Handle initial book summary
-                    const summary = Array.isArray(data.result) ? data.result[0] : data.result;
-                    updateBTCData(summary);
-                }
-            };
-            
-            ws.onerror = function(error) {
-                console.error('WebSocket error:', error);
-            };
-            
-            ws.onclose = function() {
-                console.log('Disconnected from Deribit, reconnecting...');
-                setTimeout(connectDeribit, 5000);
-            };
-        }
-        function updateBTCData(data) {
-            if (data.last_price !== undefined) {
-                btcData.price = data.last_price;
-            } else if (data.last !== undefined) {
-                btcData.price = data.last;
-            }
-            
-            if (data.stats) {
-                btcData.high = data.stats.high;
-                btcData.low = data.stats.low;
-                btcData.volume = data.stats.volume;
-                btcData.change = data.stats.price_change;
-            } else {
-                if (data.high !== undefined) btcData.high = data.high;
-                if (data.low !== undefined) btcData.low = data.low;
-                if (data.volume !== undefined) btcData.volume = data.volume;
-                if (data.price_change !== undefined) btcData.change = data.price_change;
-            }
-            
-            updateDisplay();
-        }
-        function updateDisplay() {
-            const priceEl = document.getElementById('btcPrice');
-            const changeEl = document.getElementById('btcChange');
-            const highEl = document.getElementById('btcHigh');
-            const lowEl = document.getElementById('btcLow');
-            const volumeEl = document.getElementById('btcVolume');
-            
-            if (priceEl) priceEl.textContent = `${btcData.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            
-            if (changeEl) {
-                const changeValue = btcData.change;
-                changeEl.textContent = `${changeValue >= 0 ? '+' : ''}${changeValue.toFixed(2)}%`;
-                changeEl.className = changeValue >= 0 ? 'ticker-change positive' : 'ticker-change negative';
-            }
-            
-            if (highEl) highEl.textContent = `${btcData.high.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
-            if (lowEl) lowEl.textContent = `${btcData.low.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
-            if (volumeEl) volumeEl.textContent = `${(btcData.volume / 1000000).toFixed(2)}M`;
-        }
-        // Update every 2 seconds even if no new data
-        setInterval(updateDisplay, 200);
-        // Connect to Deribit after page load
-        setTimeout(() => {
-            connectDeribit();
-        }, 2500);
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
+
         mobileMenuBtn?.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
         });
+
         // Close mobile menu when clicking a link
         document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -1291,53 +1189,14 @@
                 mobileMenuBtn.textContent = '☰';
             });
         });
-        // Detect if mobile and adjust boot screen timing
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        const bootScreenDelay = isMobile ? 1500 : 2000;
-        // Boot screen
-        setTimeout(() => {
-            document.getElementById('bootScreen').classList.add('hide');
-        }, bootScreenDelay);
-        // Typing effect
-        const messages = [
-            "Specializing in stochastic control...",
-            "Researching financial engineering...",
-            "PhD Student at CUHK Statistics...",
-            "Former quant trader in crypto HFT...",
-            "Teaching Assistant for RMSC2001..."
-        ];
-        let messageIndex = 0;
-        let charIndex = 0;
-        let currentMessage = '';
-        let isDeleting = false;
-        function type() {
-            const typedOutput = document.getElementById('typed-output');
-            if (!typedOutput) return;
-            if (!isDeleting && charIndex < messages[messageIndex].length) {
-                currentMessage += messages[messageIndex].charAt(charIndex);
-                charIndex++;
-            } else if (isDeleting && charIndex > 0) {
-                currentMessage = currentMessage.substring(0, charIndex - 1);
-                charIndex--;
-            } else if (!isDeleting && charIndex === messages[messageIndex].length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-                return;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                messageIndex = (messageIndex + 1) % messages.length;
-            }
-            typedOutput.textContent = currentMessage;
-            setTimeout(type, isDeleting ? 50 : 100);
-        }
-        setTimeout(type, bootScreenDelay + 500);
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - (isMobile ? 120 : 140);
+                    const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -1345,38 +1204,37 @@
                 }
             });
         });
-        // Uptime counter
-        let seconds = 0;
-        setInterval(() => {
-            seconds++;
-            const hours = Math.floor(seconds / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
-            document.getElementById('uptime').textContent =
-                `${String(hours).padStart(3, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-        }, 1000);
-        // Visitor counter (simulated)
-        let visitorCount = 1;
-        setInterval(() => {
-            if (Math.random() > 0.95) {
-                visitorCount++;
-                document.getElementById('visitor-count').textContent = String(visitorCount).padStart(6, '0');
-            }
-        }, 5000);
-        // Disable flicker on scroll for mobile
-        if (!isMobile) {
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    document.body.style.animation = 'flicker 0.1s';
-                    setTimeout(() => {
-                        document.body.style.animation = 'flicker 4s infinite';
-                    }, 100);
+
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                lastScrollTop = scrollTop;
             });
-        }
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.gradient-orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
     </script>
 </body>
 </html>
