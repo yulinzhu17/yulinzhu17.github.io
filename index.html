@@ -94,27 +94,11 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             color: var(--ink);
             font-weight: 800;
             letter-spacing: 0;
             text-decoration: none;
             white-space: nowrap;
-        }
-
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            display: grid;
-            place-items: center;
-            border: 1px solid var(--line-strong);
-            background: #0d0c0a;
-            color: var(--cyan);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.78rem;
-            font-weight: 600;
         }
 
         .nav-links {
@@ -224,8 +208,7 @@
         }
 
         .eyebrow,
-        .section-label,
-        .card-kicker {
+        .section-label {
             color: var(--cyan);
             font-family: "IBM Plex Mono", monospace;
             font-size: 0.76rem;
@@ -297,40 +280,6 @@
             border-color: var(--cyan);
         }
 
-        .ticker-rail {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            overflow: hidden;
-            background: rgba(18, 17, 15, 0.74);
-        }
-
-        .ticker-cell {
-            min-height: 78px;
-            padding: 16px 18px;
-            border-right: 1px solid var(--line);
-        }
-
-        .ticker-cell:last-child {
-            border-right: 0;
-        }
-
-        .ticker-label {
-            color: var(--quiet);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .ticker-value {
-            margin-top: 6px;
-            color: var(--ink);
-            font-size: 1rem;
-            font-weight: 800;
-        }
-
         section {
             padding: 96px 24px;
         }
@@ -362,13 +311,6 @@
             font-size: 1rem;
         }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-            gap: 18px;
-            align-items: stretch;
-        }
-
         .panel {
             border: 1px solid var(--line);
             border-radius: 8px;
@@ -376,119 +318,27 @@
             box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
         }
 
-        .signal-panel {
-            min-height: 430px;
-            padding: 24px;
-            display: grid;
-            grid-template-rows: 1fr auto;
-            overflow: hidden;
+        .research-panel {
+            max-width: 760px;
+            padding: 30px;
         }
 
-        .signal-visual {
-            align-self: center;
-            width: 100%;
-            min-height: 240px;
-        }
-
-        .signal-grid-line {
-            stroke: rgba(245, 242, 234, 0.09);
-            stroke-width: 1;
-        }
-
-        .signal-line {
-            fill: none;
-            stroke: var(--cyan);
-            stroke-width: 5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 760;
-            animation: drawSignal 4.8s ease-in-out infinite alternate;
-        }
-
-        .signal-line-alt {
-            fill: none;
-            stroke: var(--amber);
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            opacity: 0.78;
-            stroke-dasharray: 640;
-            animation: drawSignal 5.8s ease-in-out infinite alternate-reverse;
-        }
-
-        .boundary-line {
-            stroke: var(--red);
-            stroke-width: 1.5;
-            stroke-dasharray: 8 8;
-            opacity: 0.74;
-        }
-
-        @keyframes drawSignal {
-            from {
-                stroke-dashoffset: 160;
-            }
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        .signal-bottom {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .metric {
-            border-top: 1px solid var(--line);
-            padding-top: 14px;
-        }
-
-        .metric-value {
-            color: var(--ink);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 1.35rem;
-            font-weight: 600;
-        }
-
-        .metric-label {
-            color: var(--quiet);
-            font-size: 0.8rem;
-        }
-
-        .research-copy {
-            padding: 28px;
-            display: grid;
-            align-content: space-between;
-            gap: 28px;
-        }
-
-        .research-copy p {
+        .research-panel p {
             color: var(--muted);
             font-size: 1.04rem;
         }
 
-        .focus-list {
+        .research-list {
             display: grid;
-            gap: 10px;
-        }
-
-        .focus-item {
-            display: grid;
-            grid-template-columns: 72px 1fr;
             gap: 14px;
-            padding: 14px 0;
-            border-top: 1px solid var(--line);
-        }
-
-        .focus-code {
-            color: var(--amber);
-            font-family: "IBM Plex Mono", monospace;
-            font-weight: 600;
-        }
-
-        .focus-text {
+            margin-top: 24px;
+            padding-left: 1.15rem;
             color: var(--ink);
             font-weight: 700;
+        }
+
+        .research-list li::marker {
+            color: var(--cyan);
         }
 
         .timeline {
@@ -731,21 +581,10 @@
                 justify-content: flex-start;
             }
 
-            .ticker-rail,
-            .dashboard-grid,
             .experience-grid,
             .teaching-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .ticker-cell {
-                border-right: 0;
-                border-bottom: 1px solid var(--line);
-            }
-
-            .ticker-cell:last-child {
-                border-bottom: 0;
             }
 
             .section-header {
@@ -776,14 +615,11 @@
                 width: 100%;
             }
 
-            .timeline-item,
-            .focus-item,
-            .signal-bottom {
+            .timeline-item {
                 grid-template-columns: 1fr;
             }
 
-            .signal-panel,
-            .research-copy,
+            .research-panel,
             .exp-card,
             .teaching-item,
             .contact-card {
@@ -818,10 +654,7 @@
     <div class="site-shell">
         <nav>
             <div class="nav-container">
-                <a href="#hero" class="logo">
-                    <span class="logo-mark">YZ</span>
-                    <span>Yulin Zhu</span>
-                </a>
+                <a href="#hero" class="logo">Yulin Zhu</a>
 
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
 
@@ -869,25 +702,6 @@
                         </iframe>
                     </div>
                 </div>
-
-                <div class="ticker-rail fade-in" aria-label="Profile summary">
-                    <div class="ticker-cell">
-                        <div class="ticker-label">Current</div>
-                        <div class="ticker-value">2nd Year PhD</div>
-                    </div>
-                    <div class="ticker-cell">
-                        <div class="ticker-label">Department</div>
-                        <div class="ticker-value">CUHK Statistics</div>
-                    </div>
-                    <div class="ticker-cell">
-                        <div class="ticker-label">Focus</div>
-                        <div class="ticker-value">Stochastic Control</div>
-                    </div>
-                    <div class="ticker-cell">
-                        <div class="ticker-label">Base</div>
-                        <div class="ticker-value">Hong Kong</div>
-                    </div>
-                </div>
             </div>
         </header>
 
@@ -901,56 +715,14 @@
                     <p class="section-note">I study mathematical models for high-frequency trading, market microstructure, and cryptocurrency market dynamics.</p>
                 </div>
 
-                <div class="dashboard-grid">
-                    <div class="panel signal-panel fade-in">
-                        <svg class="signal-visual" viewBox="0 0 820 340" role="img" aria-label="Animated market signal and control boundary">
-                            <line class="signal-grid-line" x1="0" y1="70" x2="820" y2="70"></line>
-                            <line class="signal-grid-line" x1="0" y1="140" x2="820" y2="140"></line>
-                            <line class="signal-grid-line" x1="0" y1="210" x2="820" y2="210"></line>
-                            <line class="signal-grid-line" x1="0" y1="280" x2="820" y2="280"></line>
-                            <line class="boundary-line" x1="70" y1="95" x2="770" y2="95"></line>
-                            <line class="boundary-line" x1="70" y1="244" x2="770" y2="244"></line>
-                            <path class="signal-line" d="M38,232 C96,210 126,118 184,138 C244,160 250,252 315,218 C372,188 384,92 450,118 C520,146 496,236 570,218 C648,199 650,103 728,122 C770,132 790,168 812,154"></path>
-                            <path class="signal-line-alt" d="M32,178 C110,154 134,184 190,172 C260,156 282,122 340,138 C396,154 404,214 462,202 C530,188 544,132 610,145 C676,158 694,225 760,206 C790,198 804,186 818,176"></path>
-                        </svg>
+                <div class="panel research-panel fade-in">
+                    <p>My research interests lie at the intersection of mathematics and finance. I am currently exploring optimal control problems in high-frequency trading and theoretical frameworks for cryptocurrency market dynamics.</p>
 
-                        <div class="signal-bottom">
-                            <div class="metric">
-                                <div class="metric-value">HFT</div>
-                                <div class="metric-label">market microstructure</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">SDE</div>
-                                <div class="metric-label">continuous-time models</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">CTRL</div>
-                                <div class="metric-label">optimal intervention</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel research-copy fade-in">
-                        <div>
-                            <span class="card-kicker">Research focus</span>
-                            <p>My research interests lie at the intersection of mathematics and finance. I am currently exploring optimal control problems in high-frequency trading and theoretical frameworks for cryptocurrency market dynamics.</p>
-                        </div>
-
-                        <div class="focus-list">
-                            <div class="focus-item">
-                                <div class="focus-code">01</div>
-                                <div class="focus-text">Stochastic control for execution and trading decisions</div>
-                            </div>
-                            <div class="focus-item">
-                                <div class="focus-code">02</div>
-                                <div class="focus-text">Crypto market microstructure and adverse selection</div>
-                            </div>
-                            <div class="focus-item">
-                                <div class="focus-code">03</div>
-                                <div class="focus-text">Deep learning tools for quantitative finance</div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="research-list">
+                        <li>Stochastic control for execution and trading decisions</li>
+                        <li>Crypto market microstructure and adverse selection</li>
+                        <li>Deep learning tools for quantitative finance</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -1064,7 +836,7 @@
                                 <img src="hotchkiss.png" alt="Hotchkiss School logo" class="school-logo">
                                 The Hotchkiss School
                             </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">High School Diploma.</strong> Varsity Athlete in Baseball.</p>
+                            <p class="timeline-subtitle"><strong class="degree-name">High School Diploma.</strong></p>
                         </div>
                     </div>
                 </div>
