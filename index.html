@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yulin Zhu | PhD Student - Statistics & Quantitative Finance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Yulin Zhu | Statistics, Stochastic Control, Quantitative Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         :root {
-            --bg-primary: #050505;
-            --bg-secondary: #0a0a0a;
-            --bg-card: #111111;
-            --bg-card-hover: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #888888;
-            --text-muted: #555555;
-            --accent: #5865F2;
-            --accent-secondary: #00D4AA;
-            --gradient-1: linear-gradient(135deg, #5865F2 0%, #00D4AA 100%);
-            --gradient-2: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.15);
-            --glow: 0 0 60px rgba(88, 101, 242, 0.15);
+            --ink: #f5f2ea;
+            --muted: #b2aaa0;
+            --quiet: #746e66;
+            --carbon: #080807;
+            --panel: #12110f;
+            --panel-strong: #191712;
+            --line: rgba(245, 242, 234, 0.13);
+            --line-strong: rgba(245, 242, 234, 0.24);
+            --cyan: #5eead4;
+            --amber: #f7b955;
+            --green: #8bd450;
+            --red: #ff6b5c;
+            --blue: #7aa7ff;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.44);
         }
 
         html {
@@ -34,744 +34,693 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(245, 242, 234, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 242, 234, 0.035) 1px, transparent 1px),
+                linear-gradient(135deg, #090908 0%, #11100d 42%, #080807 100%);
+            background-size: 44px 44px, 44px 44px, auto;
+            color: var(--ink);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Gradient Orbs Background */
-        .gradient-orb {
+        a {
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .site-shell::before {
+            content: "";
             position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            pointer-events: none;
+            inset: 0;
             z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(94, 234, 212, 0.08), transparent 24%, transparent 76%, rgba(247, 185, 85, 0.08)),
+                repeating-linear-gradient(0deg, transparent 0 8px, rgba(255, 255, 255, 0.012) 8px 9px);
+            opacity: 0.7;
         }
 
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(88, 101, 242, 0.3) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-        }
-
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 170, 0.2) 0%, transparent 70%);
-            bottom: -150px;
-            left: -150px;
-        }
-
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(118, 75, 162, 0.25) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            padding: 20px 50px;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+            left: 0;
+            right: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--line);
+            background: rgba(8, 8, 7, 0.86);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1180px;
             margin: 0 auto;
+            padding: 15px 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 24px;
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            color: var(--ink);
+            font-weight: 800;
+            letter-spacing: 0;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
-        .logo-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--gradient-1);
-            border-radius: 50%;
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            background: #0d0c0a;
+            color: var(--cyan);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
         }
 
         .nav-links {
             display: flex;
+            align-items: center;
+            gap: 28px;
             list-style: none;
-            gap: 40px;
         }
 
         .nav-link {
-            color: var(--text-secondary);
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s ease;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
         }
 
         .nav-link:hover {
-            color: var(--text-primary);
+            color: var(--ink);
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            padding: 8px 12px;
-            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: var(--panel);
+            color: var(--ink);
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card);
+            font-size: 1.15rem;
         }
 
         .mobile-menu {
             display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(5, 5, 5, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 20px;
-            z-index: 999;
+            border-top: 1px solid var(--line);
+            background: rgba(8, 8, 7, 0.97);
+            padding: 8px 24px 18px;
         }
 
         .mobile-menu.active {
-            display: block;
+            display: grid;
+            gap: 6px;
         }
 
         .mobile-menu .nav-link {
-            display: block;
-            padding: 18px 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 140px 50px 100px;
-            position: relative;
+        .hero {
+            min-height: auto;
+            padding: 106px 24px 48px;
+            display: grid;
+            align-items: start;
         }
 
-        .hero-container {
-            max-width: 1000px;
+        .hero-stage {
+            max-width: 1180px;
             width: 100%;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
         }
 
-        /* Video Container */
-        .video-wrapper {
+        .hero-media {
             position: relative;
-            margin-bottom: 60px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+            aspect-ratio: 16 / 9;
+            min-height: 0;
             overflow: hidden;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--glow);
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            background: #050504;
+            box-shadow: var(--shadow);
         }
 
-        .video-container::before {
-            content: '';
+        .video-frame {
             position: absolute;
-            inset: -1px;
-            background: var(--gradient-1);
-            border-radius: 21px;
-            z-index: -1;
-            opacity: 0.5;
+            inset: 0;
+            pointer-events: none;
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-frame iframe {
             width: 100%;
             height: 100%;
-            border-radius: 20px;
+            border: 0;
+            filter: saturate(0.88) contrast(1.08);
         }
 
-        .hero-content {
-            text-align: center;
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(0deg, rgba(8, 8, 7, 0.32) 0%, transparent 28%, rgba(8, 8, 7, 0.18) 100%);
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 25px;
+        .hero-copy {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
+            gap: 28px;
+            align-items: end;
+            max-width: none;
         }
 
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent-secondary);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        /* Degree name styling */
-        .degree-name {
-            color: var(--accent);
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .eyebrow,
+        .section-label,
+        .card-kicker {
+            color: var(--cyan);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
 
         .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-top: 14px;
+            max-width: 760px;
+            font-size: clamp(3rem, 9vw, 7.2rem);
+            font-weight: 800;
+            letter-spacing: 0;
+            line-height: 0.9;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-weight: 400;
+            max-width: 610px;
+            margin-top: 22px;
+            color: var(--ink);
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            font-weight: 600;
         }
 
-        .hero-location {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
+        .hero-meta {
+            margin-top: 16px;
+            color: var(--muted);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.9rem;
         }
 
-        .hero-links {
+        .hero-actions {
             display: flex;
-            gap: 15px;
-            justify-content: center;
             flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 0;
+            pointer-events: auto;
         }
 
         .btn {
-            padding: 14px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 18px;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            color: var(--ink);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
         }
 
         .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
+            background: var(--ink);
+            color: #0a0908;
+            border-color: var(--ink);
         }
 
         .btn-secondary {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
+            background: rgba(18, 17, 15, 0.72);
         }
 
-        .btn-secondary:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-3px);
+        .btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--cyan);
         }
 
-        /* Featured Image */
-        .featured-image-section {
-            padding: 0 50px 100px;
-        }
-
-        .featured-image-container {
-            max-width: 700px;
-            margin: 0 auto;
-            border-radius: 20px;
+        .ticker-rail {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--line);
+            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid var(--border);
-            position: relative;
+            background: rgba(18, 17, 15, 0.74);
         }
 
-        .featured-image-container::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.3) 0%, rgba(88, 101, 242, 0.3) 100%);
-            border-radius: 21px;
-            z-index: -1;
+        .ticker-cell {
+            min-height: 78px;
+            padding: 16px 18px;
+            border-right: 1px solid var(--line);
         }
 
-        .featured-image {
-            width: 100%;
-            height: auto;
-            display: block;
+        .ticker-cell:last-child {
+            border-right: 0;
         }
 
-        .image-caption {
-            background: var(--bg-card);
-            padding: 18px 24px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .ticker-label {
+            color: var(--quiet);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
-        .caption-icon {
-            width: 20px;
-            height: 20px;
-            background: var(--gradient-1);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
+        .ticker-value {
+            margin-top: 6px;
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 800;
         }
 
-        /* Sections */
         section {
-            padding: 100px 50px;
+            padding: 96px 24px;
         }
 
         .section-container {
-            max-width: 1000px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 28px;
+            margin-bottom: 34px;
         }
 
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.75rem;
-            font-weight: 700;
-            letter-spacing: -1px;
+            margin-top: 8px;
+            font-size: clamp(2rem, 5vw, 4.4rem);
+            font-weight: 800;
+            letter-spacing: 0;
+            line-height: 1;
         }
 
-        /* Education Timeline */
+        .section-note {
+            max-width: 430px;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(18, 17, 15, 0.78);
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+        }
+
+        .signal-panel {
+            min-height: 430px;
+            padding: 24px;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+        }
+
+        .signal-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            color: var(--muted);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .signal-visual {
+            align-self: center;
+            width: 100%;
+            min-height: 240px;
+        }
+
+        .signal-grid-line {
+            stroke: rgba(245, 242, 234, 0.09);
+            stroke-width: 1;
+        }
+
+        .signal-line {
+            fill: none;
+            stroke: var(--cyan);
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 760;
+            animation: drawSignal 4.8s ease-in-out infinite alternate;
+        }
+
+        .signal-line-alt {
+            fill: none;
+            stroke: var(--amber);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0.78;
+            stroke-dasharray: 640;
+            animation: drawSignal 5.8s ease-in-out infinite alternate-reverse;
+        }
+
+        .boundary-line {
+            stroke: var(--red);
+            stroke-width: 1.5;
+            stroke-dasharray: 8 8;
+            opacity: 0.74;
+        }
+
+        @keyframes drawSignal {
+            from {
+                stroke-dashoffset: 160;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .signal-bottom {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .metric {
+            border-top: 1px solid var(--line);
+            padding-top: 14px;
+        }
+
+        .metric-value {
+            color: var(--ink);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .metric-label {
+            color: var(--quiet);
+            font-size: 0.8rem;
+        }
+
+        .research-copy {
+            padding: 28px;
+            display: grid;
+            align-content: space-between;
+            gap: 28px;
+        }
+
+        .research-copy p {
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .focus-item {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 14px;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .focus-code {
+            color: var(--amber);
+            font-family: "IBM Plex Mono", monospace;
+            font-weight: 600;
+        }
+
+        .focus-text {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
         .timeline {
-            position: relative;
+            display: grid;
+            gap: 12px;
         }
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 40px;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
+            grid-template-columns: 150px 1fr;
+            gap: 24px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(18, 17, 15, 0.64);
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .timeline-item:last-child {
-            border-bottom: none;
-        }
-
-        .timeline-item:hover {
-            background: linear-gradient(90deg, transparent 0%, var(--bg-card) 50%, transparent 100%);
+        .timeline-item:hover,
+        .exp-card:hover,
+        .teaching-item:hover,
+        .contact-card:hover {
+            border-color: var(--line-strong);
+            transform: translateY(-2px);
         }
 
         .timeline-date {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .timeline-content {
-            
+            color: var(--amber);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.82rem;
+            font-weight: 600;
         }
 
         .timeline-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ink);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .school-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            flex: 0 0 auto;
+            filter: saturate(0.95) contrast(1.05);
         }
 
         .timeline-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
+            margin-top: 8px;
+            color: var(--muted);
         }
 
-        .timeline-subtitle a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.3s;
+        .degree-name {
+            color: var(--blue);
         }
 
-        .timeline-subtitle a:hover {
-            color: var(--accent-secondary);
-        }
-
-        /* Experience Cards */
         .experience-grid {
             display: grid;
-            gap: 20px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
         }
 
         .exp-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .exp-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateX(5px);
-        }
-
-        .exp-card:hover::before {
-            opacity: 1;
+            min-height: 218px;
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(18, 17, 15, 0.78);
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
         .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 16px;
+            margin-bottom: 22px;
         }
 
         .exp-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 1.24rem;
+            font-weight: 800;
+            line-height: 1.1;
         }
 
         .exp-company {
-            font-size: 1rem;
-            color: var(--accent);
+            margin-top: 8px;
+            color: var(--cyan);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.86rem;
         }
 
         .exp-location {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--bg-primary);
-            padding: 6px 14px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
+            color: var(--quiet);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.76rem;
+            white-space: nowrap;
         }
 
         .exp-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
+            color: var(--muted);
         }
 
-        /* Research Section */
-        .research-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(88, 101, 242, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .research-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 1.5rem;
-        }
-
-        .research-card p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            line-height: 1.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .research-card p + p {
-            margin-top: 20px;
-        }
-
-        /* Teaching Section */
-        .teaching-grid {
+        .teaching-grid,
+        .contact-grid {
             display: grid;
-            gap: 15px;
+            gap: 14px;
+        }
+
+        .teaching-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .teaching-item,
+        .contact-card {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(18, 17, 15, 0.74);
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
         .teaching-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 22px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .teaching-item:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateX(5px);
-        }
-
-        .teaching-course {
-            font-size: 1rem;
-            font-weight: 500;
+            min-height: 168px;
+            padding: 22px;
+            display: grid;
+            align-content: space-between;
         }
 
         .teaching-term {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--bg-primary);
-            padding: 6px 14px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
+            color: var(--amber);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.84rem;
+            font-weight: 600;
         }
 
-        /* Contact Section */
+        .teaching-course {
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
         .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr;
         }
 
         .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.25rem;
+            min-height: 160px;
+            padding: 24px;
         }
 
         .contact-label {
-            font-size: 0.8rem;
+            color: var(--cyan);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.78rem;
             font-weight: 600;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
         }
 
         .contact-value {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            line-height: 1.6;
+            margin-top: 18px;
+            color: var(--ink);
+            font-size: 1.02rem;
+            font-weight: 700;
+            overflow-wrap: anywhere;
         }
 
         .contact-value a {
-            color: var(--text-primary);
+            color: var(--ink);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         .contact-value a:hover {
-            color: var(--accent);
+            color: var(--cyan);
         }
 
-        /* Footer */
         footer {
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--line);
+            padding: 34px 24px;
+            color: var(--quiet);
         }
 
         .footer-content {
-            max-width: 1000px;
+            max-width: 1180px;
             margin: 0 auto;
-        }
-
-        .footer-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.78rem;
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 18px;
         }
 
         .footer-link {
-            color: var(--text-secondary);
+            color: var(--muted);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
         }
 
         .footer-link:hover {
-            color: var(--text-primary);
+            color: var(--ink);
         }
 
-        /* Scroll Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Education logos */
-        .timeline-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .school-logo {
-            width: 26px;
-            height: 26px;
-            object-fit: contain;
-            flex: 0 0 auto;
-        }
-        /* Mobile Styles */
-        @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
 
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 25px;
-            }
-
+        @media (max-width: 980px) {
             .nav-links {
                 display: none;
             }
@@ -780,498 +729,479 @@
                 display: block;
             }
 
-            #hero {
-                padding: 120px 25px 60px;
+            .hero {
+                padding-top: 88px;
             }
 
-            .hero-title {
-                font-size: 2.75rem;
-                letter-spacing: -1px;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .video-wrapper {
-                margin-bottom: 40px;
-            }
-
-            section {
-                padding: 70px 25px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .featured-image-section {
-                padding: 0 25px 70px;
-            }
-
-            .timeline-item {
+            .hero-copy {
                 grid-template-columns: 1fr;
-                gap: 10px;
+                gap: 18px;
             }
 
-            .timeline-date {
-                font-size: 0.85rem;
+            .hero-actions {
+                justify-content: flex-start;
             }
 
-            .timeline-title {
-                font-size: 1.05rem;
+            .ticker-rail,
+            .dashboard-grid,
+            .experience-grid,
+            .teaching-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
-            .exp-card {
-                padding: 25px;
+            .ticker-cell {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
             }
 
-            .exp-header {
-                flex-direction: column;
-                gap: 10px;
+            .ticker-cell:last-child {
+                border-bottom: 0;
             }
 
-            .exp-location {
-                align-self: flex-start;
-            }
-
-            .research-card {
-                padding: 35px 25px;
-            }
-
-            .research-card p {
-                font-size: 1rem;
-            }
-
-            .teaching-item {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .contact-card {
-                padding: 25px;
-            }
-
-            footer {
-                padding: 40px 25px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .gradient-orb {
-                opacity: 0.3;
-            }
-
-            .orb-1 {
-                width: 300px;
-                height: 300px;
-            }
-
-            .orb-2 {
-                width: 250px;
-                height: 250px;
-            }
-
-            .orb-3 {
-                display: none;
+            .section-header {
+                display: grid;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.25rem;
+        @media (max-width: 640px) {
+            body {
+                background-size: 32px 32px, 32px 32px, auto;
             }
 
-            .hero-links {
-                flex-direction: column;
-                width: 100%;
+            .nav-container {
+                padding: 12px 18px;
+            }
+
+            .hero,
+            section {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .hero-actions {
+                display: grid;
             }
 
             .btn {
                 width: 100%;
-                justify-content: center;
+            }
+
+            .timeline-item,
+            .focus-item,
+            .signal-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .signal-panel,
+            .research-copy,
+            .exp-card,
+            .teaching-item,
+            .contact-card {
+                padding: 20px;
+            }
+
+            .footer-content {
+                display: grid;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background Orbs -->
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
+    <div class="site-shell">
+        <nav>
+            <div class="nav-container">
+                <a href="#hero" class="logo">
+                    <span class="logo-mark">YZ</span>
+                    <span>Yulin Zhu</span>
+                </a>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#hero" class="logo">
-                <span class="logo-dot"></span>
-                Yulin Zhu
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            
-            <ul class="nav-links">
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#research" class="nav-link">Research</a></li>
-                <li><a href="#teaching" class="nav-link">Teaching</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#education" class="nav-link">Education</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#research" class="nav-link">Research</a>
-        <a href="#teaching" class="nav-link">Teaching</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-container">
-            <!-- Video -->
-            <div class="video-wrapper fade-in">
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/21QJF-yCu2k?autoplay=1&mute=1&vq=hd720" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                <ul class="nav-links">
+                    <li><a href="#research" class="nav-link">Research</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#teaching" class="nav-link">Teaching</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
             </div>
 
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#teaching" class="nav-link">Teaching</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
 
-            <div class="hero-content fade-in">
-                <!-- <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Available for Research Collaboration
-                </div> -->
-                
-                <h1 class="hero-title">Yulin Zhu</h1>
-                <p class="hero-subtitle">2nd Year PhD in Statistics</p>
-                <p class="hero-subtitle">The Chinese University of Hong Kong</p>
-                <p class="hero-location">Originally from Toronto, Ontario, Canada</p>
+        <header class="hero" id="hero">
+            <div class="hero-stage">
+                <div class="hero-copy fade-in">
+                    <div class="hero-copy-main">
+                        <div class="eyebrow">Statistics PhD / Quantitative Finance</div>
+                        <h1 class="hero-title">Yulin Zhu</h1>
+                        <p class="hero-subtitle">Stochastic control, high-frequency markets, and mathematical finance at The Chinese University of Hong Kong.</p>
+                        <p class="hero-meta">Beijing -> Toronto -> Connecticut -> Baltimore -> NY -> HK</p>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#research" class="btn btn-primary">View Research</a>
+                        <a href="#experience" class="btn btn-secondary">Experience</a>
+                        <a href="https://github.com/yulinzhu17" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
 
-                <div class="hero-links">
-                    <a href="https://github.com/yulinzhu17" target="_blank" class="btn btn-primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <div class="hero-media">
+                    <div class="video-frame" aria-hidden="true">
+                        <iframe
+                            src="https://www.youtube.com/embed/21QJF-yCu2k?autoplay=1&mute=1&playsinline=1&vq=hd720&controls=0&rel=0&modestbranding=1&loop=1&playlist=21QJF-yCu2k"
+                            title="Yulin Zhu pitching"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="ticker-rail fade-in" aria-label="Profile summary">
+                    <div class="ticker-cell">
+                        <div class="ticker-label">Current</div>
+                        <div class="ticker-value">2nd Year PhD</div>
+                    </div>
+                    <div class="ticker-cell">
+                        <div class="ticker-label">Department</div>
+                        <div class="ticker-value">CUHK Statistics</div>
+                    </div>
+                    <div class="ticker-cell">
+                        <div class="ticker-label">Focus</div>
+                        <div class="ticker-value">Stochastic Control</div>
+                    </div>
+                    <div class="ticker-cell">
+                        <div class="ticker-label">Base</div>
+                        <div class="ticker-value">Hong Kong</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="research">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <div>
+                        <span class="section-label">Research</span>
+                        <h2 class="section-title">Stochastic control and quantitative finance.</h2>
+                    </div>
+                    <p class="section-note">I study mathematical models for high-frequency trading, market microstructure, and cryptocurrency market dynamics.</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="panel signal-panel fade-in">
+                        <div class="signal-top">
+                            <span>Model sketch</span>
+                            <span>Control boundary</span>
+                        </div>
+
+                        <svg class="signal-visual" viewBox="0 0 820 340" role="img" aria-label="Animated market signal and control boundary">
+                            <line class="signal-grid-line" x1="0" y1="70" x2="820" y2="70"></line>
+                            <line class="signal-grid-line" x1="0" y1="140" x2="820" y2="140"></line>
+                            <line class="signal-grid-line" x1="0" y1="210" x2="820" y2="210"></line>
+                            <line class="signal-grid-line" x1="0" y1="280" x2="820" y2="280"></line>
+                            <line class="boundary-line" x1="70" y1="95" x2="770" y2="95"></line>
+                            <line class="boundary-line" x1="70" y1="244" x2="770" y2="244"></line>
+                            <path class="signal-line" d="M38,232 C96,210 126,118 184,138 C244,160 250,252 315,218 C372,188 384,92 450,118 C520,146 496,236 570,218 C648,199 650,103 728,122 C770,132 790,168 812,154"></path>
+                            <path class="signal-line-alt" d="M32,178 C110,154 134,184 190,172 C260,156 282,122 340,138 C396,154 404,214 462,202 C530,188 544,132 610,145 C676,158 694,225 760,206 C790,198 804,186 818,176"></path>
                         </svg>
-                        GitHub
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                    <a href="#research" class="btn btn-secondary">Research</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
+                        <div class="signal-bottom">
+                            <div class="metric">
+                                <div class="metric-value">HFT</div>
+                                <div class="metric-label">market microstructure</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">SDE</div>
+                                <div class="metric-label">continuous-time models</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">CTRL</div>
+                                <div class="metric-label">optimal intervention</div>
+                            </div>
+                        </div>
+                    </div>
 
-<section id="education">
-    <div class="section-container">
-        <div class="section-header fade-in">
-            <span class="section-label">Background</span>
-            <h2 class="section-title">Education</h2>
-        </div>
-        
-        <div class="timeline fade-in">
-            <div class="timeline-item">
-                <div class="timeline-date">2024 — Present</div>
-                <div class="timeline-content">
-<h3 class="timeline-title">
-    <img src="cuhk.png" alt="CUHK logo" class="school-logo">
-    The Chinese University of Hong Kong
-</h3>
-                    <p class="timeline-subtitle">
-                        <strong class="degree-name">Ph.D. in Statistics</strong><br>
-                        Supervisors: Prof. Tony Sit & Prof. Hoi-Ying Wong
-                    </p>
+                    <div class="panel research-copy fade-in">
+                        <div>
+                            <span class="card-kicker">Research focus</span>
+                            <p>My research interests lie at the intersection of mathematics and finance. I am currently exploring optimal control problems in high-frequency trading and theoretical frameworks for cryptocurrency market dynamics.</p>
+                        </div>
+
+                        <div class="focus-list">
+                            <div class="focus-item">
+                                <div class="focus-code">01</div>
+                                <div class="focus-text">Stochastic control for execution and trading decisions</div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-code">02</div>
+                                <div class="focus-text">Crypto market microstructure and adverse selection</div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-code">03</div>
+                                <div class="focus-text">Deep learning tools for quantitative finance</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">2022 — 2023</div>
-                <div class="timeline-content">
-<h3 class="timeline-title">
-    <img src="columbia.png" alt="Columbia University logo" class="school-logo">
-    Columbia University
-</h3>                    
-                    <p class="timeline-subtitle"><strong class="degree-name">M.Sc. in Financial Engineering (Dept. IEOR)</strong></p>
+        </section>
+
+        <section id="experience">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <div>
+                        <span class="section-label">Experience</span>
+                        <h2 class="section-title">Experience</h2>
+                    </div>
+                    <p class="section-note">Trading, research, and risk work across crypto markets, derivatives, asset management, and institutional research.</p>
+                </div>
+
+                <div class="experience-grid fade-in">
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Junior Trader</h3>
+                                <p class="exp-company">Pulsar Trading</p>
+                            </div>
+                            <span class="exp-location">Hong Kong</span>
+                        </div>
+                        <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection before starting the PhD.</p>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Summer Analyst</h3>
+                                <p class="exp-company">Millennium Management</p>
+                            </div>
+                            <span class="exp-location">New York City</span>
+                        </div>
+                        <p class="exp-description">Equity derivatives and volatility risk analysis, with work on risk models for options trading strategies.</p>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Quantitative Researcher Intern</h3>
+                                <p class="exp-company">Kronos Research</p>
+                            </div>
+                            <span class="exp-location">Hong Kong</span>
+                        </div>
+                        <p class="exp-description">High-frequency cryptocurrency trading research across statistical arbitrage and market microstructure.</p>
+                    </div>
+
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Deep Learning Researcher</h3>
+                                <p class="exp-company">Wellington Management / ECB / EIB</p>
+                            </div>
+                            <span class="exp-location">Columbia University</span>
+                        </div>
+                        <p class="exp-description">Conducted deep learning research for financial applications during the Columbia MFE program under Prof. Ali Hirsa.</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">2017 — 2021</div>
-                <div class="timeline-content">
-<h3 class="timeline-title">
-    <img src="jhu.png" alt="Johns Hopkins University logo" class="school-logo">
-    The Johns Hopkins University
-</h3>                    
-                    <p class="timeline-subtitle"><strong class="degree-name">B.Sc. in Applied Math & Statistics, Minor in Pure Math</strong><br>
-                    Transferred to Applied Math & Stats during senior year and finished the major in 1 year. I was previously pursuing Public Health during Junior year, Computer Science during Sophomore year, and Chemical & Biomolecular Engineering during freshman year. 
-                    </p>
+        </section>
+
+        <section id="education">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <div>
+                        <span class="section-label">Education</span>
+                        <h2 class="section-title">Education</h2>
+                    </div>
+                    <p class="section-note">Academic background across statistics, financial engineering, applied mathematics, and pure mathematics.</p>
+                </div>
+
+                <div class="timeline fade-in">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024 - Present</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                <img src="cuhk.png" alt="CUHK logo" class="school-logo">
+                                The Chinese University of Hong Kong
+                            </h3>
+                            <p class="timeline-subtitle"><strong class="degree-name">Ph.D. in Statistics</strong><br>Supervisors: Prof. Tony Sit &amp; Prof. Hoi-Ying Wong</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - 2023</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                <img src="columbia.png" alt="Columbia University logo" class="school-logo">
+                                Columbia University
+                            </h3>
+                            <p class="timeline-subtitle"><strong class="degree-name">M.Sc. in Financial Engineering, Dept. IEOR</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017 - 2021</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                <img src="jhu.png" alt="Johns Hopkins University logo" class="school-logo">
+                                The Johns Hopkins University
+                            </h3>
+                            <p class="timeline-subtitle"><strong class="degree-name">B.Sc. in Applied Math &amp; Statistics, Minor in Pure Math</strong><br>Transferred to Applied Math &amp; Stats during senior year and finished the major in 1 year. I was previously pursuing Public Health during Junior year, Computer Science during Sophomore year, and Chemical &amp; Biomolecular Engineering during freshman year.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Class of 2017</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                <img src="hotchkiss.png" alt="Hotchkiss School logo" class="school-logo">
+                                The Hotchkiss School
+                            </h3>
+                            <p class="timeline-subtitle"><strong class="degree-name">High School Diploma.</strong> Varsity Athlete in Baseball.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">Class of 2017</div>
-                <div class="timeline-content">
-<h3 class="timeline-title">
-    <img src="hotchkiss.png" alt="Hotchkiss School logo" class="school-logo">
-    The Hotchkiss School — Ranked #1 High School in USA (Niche, 2026)
-</h3>
-                    <p class="timeline-subtitle">
-                        <strong class="degree-name">High School Diploma.</strong> Varsity Athlete in Baseball.
-                    </p>
+        </section>
+
+        <section id="teaching">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <div>
+                        <span class="section-label">Teaching</span>
+                        <h2 class="section-title">Risk Management</h2>
+                    </div>
+                    <p class="section-note">Teaching assistant work for RMSC2001, Introduction to Risk Management.</p>
+                </div>
+
+                <div class="teaching-grid fade-in">
+                    <div class="teaching-item">
+                        <span class="teaching-term">Spring 2026</span>
+                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
+                    </div>
+                    <div class="teaching-item">
+                        <span class="teaching-term">Fall 2025</span>
+                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
+                    </div>
+                    <div class="teaching-item">
+                        <span class="teaching-term">Spring 2025</span>
+                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
+                    </div>
+                    <div class="teaching-item">
+                        <span class="teaching-term">Fall 2024</span>
+                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-container">
+                <div class="section-header fade-in">
+                    <div>
+                        <span class="section-label">Contact</span>
+                        <h2 class="section-title">Get in touch.</h2>
+                    </div>
+                    <p class="section-note">For research, teaching, and quantitative finance conversations.</p>
+                </div>
+
+                <div class="contact-grid fade-in">
+                    <div class="contact-card">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-label">Office</div>
+                        <div class="contact-value">Lady Shaw Building, Room G24<br>CUHK, Hong Kong</div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">
+                            <a href="https://github.com/yulinzhu17" target="_blank" rel="noopener">github.com/yulinzhu17</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>© 2026 Yulin Zhu / CUHK Statistics</p>
+                <div class="footer-links">
+                    <a href="#hero" class="footer-link">Home</a>
+                    <a href="#research" class="footer-link">Research</a>
+                    <a href="#experience" class="footer-link">Experience</a>
+                    <a href="#education" class="footer-link">Education</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </footer>
     </div>
-</section>
-
-
-    <!-- Featured Image -->
-    <div class="featured-image-section fade-in">
-        <div class="featured-image-container">
-            <img src="hkiss_bsbl2.jpg" alt="Hotchkiss Baseball" class="featured-image">
-            <div class="image-caption">
-                <span class="caption-icon">⚾</span>
-                Former Varsity Baseball Pitcher @ Hotchkiss School
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Career</span>
-                <h2 class="section-title">Experience</h2>
-            </div>
-            
-            <div class="experience-grid fade-in">
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Stealth Mode</h3>
-                            <p class="exp-company">Stealth Mode</p>
-                        </div>
-                        <span class="exp-location">Planet Earth</span>
-                    </div>
-                    <p class="exp-description">Working on interesting things in stealth mode...</p>
-                </div>
-
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Junior Trader</h3>
-                            <p class="exp-company">Pulsar Trading</p>
-                        </div>
-                        <span class="exp-location">Hong Kong</span>
-                    </div>
-                    <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection. Full-time position before PhD.</p>
-                </div>
-
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Summer Analyst</h3>
-                            <p class="exp-company">Millennium Management</p>
-                        </div>
-                        <span class="exp-location">New York City</span>
-                    </div>
-                    <p class="exp-description">Equity derivatives and volatility risk analysis. Developed risk models for options trading strategies.</p>
-                </div>
-
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Quantitative Researcher Intern</h3>
-                            <p class="exp-company">Kronos Research</p>
-                        </div>
-                        <span class="exp-location">Hong Kong</span>
-                    </div>
-                    <p class="exp-description">High-frequency cryptocurrency trading research. Statistical arbitrage and market microstructure analysis.</p>
-                </div>
-
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Deep Learning Researcher</h3>
-                            <p class="exp-company">Wellington Management / ECB / EIB</p>
-                        </div>
-                        <span class="exp-location">Columbia University</span>
-                    </div>
-                    <p class="exp-description">Conducted deep learning research for financial applications during Columbia MFE program under Prof. Ali Hirsa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Section -->
-    <section id="research">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Focus</span>
-                <h2 class="section-title">Research</h2>
-            </div>
-            
-            <div class="research-card fade-in">
-                <div class="research-icon">🔬</div>
-                <p>My research interests lie at the intersection of mathematics and finance.</p>
-                <p>Currently exploring optimal control problems in high-frequency trading and developing theoretical frameworks for cryptocurrency market dynamics.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Teaching Section -->
-    <section id="teaching">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Academia</span>
-                <h2 class="section-title">Teaching (TA)</h2>
-            </div>
-            
-            <div class="teaching-grid fade-in">
-                <div class="teaching-item">
-                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
-                    <span class="teaching-term">Spring 2026</span>
-                </div>
-                <div class="teaching-item">
-                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
-                    <span class="teaching-term">Fall 2025</span>
-                </div>
-                <div class="teaching-item">
-                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
-                    <span class="teaching-term">Spring 2025</span>
-                </div>
-                <div class="teaching-item">
-                    <span class="teaching-course">RMSC2001 — Introduction to Risk Management</span>
-                    <span class="teaching-term">Fall 2024</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Get in Touch</span>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            
-            <div class="contact-grid fade-in">
-                <div class="contact-card">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-label">Office</div>
-                    <div class="contact-value">Lady Shaw Building, Room G24<br>CUHK, Hong Kong</div>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">💻</div>
-                    <div class="contact-label">GitHub</div>
-                    <div class="contact-value">
-                        <a href="https://github.com/yulinzhu17" target="_blank">github.com/yulinzhu17</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">© 2024 Yulin Zhu — PhD Student, CUHK Statistics</p>
-            <div class="footer-links">
-                <a href="#hero" class="footer-link">Home</a>
-                <a href="#education" class="footer-link">Education</a>
-                <a href="#experience" class="footer-link">Experience</a>
-                <a href="#research" class="footer-link">Research</a>
-                <a href="#contact" class="footer-link">Contact</a>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        mobileMenuBtn?.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        mobileMenuBtn?.addEventListener("click", () => {
+            const isOpen = mobileMenu.classList.toggle("active");
+            mobileMenuBtn.textContent = isOpen ? "×" : "☰";
+            mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
+        document.querySelectorAll(".mobile-menu .nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+                mobileMenuBtn.textContent = "☰";
+                mobileMenuBtn.setAttribute("aria-expanded", "false");
             });
         });
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", (event) => {
+                const target = document.querySelector(anchor.getAttribute("href"));
+                if (!target) return;
+                event.preventDefault();
+                window.scrollTo({
+                    top: target.offsetTop - 74,
+                    behavior: "smooth"
+                });
             });
         });
-
-        // Scroll animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add("visible");
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.12 });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Parallax effect for orbs
-        document.addEventListener('mousemove', (e) => {
-            const orbs = document.querySelectorAll('.gradient-orb');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            orbs.forEach((orb, index) => {
-                const speed = (index + 1) * 20;
-                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
+        document.querySelectorAll(".fade-in").forEach((element) => observer.observe(element));
     </script>
 </body>
 </html>
