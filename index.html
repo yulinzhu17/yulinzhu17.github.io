@@ -380,19 +380,8 @@
             min-height: 430px;
             padding: 24px;
             display: grid;
-            grid-template-rows: auto 1fr auto;
+            grid-template-rows: 1fr auto;
             overflow: hidden;
-        }
-
-        .signal-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 18px;
-            color: var(--muted);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
         }
 
         .signal-visual {
@@ -914,11 +903,6 @@
 
                 <div class="dashboard-grid">
                     <div class="panel signal-panel fade-in">
-                        <div class="signal-top">
-                            <span>Model sketch</span>
-                            <span>Control boundary</span>
-                        </div>
-
                         <svg class="signal-visual" viewBox="0 0 820 340" role="img" aria-label="Animated market signal and control boundary">
                             <line class="signal-grid-line" x1="0" y1="70" x2="820" y2="70"></line>
                             <line class="signal-grid-line" x1="0" y1="140" x2="820" y2="140"></line>
