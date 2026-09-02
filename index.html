@@ -180,23 +180,12 @@
         .video-frame {
             position: absolute;
             inset: 0;
-            pointer-events: none;
         }
 
         .video-frame iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            filter: saturate(0.88) contrast(1.08);
-        }
-
-        .hero-media::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(0deg, rgba(8, 8, 7, 0.32) 0%, transparent 28%, rgba(8, 8, 7, 0.18) 100%);
         }
 
         .hero-copy {
@@ -693,9 +682,9 @@
                 </div>
 
                 <div class="hero-media">
-                    <div class="video-frame" aria-hidden="true">
+                    <div class="video-frame">
                         <iframe
-                            src="https://www.youtube.com/embed/21QJF-yCu2k?autoplay=1&mute=1&playsinline=1&vq=hd720&controls=0&rel=0&modestbranding=1&loop=1&playlist=21QJF-yCu2k"
+                            src="https://www.youtube.com/embed/21QJF-yCu2k?playsinline=1&controls=1&rel=0"
                             title="Yulin Zhu pitching"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -734,10 +723,21 @@
                         <span class="section-label">Experience</span>
                         <h2 class="section-title">Experience</h2>
                     </div>
-                    <p class="section-note">Trading, research, and risk work across crypto markets, derivatives, asset management, and institutional research.</p>
+                    <p class="section-note">Trading, research, and risk work across systematic trading, crypto markets, derivatives, asset management, and institutional research.</p>
                 </div>
 
                 <div class="experience-grid fade-in">
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Quantitative Research Intern, Systematic Trading</h3>
+                                <p class="exp-company">Jain Global</p>
+                            </div>
+                            <span class="exp-location">Hong Kong</span>
+                        </div>
+                        <p class="exp-description">Core systematic trading team, covering monetization and execution.</p>
+                    </div>
+
                     <div class="exp-card">
                         <div class="exp-header">
                             <div>
