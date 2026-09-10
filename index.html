@@ -215,14 +215,6 @@
             line-height: 0.9;
         }
 
-        .hero-subtitle {
-            max-width: 610px;
-            margin-top: 22px;
-            color: var(--ink);
-            font-size: clamp(1rem, 2vw, 1.35rem);
-            font-weight: 600;
-        }
-
         .hero-meta {
             margin-top: 16px;
             color: var(--muted);
@@ -292,42 +284,6 @@
             font-weight: 800;
             letter-spacing: 0;
             line-height: 1;
-        }
-
-        .section-note {
-            max-width: 430px;
-            color: var(--muted);
-            font-size: 1rem;
-        }
-
-        .panel {
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(18, 17, 15, 0.78);
-            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
-        }
-
-        .research-panel {
-            max-width: 760px;
-            padding: 30px;
-        }
-
-        .research-panel p {
-            color: var(--muted);
-            font-size: 1.04rem;
-        }
-
-        .research-list {
-            display: grid;
-            gap: 14px;
-            margin-top: 24px;
-            padding-left: 1.15rem;
-            color: var(--ink);
-            font-weight: 700;
-        }
-
-        .research-list li::marker {
-            color: var(--cyan);
         }
 
         .timeline {
@@ -608,7 +564,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .research-panel,
             .exp-card,
             .teaching-item,
             .contact-card {
@@ -648,7 +603,6 @@
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
 
                 <ul class="nav-links">
-                    <li><a href="#research" class="nav-link">Research</a></li>
                     <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#education" class="nav-link">Education</a></li>
                     <li><a href="#teaching" class="nav-link">Teaching</a></li>
@@ -657,7 +611,6 @@
             </div>
 
             <div class="mobile-menu" id="mobileMenu">
-                <a href="#research" class="nav-link">Research</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#education" class="nav-link">Education</a>
                 <a href="#teaching" class="nav-link">Teaching</a>
@@ -671,12 +624,10 @@
                     <div class="hero-copy-main">
                         <div class="eyebrow">Statistics PhD / Quantitative Finance</div>
                         <h1 class="hero-title">Yulin Zhu</h1>
-                        <p class="hero-subtitle">Stochastic control, high-frequency markets, and mathematical finance at The Chinese University of Hong Kong.</p>
                         <p class="hero-meta">Beijing -> Toronto -> Connecticut -> Baltimore -> NY -> HK</p>
                     </div>
                     <div class="hero-actions">
-                        <a href="#research" class="btn btn-primary">View Research</a>
-                        <a href="#experience" class="btn btn-secondary">Experience</a>
+                        <a href="#experience" class="btn btn-primary">Experience</a>
                         <a href="https://github.com/yulinzhu17" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
                     </div>
                 </div>
@@ -694,28 +645,6 @@
             </div>
         </header>
 
-        <section id="research">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <div>
-                        <span class="section-label">Research</span>
-                        <h2 class="section-title">Stochastic control and quantitative finance.</h2>
-                    </div>
-                    <p class="section-note">I study mathematical models for high-frequency trading, market microstructure, and cryptocurrency market dynamics.</p>
-                </div>
-
-                <div class="panel research-panel fade-in">
-                    <p>My research interests lie at the intersection of mathematics and finance. I am currently exploring optimal control problems in high-frequency trading and theoretical frameworks for cryptocurrency market dynamics.</p>
-
-                    <ul class="research-list">
-                        <li>Stochastic control for execution and trading decisions</li>
-                        <li>Crypto market microstructure and adverse selection</li>
-                        <li>Deep learning tools for quantitative finance</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <section id="experience">
             <div class="section-container">
                 <div class="section-header fade-in">
@@ -723,7 +652,6 @@
                         <span class="section-label">Experience</span>
                         <h2 class="section-title">Experience</h2>
                     </div>
-                    <p class="section-note">Trading, research, and risk work across systematic trading, crypto markets, derivatives, asset management, and institutional research.</p>
                 </div>
 
                 <div class="experience-grid fade-in">
@@ -792,7 +720,6 @@
                         <span class="section-label">Education</span>
                         <h2 class="section-title">Education</h2>
                     </div>
-                    <p class="section-note">Academic background across statistics, financial engineering, applied mathematics, and pure mathematics.</p>
                 </div>
 
                 <div class="timeline fade-in">
@@ -803,7 +730,7 @@
                                 <img src="cuhk.png" alt="CUHK logo" class="school-logo">
                                 The Chinese University of Hong Kong
                             </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">Ph.D. in Statistics</strong><br>Supervisors: Prof. Tony Sit &amp; Prof. Hoi-Ying Wong</p>
+                            <p class="timeline-subtitle"><strong class="degree-name">Ph.D. in Statistics</strong><br>Researching stochastic control and finance.<br>Supervisors: Prof. Tony Sit &amp; Prof. Hoi-Ying Wong</p>
                         </div>
                     </div>
 
@@ -850,7 +777,6 @@
                         <span class="section-label">Teaching</span>
                         <h2 class="section-title">Risk Management</h2>
                     </div>
-                    <p class="section-note">Teaching assistant work for RMSC2001, Introduction to Risk Management.</p>
                 </div>
 
                 <div class="teaching-grid fade-in">
@@ -885,7 +811,6 @@
                         <span class="section-label">Contact</span>
                         <h2 class="section-title">Get in touch.</h2>
                     </div>
-                    <p class="section-note">For research, teaching, and quantitative finance conversations.</p>
                 </div>
 
                 <div class="contact-grid fade-in">
@@ -914,7 +839,6 @@
                 <p>© 2026 Yulin Zhu / CUHK Statistics</p>
                 <div class="footer-links">
                     <a href="#hero" class="footer-link">Home</a>
-                    <a href="#research" class="footer-link">Research</a>
                     <a href="#experience" class="footer-link">Experience</a>
                     <a href="#education" class="footer-link">Education</a>
                     <a href="#contact" class="footer-link">Contact</a>
