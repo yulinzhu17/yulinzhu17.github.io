@@ -44,7 +44,7 @@ setInterval(updateClock, 30000);
 
 const cities = {
   beijing: { code: 'BJS', kicker: '01 / China', title: 'Beijing', description: 'Born here.' },
-  toronto: { code: 'YYZ', kicker: '02 / Canada', title: 'Toronto', description: 'Attended part of elementary school through part of high school here. Played at the highest level of baseball for my age since middle school. City champion and provincial finalist. Proud alum of the Etobicoke Rangers and Ontario Royals.' },
+  toronto: { code: 'YYZ', kicker: '02 / Canada', title: 'Toronto', description: 'Attended elementary school through part of high school here. Played at the highest level of baseball for my age since middle school. City champion and provincial finalist. Proud alum of the Etobicoke Rangers and Ontario Royals.' },
   connecticut: { code: 'CT', kicker: '03 / 2017', title: 'Connecticut', description: 'Graduated from The Hotchkiss School with my high school diploma and played varsity baseball there.' },
   baltimore: { code: 'BWI', kicker: '04 / 2017–2021', title: 'Baltimore', description: 'Johns Hopkins · Applied Math & Statistics' },
   newyork: { code: 'NYC', kicker: '05 / 2022–2023', title: 'New York', description: 'Columbia · Financial Engineering' },
