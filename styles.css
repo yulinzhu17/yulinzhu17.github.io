@@ -21,8 +21,8 @@ body[data-palette=forest]{--hero:#163f39;--accent:#d6ff75;--coral:#f6af80;--purp
 /* School colors and text contrast stay consistent across palettes. */
 .education-card { --school-ink: #faf8f2; --school-copy: #e9e5ed; --school-muted: #d8d1e0; --school-number: #ffffff16; --school-focus: var(--accent); color: var(--school-ink); min-height: 350px; border: 1px solid #ffffff12; }
 .education-card.lavender { background: #efd2df; }
-.education-card.peach { background: #512d35; }
-.education-card.pale-green { background: #243b34; }
+.education-card.peach { background: #172b4d; }
+.education-card.pale-green { background: #70571b; }
 .education-card.pale-blue { background: #dedfe3; }
 .education-card.lavender, .education-card.pale-blue { --school-ink: #24253e; --school-copy: #414257; --school-muted: #535469; --school-number: #24253e14; --school-focus: #653a84; border-color: #24253e0c; }
 .education-card h3, .education-card .degree { color: var(--school-ink); }
