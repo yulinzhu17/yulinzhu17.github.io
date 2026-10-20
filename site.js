@@ -71,7 +71,6 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
 }));
 
 const photos = [
-  { src: 'pitching_hkiss.jpeg', alt: 'Yulin pitching in a Hotchkiss uniform, ball raised beside his head', caption: 'Hotchkiss' },
   { src: 'hkiss_bsbl2.jpg', alt: 'Yulin pitching in a Hotchkiss uniform with his throwing arm and blue glove extended', caption: 'The windup' },
   { src: 'pitching.jpg', alt: 'Yulin following through on a pitch on a floodlit baseball field at dusk', caption: 'Under the lights.' }
 ];
@@ -82,7 +81,7 @@ function showPhoto(step) {
   const image = document.querySelector('#baseball-photo');
   image.src = photo.src;
   image.alt = photo.alt;
-  document.querySelector('#photo-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / 03`;
+  document.querySelector('#photo-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
   document.querySelector('#photo-caption').textContent = photo.caption;
 }
 document.querySelector('#previous-photo').addEventListener('click', () => showPhoto(-1));
