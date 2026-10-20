@@ -1,891 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yulin Zhu | Statistics, Stochastic Control, Quantitative Finance</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --ink: #f5f2ea;
-            --muted: #b2aaa0;
-            --quiet: #746e66;
-            --carbon: #080807;
-            --panel: #12110f;
-            --panel-strong: #191712;
-            --line: rgba(245, 242, 234, 0.13);
-            --line-strong: rgba(245, 242, 234, 0.24);
-            --cyan: #5eead4;
-            --amber: #f7b955;
-            --green: #8bd450;
-            --red: #ff6b5c;
-            --blue: #7aa7ff;
-            --shadow: 0 24px 70px rgba(0, 0, 0, 0.44);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background:
-                linear-gradient(rgba(245, 242, 234, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(245, 242, 234, 0.035) 1px, transparent 1px),
-                linear-gradient(135deg, #090908 0%, #11100d 42%, #080807 100%);
-            background-size: 44px 44px, 44px 44px, auto;
-            color: var(--ink);
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        .site-shell {
-            position: relative;
-            isolation: isolate;
-        }
-
-        .site-shell::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                linear-gradient(90deg, rgba(94, 234, 212, 0.08), transparent 24%, transparent 76%, rgba(247, 185, 85, 0.08)),
-                repeating-linear-gradient(0deg, transparent 0 8px, rgba(255, 255, 255, 0.012) 8px 9px);
-            opacity: 0.7;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--line);
-            background: rgba(8, 8, 7, 0.86);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .nav-container {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 15px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .logo {
-            color: var(--ink);
-            font-weight: 800;
-            letter-spacing: 0;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--muted);
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--ink);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            background: var(--panel);
-            color: var(--ink);
-            cursor: pointer;
-            font-size: 1.15rem;
-        }
-
-        .mobile-menu {
-            display: none;
-            border-top: 1px solid var(--line);
-            background: rgba(8, 8, 7, 0.97);
-            padding: 8px 24px 18px;
-        }
-
-        .mobile-menu.active {
-            display: grid;
-            gap: 6px;
-        }
-
-        .mobile-menu .nav-link {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hero {
-            min-height: auto;
-            padding: 106px 24px 48px;
-            display: grid;
-            align-items: start;
-        }
-
-        .hero-stage {
-            max-width: 1180px;
-            width: 100%;
-            margin: 0 auto;
-            display: grid;
-            gap: 18px;
-        }
-
-        .hero-media {
-            position: relative;
-            aspect-ratio: 16 / 9;
-            min-height: 0;
-            overflow: hidden;
-            border: 1px solid var(--line-strong);
-            border-radius: 8px;
-            background: #050504;
-            box-shadow: var(--shadow);
-        }
-
-        .video-frame {
-            position: absolute;
-            inset: 0;
-        }
-
-        .video-frame iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .hero-copy {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
-            gap: 28px;
-            align-items: end;
-            max-width: none;
-        }
-
-        .eyebrow,
-        .section-label {
-            color: var(--cyan);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.76rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .hero-title {
-            margin-top: 14px;
-            max-width: 760px;
-            font-size: clamp(3rem, 9vw, 7.2rem);
-            font-weight: 800;
-            letter-spacing: 0;
-            line-height: 0.9;
-        }
-
-        .hero-meta {
-            margin-top: 16px;
-            color: var(--muted);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.9rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: flex-end;
-            margin-top: 0;
-            pointer-events: auto;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            padding: 12px 18px;
-            border: 1px solid var(--line-strong);
-            border-radius: 6px;
-            color: var(--ink);
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-decoration: none;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-
-        .btn-primary {
-            background: var(--ink);
-            color: #0a0908;
-            border-color: var(--ink);
-        }
-
-        .btn-secondary {
-            background: rgba(18, 17, 15, 0.72);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            border-color: var(--cyan);
-        }
-
-        section {
-            padding: 96px 24px;
-        }
-
-        .section-container {
-            max-width: 1180px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 28px;
-            margin-bottom: 34px;
-        }
-
-        .section-title {
-            margin-top: 8px;
-            font-size: clamp(2rem, 5vw, 4.4rem);
-            font-weight: 800;
-            letter-spacing: 0;
-            line-height: 1;
-        }
-
-        .timeline {
-            display: grid;
-            gap: 12px;
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 24px;
-            padding: 22px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(18, 17, 15, 0.64);
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .timeline-item:hover,
-        .exp-card:hover,
-        .teaching-item:hover,
-        .contact-card:hover {
-            border-color: var(--line-strong);
-            transform: translateY(-2px);
-        }
-
-        .timeline-date {
-            color: var(--amber);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-
-        .timeline-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--ink);
-            font-size: 1.05rem;
-            font-weight: 800;
-        }
-
-        .school-logo {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-            flex: 0 0 auto;
-            filter: saturate(0.95) contrast(1.05);
-        }
-
-        .timeline-subtitle {
-            margin-top: 8px;
-            color: var(--muted);
-        }
-
-        .degree-name {
-            color: var(--blue);
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .exp-card {
-            min-height: 218px;
-            padding: 24px;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(18, 17, 15, 0.78);
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 22px;
-        }
-
-        .exp-title {
-            font-size: 1.24rem;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-
-        .exp-company {
-            margin-top: 8px;
-            color: var(--cyan);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.86rem;
-        }
-
-        .exp-location {
-            color: var(--quiet);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.76rem;
-            white-space: nowrap;
-        }
-
-        .exp-description {
-            color: var(--muted);
-        }
-
-        .teaching-grid,
-        .contact-grid {
-            display: grid;
-            gap: 14px;
-        }
-
-        .teaching-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .teaching-item,
-        .contact-card {
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            background: rgba(18, 17, 15, 0.74);
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .teaching-item {
-            min-height: 168px;
-            padding: 22px;
-            display: grid;
-            align-content: space-between;
-        }
-
-        .teaching-term {
-            color: var(--amber);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.84rem;
-            font-weight: 600;
-        }
-
-        .teaching-course {
-            color: var(--ink);
-            font-size: 1rem;
-            font-weight: 800;
-            line-height: 1.35;
-        }
-
-        .contact-grid {
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        .contact-card {
-            min-height: 160px;
-            padding: 24px;
-        }
-
-        .contact-label {
-            color: var(--cyan);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .contact-value {
-            margin-top: 18px;
-            color: var(--ink);
-            font-size: 1.02rem;
-            font-weight: 700;
-            overflow-wrap: anywhere;
-        }
-
-        .contact-value a {
-            color: var(--ink);
-            text-decoration: none;
-        }
-
-        .contact-value a:hover {
-            color: var(--cyan);
-        }
-
-        footer {
-            border-top: 1px solid var(--line);
-            padding: 34px 24px;
-            color: var(--quiet);
-        }
-
-        .footer-content {
-            max-width: 1180px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.78rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 18px;
-        }
-
-        .footer-link {
-            color: var(--muted);
-            text-decoration: none;
-        }
-
-        .footer-link:hover {
-            color: var(--ink);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 980px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding-top: 88px;
-            }
-
-            .hero-copy {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
-            .hero-actions {
-                justify-content: flex-start;
-            }
-
-            .experience-grid,
-            .teaching-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header {
-                display: grid;
-            }
-        }
-
-        @media (max-width: 640px) {
-            body {
-                background-size: 32px 32px, 32px 32px, auto;
-            }
-
-            .nav-container {
-                padding: 12px 18px;
-            }
-
-            .hero,
-            section {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .hero-actions {
-                display: grid;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-            }
-
-            .exp-card,
-            .teaching-item,
-            .contact-card {
-                padding: 20px;
-            }
-
-            .footer-content {
-                display: grid;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yulin Zhu — Statistics PhD at CUHK. Stochastic control, quantitative finance, and a little baseball.">
+  <meta name="theme-color" content="#202448">
+  <title>Yulin Zhu | Statistics, Finance & Baseball</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
-    <div class="site-shell">
-        <nav>
-            <div class="nav-container">
-                <a href="#hero" class="logo">Yulin Zhu</a>
-
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-
-                <ul class="nav-links">
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#education" class="nav-link">Education</a></li>
-                    <li><a href="#teaching" class="nav-link">Teaching</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#teaching" class="nav-link">Teaching</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </nav>
-
-        <header class="hero" id="hero">
-            <div class="hero-stage">
-                <div class="hero-copy fade-in">
-                    <div class="hero-copy-main">
-                        <div class="eyebrow">Statistics PhD / Quantitative Finance</div>
-                        <h1 class="hero-title">Yulin Zhu</h1>
-                        <p class="hero-meta">Beijing -> Toronto -> Connecticut -> Baltimore -> NY -> HK</p>
-                    </div>
-                    <div class="hero-actions">
-                        <a href="#experience" class="btn btn-primary">Experience</a>
-                        <a href="https://github.com/yulinzhu17" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
-                    </div>
-                </div>
-
-                <div class="hero-media">
-                    <div class="video-frame">
-                        <iframe
-                            src="https://www.youtube.com/embed/21QJF-yCu2k?autoplay=1&mute=1&playsinline=1&controls=1&rel=0"
-                            title="Yulin Zhu pitching"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <section id="experience">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <div>
-                        <span class="section-label">Experience</span>
-                        <h2 class="section-title">Experience</h2>
-                    </div>
-                </div>
-
-                <div class="experience-grid fade-in">
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <h3 class="exp-title">Quantitative Research Intern, Systematic Trading</h3>
-                                <p class="exp-company">Jain Global (Millennium Management Platform)</p>
-                            </div>
-                            <span class="exp-location">Hong Kong</span>
-                        </div>
-                        <p class="exp-description">Core systematic trading team, covering monetization and execution.</p>
-                    </div>
-
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <h3 class="exp-title">Junior Trader (Full-Time)</h3>
-                                <p class="exp-company">Pulsar Trading</p>
-                            </div>
-                            <span class="exp-location">Hong Kong</span>
-                        </div>
-                        <p class="exp-description">High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection before starting the PhD.</p>
-                    </div>
-
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <h3 class="exp-title">Summer Analyst</h3>
-                                <p class="exp-company">Millennium Management</p>
-                            </div>
-                            <span class="exp-location">New York City</span>
-                        </div>
-                        <p class="exp-description">Equity derivatives and volatility risk analysis, with work on risk models for options trading strategies.</p>
-                    </div>
-
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <h3 class="exp-title">Quantitative Researcher Intern</h3>
-                                <p class="exp-company">Kronos Research</p>
-                            </div>
-                            <span class="exp-location">Hong Kong</span>
-                        </div>
-                        <p class="exp-description">High-frequency cryptocurrency trading research across statistical arbitrage and market microstructure.</p>
-                    </div>
-
-                    <div class="exp-card">
-                        <div class="exp-header">
-                            <div>
-                                <h3 class="exp-title">Deep Learning Researcher</h3>
-                                <p class="exp-company">Wellington Management / ECB / EIB</p>
-                            </div>
-                            <span class="exp-location">Columbia University</span>
-                        </div>
-                        <p class="exp-description">Conducted deep learning research for financial applications during the Columbia MFE program under Prof. Ali Hirsa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <div>
-                        <span class="section-label">Education</span>
-                        <h2 class="section-title">Education</h2>
-                    </div>
-                </div>
-
-                <div class="timeline fade-in">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024 - Present</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">
-                                <img src="cuhk.png" alt="CUHK logo" class="school-logo">
-                                The Chinese University of Hong Kong
-                            </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">Ph.D. in Statistics</strong><br>Researching stochastic control and finance.<br>Supervisors: Prof. Tony Sit &amp; Prof. Hoi-Ying Wong</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 - 2023</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">
-                                <img src="columbia.png" alt="Columbia University logo" class="school-logo">
-                                Columbia University
-                            </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">M.Sc. in Financial Engineering, Dept. IEOR</strong></p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">2017 - 2021</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">
-                                <img src="jhu.png" alt="Johns Hopkins University logo" class="school-logo">
-                                The Johns Hopkins University
-                            </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">B.Sc. in Applied Math &amp; Statistics, Minor in Pure Math</strong><br>Transferred to Applied Math &amp; Stats during senior year and finished the major in 1 year. I was previously pursuing Public Health during Junior year, Computer Science during Sophomore year, and Chemical &amp; Biomolecular Engineering during freshman year.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">Class of 2017</div>
-                        <div class="timeline-content">
-                            <h3 class="timeline-title">
-                                <img src="hotchkiss.png" alt="Hotchkiss School logo" class="school-logo">
-                                The Hotchkiss School
-                            </h3>
-                            <p class="timeline-subtitle"><strong class="degree-name">High School Diploma.</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="teaching">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <div>
-                        <span class="section-label">Teaching</span>
-                        <h2 class="section-title">Risk Management</h2>
-                    </div>
-                </div>
-
-                <div class="teaching-grid fade-in">
-                    <div class="teaching-item">
-                        <span class="teaching-term">Fall 2026</span>
-                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
-                    </div>
-                    <div class="teaching-item">
-                        <span class="teaching-term">Spring 2026</span>
-                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
-                    </div>
-                    <div class="teaching-item">
-                        <span class="teaching-term">Fall 2025</span>
-                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
-                    </div>
-                    <div class="teaching-item">
-                        <span class="teaching-term">Spring 2025</span>
-                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
-                    </div>
-                    <div class="teaching-item">
-                        <span class="teaching-term">Fall 2024</span>
-                        <span class="teaching-course">RMSC2001 - Introduction to Risk Management</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="section-container">
-                <div class="section-header fade-in">
-                    <div>
-                        <span class="section-label">Contact</span>
-                        <h2 class="section-title">Get in touch.</h2>
-                    </div>
-                </div>
-
-                <div class="contact-grid fade-in">
-                    <div class="contact-card">
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">yulin.zhu[at]link.cuhk.edu.hk</div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-label">Office</div>
-                        <div class="contact-value">Lady Shaw Building, Room G24<br>CUHK, Hong Kong</div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-label">GitHub</div>
-                        <div class="contact-value">
-                            <a href="https://github.com/yulinzhu17" target="_blank" rel="noopener">github.com/yulinzhu17</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-content">
-                <p>© 2026 Yulin Zhu / CUHK Statistics</p>
-                <div class="footer-links">
-                    <a href="#hero" class="footer-link">Home</a>
-                    <a href="#experience" class="footer-link">Experience</a>
-                    <a href="#education" class="footer-link">Education</a>
-                    <a href="#contact" class="footer-link">Contact</a>
-                </div>
-            </div>
-        </footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="wordmark" href="#home" aria-label="Yulin Zhu, home">yz<span>✳</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#journey">My journey</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="nav-tools">
+        <fieldset class="palettes"><legend class="sr-only">Color palette</legend>
+          <button class="swatch indigo" type="button" data-palette="indigo" aria-label="Indigo palette" aria-pressed="true"></button>
+          <button class="swatch sunset" type="button" data-palette="sunset" aria-label="Sunset palette" aria-pressed="false"></button>
+          <button class="swatch forest" type="button" data-palette="forest" aria-label="Forest palette" aria-pressed="false"></button>
+        </fieldset>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu <span aria-hidden="true">＋</span></button>
+      </div>
     </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#journey">My journey</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Say hello ↗</a></nav>
+  </header>
 
-    <script>
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-topline"><span class="eyebrow"><i class="status-dot" aria-hidden="true"></i> Statistics PhD / Quantitative finance</span><span class="local-time">HONG KONG <time id="hk-clock"></time></span></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Yulin<br>Zhu<span class="coral">.</span></h1>
+            <p class="hero-location">Currently at <strong>CUHK</strong>.<br>Researching stochastic<br>control and finance.</p>
+            <a class="pill-button lime-button" href="#experience">Explore my work <span aria-hidden="true">↘</span></a>
+            <div class="hero-signature"><span class="asterisk" aria-hidden="true">✳</span><span>A little math.<br>A lot of motion.</span></div>
+          </div>
+          <div class="hero-video-wrap">
+            <div class="video-label"><span><span class="coral" aria-hidden="true">●</span> ON THE MOUND</span><span>PRESS PLAY. MEET THE PITCHER.</span></div>
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/21QJF-yCu2k?autoplay=1&amp;mute=1&amp;playsinline=1&amp;controls=1&amp;rel=0" title="Yulin Zhu pitching — baseball video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-caption"><span>From the mound to the markets.</span><a href="https://www.youtube.com/watch?v=21QJF-yCu2k" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="interest-strip" aria-label="Interests"><div class="container"><span>STOCHASTIC CONTROL</span><b aria-hidden="true">✳</b><span>QUANTITATIVE FINANCE</span><b aria-hidden="true">✳</b><span>BASEBALL</span><b aria-hidden="true">✳</b><a href="#journey">KEEP EXPLORING ↓</a></div></div>
+    </section>
 
-        mobileMenuBtn?.addEventListener("click", () => {
-            const isOpen = mobileMenu.classList.toggle("active");
-            mobileMenuBtn.textContent = isOpen ? "×" : "☰";
-            mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
-        });
+    <section id="journey" class="journey section-space">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">01 / A few stops along the way</p><h2>Same curiosity.<br>Different coordinates<span class="purple">.</span></h2></div><p class="section-aside">Beijing to Hong Kong, with a few<br>chapters in between. Pick a city.</p></div>
+        <div class="journey-layout">
+          <div class="route-panel">
+            <div class="route-track" role="group" aria-label="Explore my journey">
+              <button type="button" data-city="beijing" aria-pressed="false"><span class="stop-number">01</span><span class="stop-dot"></span><span>Beijing</span></button>
+              <button type="button" data-city="toronto" aria-pressed="false"><span class="stop-number">02</span><span class="stop-dot"></span><span>Toronto</span></button>
+              <button type="button" data-city="connecticut" aria-pressed="false"><span class="stop-number">03</span><span class="stop-dot"></span><span>Connecticut</span></button>
+              <button type="button" data-city="baltimore" aria-pressed="false"><span class="stop-number">04</span><span class="stop-dot"></span><span>Baltimore</span></button>
+              <button type="button" data-city="newyork" aria-pressed="false"><span class="stop-number">05</span><span class="stop-dot"></span><span>New York</span></button>
+              <button type="button" data-city="hongkong" aria-pressed="true"><span class="stop-number">06</span><span class="stop-dot"></span><span>Hong Kong</span></button>
+            </div>
+            <div class="city-detail" aria-live="polite" aria-atomic="true"><span class="city-code" id="city-code" aria-hidden="true">HKG</span><div><p class="eyebrow" id="city-kicker">The current chapter</p><h3 id="city-title">Hong Kong</h3><p id="city-description">Statistics PhD at CUHK. Researching stochastic control and finance, with trading and quantitative research experience in Hong Kong.</p></div></div>
+          </div>
+          <aside class="journey-note"><span aria-hidden="true">↗</span><p>Six stops.<br>One ongoing<br><em>journey.</em></p><a href="#education">The education chapter ↓</a></aside>
+        </div>
+      </div>
+    </section>
 
-        document.querySelectorAll(".mobile-menu .nav-link").forEach((link) => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.remove("active");
-                mobileMenuBtn.textContent = "☰";
-                mobileMenuBtn.setAttribute("aria-expanded", "false");
-            });
-        });
+    <section id="experience" class="experience section-space">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">02 / In the markets</p><h2>Where I've worked<span class="coral">.</span></h2></div><p class="section-aside">Trading, research, and risk.<br>Open a role for the details.</p></div>
+        <div class="filter-bar"><div role="group" aria-label="Filter experience by location"><button type="button" data-filter="all" aria-pressed="true">All experience</button><button type="button" data-filter="hk" aria-pressed="false">Hong Kong</button><button type="button" data-filter="ny" aria-pressed="false">New York</button></div><span id="experience-count" aria-live="polite">5 experiences</span></div>
+        <div class="experience-list">
+          <details class="experience-row" data-location="hk" open><summary><span class="role-index">01</span><div class="role-main"><h3>Jain Global</h3><p>Quantitative Research Intern, Systematic Trading</p></div><span class="location-tag">Hong Kong</span><span class="expand-icon" aria-hidden="true">＋</span></summary><div class="role-description"><p class="company-note">Millennium Management Platform</p><p>Core systematic trading team, covering monetization and execution.</p></div></details>
+          <details class="experience-row" data-location="hk"><summary><span class="role-index">02</span><div class="role-main"><h3>Pulsar Trading</h3><p>Junior Trader (Full-Time)</p></div><span class="location-tag">Hong Kong</span><span class="expand-icon" aria-hidden="true">＋</span></summary><div class="role-description"><p>High-frequency cryptocurrency market making. Applied deep learning models to reduce adverse selection before starting the PhD.</p></div></details>
+          <details class="experience-row" data-location="ny"><summary><span class="role-index">03</span><div class="role-main"><h3>Millennium Management</h3><p>Summer Analyst</p></div><span class="location-tag">New York</span><span class="expand-icon" aria-hidden="true">＋</span></summary><div class="role-description"><p>Equity derivatives and volatility risk analysis, with work on risk models for options trading strategies.</p></div></details>
+          <details class="experience-row" data-location="hk"><summary><span class="role-index">04</span><div class="role-main"><h3>Kronos Research</h3><p>Quantitative Researcher Intern</p></div><span class="location-tag">Hong Kong</span><span class="expand-icon" aria-hidden="true">＋</span></summary><div class="role-description"><p>High-frequency cryptocurrency trading research across statistical arbitrage and market microstructure.</p></div></details>
+          <details class="experience-row" data-location="ny"><summary><span class="role-index">05</span><div class="role-main"><h3>Wellington / ECB / EIB</h3><p>Deep Learning Researcher · Columbia University</p></div><span class="location-tag">New York</span><span class="expand-icon" aria-hidden="true">＋</span></summary><div class="role-description"><p>Conducted deep learning research for financial applications with Wellington Management, the ECB, and the EIB during the Columbia MFE program under Prof. Ali Hirsa.</p></div></details>
+        </div>
+      </div>
+    </section>
 
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", (event) => {
-                const target = document.querySelector(anchor.getAttribute("href"));
-                if (!target) return;
-                event.preventDefault();
-                window.scrollTo({
-                    top: target.offsetTop - 74,
-                    behavior: "smooth"
-                });
-            });
-        });
+    <section id="education" class="education section-space">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">03 / Always learning</p><h2>The academic side<span class="purple">.</span></h2></div><span class="large-star" aria-hidden="true">✳</span></div>
+        <div class="education-grid">
+          <article class="education-card lavender"><div class="school-top"><span>2024 — PRESENT</span><img src="cuhk.png" alt="" loading="lazy" width="48" height="48"></div><h3>The Chinese University<br>of Hong Kong</h3><p class="degree">Ph.D. in Statistics</p><p>Researching stochastic control and finance.</p><p class="school-detail">Supervisors: Prof. Tony Sit &amp; Prof. Hoi-Ying Wong</p><span class="school-number" aria-hidden="true">01</span></article>
+          <article class="education-card peach"><div class="school-top"><span>2022 — 2023</span><img src="columbia.png" alt="" loading="lazy" width="48" height="48"></div><h3>Columbia<br>University</h3><p class="degree">M.Sc. in Financial Engineering</p><p>Department of Industrial Engineering and Operations Research.</p><span class="school-number" aria-hidden="true">02</span></article>
+          <article class="education-card pale-green"><div class="school-top"><span>2017 — 2021</span><img src="jhu.png" alt="" loading="lazy" width="48" height="48"></div><h3>The Johns Hopkins<br>University</h3><p class="degree">B.Sc. in Applied Math &amp; Statistics</p><p>Minor in Pure Math.</p><details class="school-story"><summary>A winding path to mathematics <span aria-hidden="true">↗</span></summary><p>Transferred to Applied Math &amp; Stats during senior year and finished the major in one year. Previously pursued Public Health during junior year, Computer Science during sophomore year, and Chemical &amp; Biomolecular Engineering during freshman year.</p></details><span class="school-number" aria-hidden="true">03</span></article>
+          <article class="education-card pale-blue"><div class="school-top"><span>CLASS OF 2017</span><img src="hotchkiss.png" alt="" loading="lazy" width="48" height="48"></div><h3>The Hotchkiss<br>School</h3><p class="degree">High School Diploma</p><p>And plenty of time on the baseball field.</p><a class="text-link" href="#baseball">Meet the pitcher ↗</a><span class="school-number" aria-hidden="true">04</span></article>
+        </div>
+        <div class="teaching" id="teaching"><div><p class="eyebrow">Also in the classroom</p><h3>Introduction to<br>Risk Management</h3><p>Teaching assistant · RMSC2001</p></div><div class="teaching-terms" aria-label="Teaching terms"><span class="current-term">Fall 2026</span><span>Spring 2026</span><span>Fall 2025</span><span>Spring 2025</span><span>Fall 2024</span></div></div>
+      </div>
+    </section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.12 });
+    <section id="baseball" class="baseball section-space">
+      <div class="container baseball-grid">
+        <div class="baseball-copy"><p class="eyebrow">04 / Beyond the numbers</p><h2>Still a<br> pitcher<br> at heart<span>.</span></h2><p>A few frames from the field.</p><a class="pill-button dark-button" href="#home">Back to the video <span aria-hidden="true">↗</span></a><div class="baseball-seam" aria-hidden="true">(( ⚾ ))</div></div>
+        <div class="gallery" role="region" aria-label="Baseball photo gallery" aria-roledescription="carousel">
+          <div class="photo-wrap"><img id="baseball-photo" src="pitching_hkiss.jpeg" alt="Yulin pitching in a Hotchkiss uniform, ball raised beside his head" loading="lazy" width="1519" height="1103"></div>
+          <div class="gallery-footer"><div aria-live="polite" aria-atomic="true"><span id="photo-count">01 / 03</span><p id="photo-caption">Hotchkiss. Ready to deliver.</p></div><div class="gallery-controls"><button type="button" id="previous-photo" aria-label="Previous baseball photo">←</button><button type="button" id="next-photo" aria-label="Next baseball photo">→</button></div></div>
+        </div>
+      </div>
+    </section>
 
-        document.querySelectorAll(".fade-in").forEach((element) => observer.observe(element));
-    </script>
+    <section id="contact" class="contact section-space">
+      <div class="container"><div class="contact-heading"><div><p class="eyebrow">05 / Let's connect</p><h2>Say hello<span class="lime">.</span></h2></div><a class="contact-arrow" href="mailto:yulin.zhu@link.cuhk.edu.hk" aria-label="Email Yulin Zhu">↗</a></div><div class="contact-bottom"><div class="email-block"><a href="mailto:yulin.zhu@link.cuhk.edu.hk">yulin.zhu@link.cuhk.edu.hk</a><button type="button" id="copy-email">Copy email <span aria-hidden="true">⧉</span></button><span id="copy-status" role="status"></span></div><p>Lady Shaw Building, Room G24<br>CUHK, Hong Kong</p><a class="github-link" href="https://github.com/yulinzhu17" target="_blank" rel="noopener noreferrer">Find me on GitHub ↗</a></div></div>
+    </section>
+  </main>
+  <footer><div class="container"><span>© 2026 Yulin Zhu</span><span>Statistics. Markets. A good fastball.</span><a href="#home">Back to top ↑</a></div></footer>
 </body>
 </html>
