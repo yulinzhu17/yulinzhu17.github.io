@@ -32,14 +32,15 @@ body[data-palette=forest]{--hero:#163f39;--accent:#d6ff75;--coral:#f6af80;--purp
 .education-card.lavender, .education-card.pale-blue { --school-ink: #24253e; --school-copy: #414257; --school-muted: #535469; --school-number: #24253e14; --school-focus: #653a84; border-color: #24253e0c; }
 .education-card h3, .education-card .degree { color: var(--school-ink); }
 .education-card p { color: var(--school-copy); }
-.education-card .school-top { color: var(--school-muted); min-height: 80px; align-items: flex-start; gap: 18px; }
+.education-card .school-top { min-height: 80px; justify-content: flex-end; align-items: flex-start; }
 .education-card .school-top img { width: 80px; height: 80px; flex: 0 0 80px; object-fit: contain; }
-.education-card .school-top > span { padding-top: 8px; font-size: 16px; line-height: 1.5; font-weight: 500; letter-spacing: .5px; color: var(--school-ink); }
+.education-card .degree { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; max-width: none; }
+.education-card .degree-year { font: 500 16px/1.5 var(--mono); letter-spacing: .5px; white-space: nowrap; }
 .education-card .school-number { color: var(--school-number); }
 .education-card a:focus-visible, .education-card summary:focus-visible { outline-color: var(--school-focus); }
 @media (max-width: 800px) {
   .education .large-star { font-size: 48px; }
   .education-card .school-top { min-height: 72px; }
   .education-card .school-top img { width: 72px; height: 72px; flex-basis: 72px; }
-  .education-card .school-top > span { font-size: 14px; }
+  .education-card .degree-year { font-size: 14px; }
 }
