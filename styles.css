@@ -18,6 +18,10 @@ body[data-palette=forest]{--hero:#163f39;--accent:#d6ff75;--coral:#f6af80;--purp
 @media(prefers-reduced-motion:reduce){[data-tilt],.gallery:hover,.gallery:focus-within{transform:none!important}.hero-orbit:hover,.contact-arrow:hover{transform:none}.experience-row summary:hover{padding-left:12px}}
 
 
+/* Vector decorations render consistently without emoji substitution. */
+.star-icon { display: block; width: 1em; height: 1em; flex: none; }
+.education .large-star { flex: 0 0 auto; }
+
 /* School colors and text contrast stay consistent across palettes. */
 .education-card { --school-ink: #faf8f2; --school-copy: #e9e5ed; --school-muted: #d8d1e0; --school-number: #ffffff16; --school-focus: var(--accent); color: var(--school-ink); min-height: 350px; border: 1px solid #ffffff12; }
 .education-card.lavender { background: #efd2df; }
@@ -33,6 +37,7 @@ body[data-palette=forest]{--hero:#163f39;--accent:#d6ff75;--coral:#f6af80;--purp
 .education-card .school-number { color: var(--school-number); }
 .education-card a:focus-visible, .education-card summary:focus-visible { outline-color: var(--school-focus); }
 @media (max-width: 800px) {
+  .education .large-star { font-size: 48px; }
   .education-card .school-top { min-height: 72px; }
   .education-card .school-top img { width: 72px; height: 72px; flex-basis: 72px; }
   .education-card .school-top > span { font-size: 14px; }
