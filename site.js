@@ -25,7 +25,7 @@ function applyPalette(palette) {
   if (!['indigo', 'sunset', 'forest'].includes(palette)) return;
   document.body.dataset.palette = palette;
   paletteButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.palette === palette)));
-  document.querySelector('meta[name="theme-color"]').content = { indigo: '#202448', sunset: '#512c3a', forest: '#193e38' }[palette];
+  document.querySelector('meta[name="theme-color"]').content = { indigo: '#30226c', sunset: '#662a44', forest: '#163f39' }[palette];
 }
 try { applyPalette(localStorage.getItem('yulin-palette') || 'indigo'); } catch { /* Storage is optional. */ }
 paletteButtons.forEach(button => button.addEventListener('click', () => {
@@ -43,12 +43,12 @@ updateClock();
 setInterval(updateClock, 30000);
 
 const cities = {
-  beijing: { code: 'BJS', kicker: 'The first stop', title: 'Beijing', description: 'The first stop on a journey through Beijing, Toronto, Connecticut, Baltimore, New York, and Hong Kong.' },
-  toronto: { code: 'YYZ', kicker: 'The Canadian chapter', title: 'Toronto', description: 'Toronto, Ontario, Canada — part of the journey before school and work took me to the United States and Hong Kong.' },
-  connecticut: { code: 'CT', kicker: 'School days & game days', title: 'Connecticut', description: 'The Hotchkiss School, Class of 2017. High school, varsity baseball, and plenty of time on the mound.' },
-  baltimore: { code: 'BWI', kicker: 'Finding mathematics', title: 'Baltimore', description: 'Johns Hopkins University, 2017–2021. Applied Math & Statistics, with a minor in Pure Math and a winding path through several disciplines.' },
-  newyork: { code: 'NYC', kicker: 'Engineering meets finance', title: 'New York', description: 'Financial Engineering at Columbia University, deep learning research with Prof. Ali Hirsa, and equity derivatives and volatility risk work at Millennium Management.' },
-  hongkong: { code: 'HKG', kicker: 'The current chapter', title: 'Hong Kong', description: 'Statistics PhD at CUHK. Researching stochastic control and finance, with trading and quantitative research experience in Hong Kong.' }
+  beijing: { code: 'BJS', kicker: '01 / China', title: 'Beijing', description: 'The first stop.' },
+  toronto: { code: 'YYZ', kicker: '02 / Canada', title: 'Toronto', description: 'Ontario, Canada.' },
+  connecticut: { code: 'CT', kicker: '03 / 2017', title: 'Connecticut', description: 'Hotchkiss · Varsity baseball' },
+  baltimore: { code: 'BWI', kicker: '04 / 2017–2021', title: 'Baltimore', description: 'Johns Hopkins · Applied Math & Statistics' },
+  newyork: { code: 'NYC', kicker: '05 / 2022–2023', title: 'New York', description: 'Columbia · Financial Engineering' },
+  hongkong: { code: 'HKG', kicker: '06 / Now', title: 'Hong Kong', description: 'CUHK · Statistics PhD' }
 };
 const cityButtons = document.querySelectorAll('[data-city]');
 cityButtons.forEach(button => button.addEventListener('click', () => {
@@ -71,8 +71,8 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
 }));
 
 const photos = [
-  { src: 'pitching_hkiss.jpeg', alt: 'Yulin pitching in a Hotchkiss uniform, ball raised beside his head', caption: 'Hotchkiss. Ready to deliver.' },
-  { src: 'hkiss_bsbl2.jpg', alt: 'Yulin pitching in a Hotchkiss uniform with his throwing arm and blue glove extended', caption: 'A moment before the release.' },
+  { src: 'pitching_hkiss.jpeg', alt: 'Yulin pitching in a Hotchkiss uniform, ball raised beside his head', caption: 'Hotchkiss' },
+  { src: 'hkiss_bsbl2.jpg', alt: 'Yulin pitching in a Hotchkiss uniform with his throwing arm and blue glove extended', caption: 'The windup' },
   { src: 'pitching.jpg', alt: 'Yulin following through on a pitch on a floodlit baseball field at dusk', caption: 'Under the lights.' }
 ];
 let photoIndex = 0;
@@ -97,9 +97,65 @@ document.querySelector('#copy-email').addEventListener('click', async () => {
   clearTimeout(copyTimer);
   try {
     await navigator.clipboard.writeText('yulin.zhu@link.cuhk.edu.hk');
-    status.textContent = 'Email copied!';
+    status.textContent = 'Copied.';
   } catch {
-    status.textContent = 'Select the email above to copy it, or click it to open your email app.';
+    status.textContent = 'Select the email to copy it.';
   }
   copyTimer = setTimeout(() => { status.textContent = ''; }, 6000);
+});
+
+// Keyboard and touch keep the visual controls usable without a mouse.
+function stepCity(step) {
+  const buttons = [...cityButtons];
+  const active = buttons.findIndex(button => button.getAttribute('aria-pressed') === 'true');
+  const next = buttons[(active + step + buttons.length) % buttons.length];
+  next.click();
+  return next;
+}
+document.querySelector('.next-city').addEventListener('click', () => stepCity(1));
+document.querySelector('.route-track').addEventListener('keydown', event => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    stepCity(event.key === 'ArrowLeft' ? -1 : 1).focus();
+  }
+});
+let swipeStart;
+const photoSurface = document.querySelector('.photo-wrap');
+photoSurface.addEventListener('pointerdown', event => {
+  if (event.pointerType === 'mouse') return;
+  swipeStart = { x: event.clientX, y: event.clientY };
+  photoSurface.setPointerCapture(event.pointerId);
+});
+photoSurface.addEventListener('pointerup', event => {
+  if (!swipeStart) return;
+  const dx = event.clientX - swipeStart.x;
+  const dy = event.clientY - swipeStart.y;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) showPhoto(dx < 0 ? 1 : -1);
+  swipeStart = null;
+});
+photoSurface.addEventListener('pointercancel', () => { swipeStart = null; });
+
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = window.matchMedia('(pointer: fine)');
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  let frame;
+  card.addEventListener('pointermove', event => {
+    if (motionQuery.matches || !finePointer.matches) return;
+    cancelAnimationFrame(frame);
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * -7;
+    frame = requestAnimationFrame(() => {
+      card.style.setProperty('--tilt-x', `${y}deg`);
+      card.style.setProperty('--tilt-y', `${x}deg`);
+    });
+  });
+  const reset = () => {
+    cancelAnimationFrame(frame);
+    card.style.removeProperty('--tilt-x');
+    card.style.removeProperty('--tilt-y');
+  };
+  card.addEventListener('pointerleave', reset);
+  card.addEventListener('pointercancel', reset);
+  motionQuery.addEventListener('change', reset);
 });
