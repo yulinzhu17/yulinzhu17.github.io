@@ -20,6 +20,7 @@ body[data-palette=forest]{--hero:#163f39;--accent:#d6ff75;--coral:#f6af80;--purp
 
 /* Vector decorations render consistently without emoji substitution. */
 .star-icon { display: block; width: 1em; height: 1em; flex: none; }
+.arrow-icon { display: inline-block; width: 1em; height: 1em; vertical-align: -.12em; flex: none; }
 .education .large-star { flex: 0 0 auto; }
 
 /* School colors and text contrast stay consistent across palettes. */

@@ -71,8 +71,8 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
 }));
 
 const photos = [
-  { src: 'hkiss_bsbl2.jpg', alt: 'Yulin pitching in a Hotchkiss uniform with his throwing arm and blue glove extended', caption: 'The windup' },
-  { src: 'pitching.jpg', alt: 'Yulin following through on a pitch on a floodlit baseball field at dusk', caption: 'Under the lights.' }
+  { src: 'hkiss_bsbl2.jpg', alt: 'Yulin pitching in a Hotchkiss uniform with his throwing arm and blue glove extended' },
+  { src: 'pitching.jpg', alt: 'Yulin following through on a pitch on a floodlit baseball field at dusk' }
 ];
 let photoIndex = 0;
 function showPhoto(step) {
@@ -82,7 +82,6 @@ function showPhoto(step) {
   image.src = photo.src;
   image.alt = photo.alt;
   document.querySelector('#photo-count').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
-  document.querySelector('#photo-caption').textContent = photo.caption;
 }
 document.querySelector('#previous-photo').addEventListener('click', () => showPhoto(-1));
 document.querySelector('#next-photo').addEventListener('click', () => showPhoto(1));
@@ -90,15 +89,24 @@ document.querySelector('.gallery').addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showPhoto(event.key === 'ArrowLeft' ? -1 : 1); }
 });
 
+// Keep the address obfuscated until someone chooses an email action.
+function getEmailAddress() {
+  return document.querySelector('#email-address').textContent.trim().replace(/\s*\[AT\]\s*/i, String.fromCharCode(64));
+}
+document.querySelectorAll('[data-email-link]').forEach(link => link.addEventListener('click', event => {
+  event.preventDefault();
+  window.location.href = `mailto:${getEmailAddress()}`;
+}));
+
 let copyTimer;
 document.querySelector('#copy-email').addEventListener('click', async () => {
   const status = document.querySelector('#copy-status');
   clearTimeout(copyTimer);
   try {
-    await navigator.clipboard.writeText('yulin.zhu@link.cuhk.edu.hk');
+    await navigator.clipboard.writeText(getEmailAddress());
     status.textContent = 'Copied.';
   } catch {
-    status.textContent = 'Select the email to copy it.';
+    status.textContent = 'Select the address to copy it, then replace [AT] with the at sign.';
   }
   copyTimer = setTimeout(() => { status.textContent = ''; }, 6000);
 });
